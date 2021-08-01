@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
+import Navigation from './navigation/Navigation';
 
 const Layout = ({ children }) => {
   return (
     <Fragment>
-      <h1>Layout 1</h1>
+      <Navigation />
       {children}
     </Fragment>
   );
