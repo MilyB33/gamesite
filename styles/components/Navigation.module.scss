@@ -18,11 +18,11 @@
 .item {
   * > a {
     padding: 1rem 2rem;
-    -webkit-text-stroke: 1px $clr-purple-200;
+    -webkit-text-stroke: 1px;
     transition: 0.5s;
 
     &:hover {
-      color: hsla(292, 70%, 55%, 0.62);
+      color: $clr-purple-200;
       -webkit-text-stroke: 1px $clr-light-100;
     }
   }

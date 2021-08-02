@@ -4,13 +4,29 @@ import Image from 'next/image';
 import styles from '../../styles/components/Navigation.module.scss';
 import Item from './Item';
 
+const CustomImage = React.forwardRef(function CustomImage(
+  { onClick, href },
+  ref
+) {
+  return (
+    <a href={href} onClick={onClick} ref={ref}>
+      <Image
+        src="/static/logo.png"
+        height={80}
+        width={80}
+        alt="logo"
+      />
+    </a>
+  );
+});
+
 const Navigation = () => {
   return (
     <nav className={styles.navigation}>
       <ul className={styles.list}>
         <li className={`${styles.item} ${styles.logo}`}>
-          <Link href="/">
-            <Image src="/static/logo.png" height={80} width={80} />
+          <Link href="/" passHref>
+            <CustomImage />
           </Link>
         </li>
 

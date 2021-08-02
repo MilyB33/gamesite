@@ -6,4 +6,6 @@ export default function Home() {
   return <main className={styles.container}></main>;
 }
 
-Home.getLayout = (page) => <Layout>{page}</Layout>;
+Home.getLayout = function displayLayout(page) {
+  return <Layout>{page}</Layout>;
+};
