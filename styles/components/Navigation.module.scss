@@ -1,9 +1,12 @@
+@use '../abstracts/' as *;
+
 .navigation {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   padding: 2rem;
-  background: hsla(0, 0, 0, 0.6);
+  background: $clr-dark-200;
+  width: 100%;
 }
 
 .list {
@@ -15,12 +18,12 @@
 .item {
   * > a {
     padding: 1rem 2rem;
-    -webkit-text-stroke: 1px hsla(292, 70%, 55%, 0.62);
+    -webkit-text-stroke: 1px $clr-purple-200;
     transition: 0.5s;
 
     &:hover {
       color: hsla(292, 70%, 55%, 0.62);
-      -webkit-text-stroke: 1px hsl(0, 0%, 100%);
+      -webkit-text-stroke: 1px $clr-light-100;
     }
   }
 }

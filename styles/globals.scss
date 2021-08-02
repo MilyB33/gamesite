@@ -1,7 +1,12 @@
+@use './abstracts' as *;
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;1,400;1,700&display=swap');
 
 :root {
   font-size: 62.5%;
+}
+
+body {
+  background: linear-gradient($clr-dark-300, $clr-additional-300);
 }
 
 *,
