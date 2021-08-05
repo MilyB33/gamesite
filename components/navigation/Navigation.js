@@ -49,7 +49,7 @@ const Nav = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
-  padding: 2rem;
+  padding: 1.5rem;
   background: ${getColor('clr-dark-200')};
   width: 100%;
 `;
@@ -57,7 +57,7 @@ const Nav = styled.nav`
 const StyledList = styled.ul`
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 3rem;
 `;
 
 const RegisterItem = styled(Item)`
