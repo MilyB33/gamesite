@@ -3,7 +3,7 @@ export const fontFamily = {};
 export const fontWeight = {};
 
 export const color = {
-  ['light-100']: 'rgb(255, 255, 255)',
+  ['clr-light-100']: 'rgb(255, 255, 255)',
 
   ['clr-dark-100']: 'rgb(0, 0, 0)',
   ['clr-dark-200']: 'rgba(0, 0, 0, 0.6)',
