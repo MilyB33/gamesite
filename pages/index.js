@@ -3,7 +3,11 @@ import Layout from '../components/Layout';
 import Link from 'next/link';
 
 export default function Home() {
-  return <main className={styles.container}></main>;
+  return (
+    <div>
+      <main className={styles.container}></main>
+    </div>
+  );
 }
 
 Home.getLayout = function displayLayout(page) {

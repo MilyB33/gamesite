@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '../../styles/components/Navigation.module.scss';
 import Item from './Item';
+import styled, { withTheme } from 'styled-components';
 
 const CustomImage = React.forwardRef(function CustomImage(
   { onClick, href },
@@ -22,26 +22,59 @@ const CustomImage = React.forwardRef(function CustomImage(
 
 const Navigation = () => {
   return (
-    <nav className={styles.navigation}>
-      <ul className={styles.list}>
-        <li className={`${styles.item} ${styles.logo}`}>
-          <Link href="/" passHref>
-            <CustomImage />
-          </Link>
-        </li>
+    <Nav>
+      <StyledList>
+        <Link href="/" passHref>
+          <CustomImage />
+        </Link>
 
-        <Item text="Home" style={styles.item} href="/" />
-        <Item text="Games" style={styles.item} href="/games" />
-        <Item text="Articles" style={styles.item} href="/articles" />
-        <Item text="Contact" style={styles.item} href="/contact" />
-        <Item
-          text="Log in / Register"
-          style={`${styles.item} ${styles.sign}`}
-          href="/sign"
-        />
-      </ul>
-    </nav>
+        <StyledItem text="Home" href="/" />
+        <StyledItem text="Games" href="/games" />
+        <StyledItem text="Articles" href="/articles" />
+        <StyledItem text="Contact" href="/contact" />
+        <RegisterItem text="Log in / Register" href="/sign" />
+      </StyledList>
+    </Nav>
   );
 };
+
+const Nav = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 2rem;
+  background: ${(props) => {
+    console.log(props);
+    return props.theme.color;
+  }};
+  width: 100%;
+`;
+
+const StyledList = styled.ul`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const StyledItem = styled(Item)`
+  * > a {
+    padding: 1rem 2rem;
+    -webkit-text-stroke: 1px;
+    transition: 0.5s;
+
+    &:hover {
+      color: hsl(292, 70%, 55%);
+      -webkit-text-stroke: 1px hsl(0, 0%, 100%);
+    }
+  }
+`;
+
+const RegisterItem = styled(StyledItem)`
+  margin-left: auto;
+`;
+
+const LogoWrapper = styled(StyledItem)`
+  margin-right: 5rem;
+`;
 
 export default Navigation;

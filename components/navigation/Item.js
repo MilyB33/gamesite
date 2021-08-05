@@ -14,7 +14,6 @@ const Item = ({ text, style, href }) => {
 
 Item.propTypes = {
   text: PropTypes.string.isRequired,
-  style: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
 };
 
