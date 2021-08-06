@@ -1,12 +1,18 @@
 import React from 'react';
-import styles from '../styles/components/Footer.module.scss';
+import styled from 'styled-components';
+import { getColor } from '../styles/utils';
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
-      <h3>Created by Miłosz Bolewski. All rights reserved ®.</h3>
-    </footer>
+    <StyledFooter>
+      <h5>Created by Miłosz Bolewski. All rights reserved ®.</h5>
+    </StyledFooter>
   );
 };
+
+const StyledFooter = styled.footer`
+  padding: 3rem;
+  background: ${getColor('clr-dark-200')};
+`;
 
 export default Footer;
