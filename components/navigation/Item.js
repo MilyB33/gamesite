@@ -10,9 +10,9 @@ const Item = ({ text, href, className }) => {
 
   return (
     <Li className={className} router={router} href={href}>
-      <h3>
+      <h5>
         <Link href={href}>{text}</Link>
-      </h3>
+      </h5>
     </Li>
   );
 };

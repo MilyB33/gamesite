@@ -39,23 +39,23 @@ a {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 10rem;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 6rem;
 }
 
 h3 {
-  font-size: 2.2rem;
+  font-size: 4.5rem;
 }
 
 h4 {
-  font-size: 1.5rem;
+  font-size: 3rem;
 }
 
 h5 {
-  font-size: 1rem;
+  font-size: 2.3rem;
 }
 
 // LISTS
