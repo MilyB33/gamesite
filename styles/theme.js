@@ -8,6 +8,7 @@ export const color = {
   ['clr-dark-100']: 'rgb(0, 0, 0)',
   ['clr-dark-200']: 'rgba(0, 0, 0, 0.6)',
   ['clr-dark-300']: 'rgb(38, 38, 38)',
+  ['clr-dark-400']: '#262626',
 
   ['clr-purple-100']: 'rgb(199, 60, 221)',
   ['clr-purple-200']: 'rgba(199, 60, 221, 0.62)',

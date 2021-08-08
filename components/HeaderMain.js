@@ -3,18 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled, { keyframes } from 'styled-components';
 import { getColor } from '../styles/utils';
 
-const HeaderMain = () => (
-  <Header>
-    <h1>Game On!</h1>
-
-    <Button href="#Platforms">
-      <h2>
-        <FontAwesomeIcon icon={faLongArrowAltDown} />
-      </h2>
-    </Button>
-  </Header>
-);
-
 const bounce = keyframes`
   from{
     top: 0%;
@@ -32,7 +20,13 @@ const Header = styled.header`
   align-items: center;
   height: 100vh;
   max-width: 100vw;
-  background: url('/static/background1.png');
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(38, 38, 38, 0.7) 50%,
+      ${getColor('clr-dark-400')} 100%
+    ),
+    url('/static/background1.png');
   background-repeat: no-repeat;
   text-shadow: -4px 4px 0px ${getColor('clr-purple-100')};
 `;
@@ -56,5 +50,17 @@ const Button = styled.a`
     animation: ${bounce} 0.8s linear infinite alternate;
   }
 `;
+
+const HeaderMain = () => (
+  <Header>
+    <h1>Game On!</h1>
+
+    <Button href="#Platforms">
+      <h2>
+        <FontAwesomeIcon icon={faLongArrowAltDown} />
+      </h2>
+    </Button>
+  </Header>
+);
 
 export default HeaderMain;

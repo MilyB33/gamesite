@@ -1,4 +1,5 @@
 import { ThemeProvider } from 'styled-components';
+import '../styles/normalize.css';
 import GlobalStyles from '../styles/GlobalStyles';
 import theme from '../styles/theme';
 
