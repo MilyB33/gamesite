@@ -4,9 +4,9 @@ import Platform from './Platform';
 
 const Section = styled.section`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-
   min-height: 60vh;
 `;
 
@@ -15,6 +15,7 @@ const Ul = styled.ul`
   flex-wrap: wrap;
   justify-content: center;
   gap: 5rem;
+  margin-top: 5em;
 `;
 
 const renderPlatforms = (platforms) =>
@@ -26,6 +27,7 @@ const renderPlatforms = (platforms) =>
 
 const Platforms = ({ platforms }) => (
   <Section id="Platforms">
+    <h2>Platforms</h2>
     <Ul>{renderPlatforms(platforms)}</Ul>
   </Section>
 );
