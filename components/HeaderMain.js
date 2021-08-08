@@ -7,7 +7,7 @@ const HeaderMain = () => (
   <Header>
     <h1>Game On!</h1>
 
-    <Button href="#">
+    <Button href="#Platforms">
       <h2>
         <FontAwesomeIcon icon={faLongArrowAltDown} />
       </h2>

@@ -22,7 +22,7 @@ const renderPlatforms = (platforms) =>
   ));
 
 const Platforms = ({ platforms }) => (
-  <Section>
+  <Section id="Platforms">
     <Ul>{renderPlatforms(platforms)}</Ul>
   </Section>
 );
