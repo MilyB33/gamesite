@@ -6,7 +6,8 @@ import PlatformIcon from './PlatformIcon';
 
 const Card = styled.div`
   display: flex;
-  min-width: 25em;
+  align-items: center;
+  width: clamp(15em, 20vw, 45em);
   background: ${getColor('clr-additional-200')};
   padding: 2em;
   gap: 2em;
@@ -16,17 +17,32 @@ const Card = styled.div`
 
 const Icon = styled(PlatformIcon)``;
 
-const Header = styled.header``;
+const Header = styled.header`
+  width: 100%;
+  text-align: center;
+
+  & > h5 {
+    margin-bottom: 1em;
+  }
+
+  & p {
+    transition: 0.3s;
+  }
+
+  & a:hover > p {
+    color: ${getColor('clr-dark-100')};
+  }
+`;
 
 const Platform = ({ platform }) => {
   return (
     <Card>
       <Icon icon={platform.slug} />
       <Header>
-        <h3>{platform.slug}</h3>
+        <h5>{platform.name}</h5>
         <Link href="#">
           <a>
-            <h5>More...</h5>
+            <p>More...</p>
           </a>
         </Link>
       </Header>

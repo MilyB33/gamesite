@@ -6,11 +6,14 @@ const Section = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+
   min-height: 60vh;
 `;
 
 const Ul = styled.ul`
   display: inherit;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 5rem;
 `;
 
