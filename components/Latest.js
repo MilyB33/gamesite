@@ -4,10 +4,15 @@ import LatestArticle from './LatestArticle';
 const Section = styled.section`
   min-height: 80vh;
   text-align: center;
+  padding: 5em 10em;
 `;
 
-const Articles = styled.div`
-  display: flex;
+const ArticlesWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap: 5em;
+  margin-top: 10em;
 `;
 
 function Latest({ data }) {
@@ -20,7 +25,7 @@ function Latest({ data }) {
   return (
     <Section>
       <h2>Latest</h2>
-      <Articles></Articles>
+      <ArticlesWrapper>{renderArticles()}</ArticlesWrapper>
     </Section>
   );
 }

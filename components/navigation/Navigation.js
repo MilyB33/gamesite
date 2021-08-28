@@ -52,6 +52,7 @@ const Nav = styled.nav`
   padding: 1.5rem;
   background: ${getColor('clr-dark-200')};
   width: 100%;
+  z-index: 99999;
 `;
 
 const StyledList = styled.ul`

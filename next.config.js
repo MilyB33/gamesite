@@ -8,6 +8,6 @@ module.exports = withSvgr({
     API_TOKEN: 'x6c83905gzoe964vn9q69p9rjlgif0',
   },
   images: {
-    domains: ['images.igdb.com'],
+    domains: ['images.igdb.com', 'images.ctfassets.net'],
   },
 });
