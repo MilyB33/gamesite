@@ -10,16 +10,18 @@ const Card = styled.article`
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: ${getColor('clr-light-100')};
-  color: ${getColor('clr-dark-100')};
+  border-radius: 15px;
   box-shadow: -8px 8px 0px 4px ${getColor('clr-additional-200')};
+  background: ${getColor('clr-light-100')};
+  overflow: hidden;
+  transition: 0.5s;
 
   & p {
     text-align: start;
-    color: ${getColor('clr-dark-100')};
-    padding-inline: 1.5rem;
-    word-spacing: 0.25rem;
     margin-bottom: 1rem;
+    color: ${getColor('clr-dark-100')};
+    word-spacing: 0.25rem;
+    padding-inline: 2rem;
   }
 `;
 
@@ -38,14 +40,21 @@ const StyledLink = styled.a`
   align-items: center;
   gap: 0.5rem;
   width: max-content;
-  font-size: 1.6rem;
   margin: 1rem;
   margin-left: auto;
   margin-top: auto;
-  padding: 1rem;
-  background: ${getColor('clr-additional-100')};
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  box-shadow: -6px 6px 0px 2px ${getColor('clr-dark-100')};
+  background: ${getColor('clr-additional-200')};
+  font-size: 1.6rem;
+  transition: 0.3s;
   cursor: pointer;
-  box-shadow: -6px 6px 0px 2px #000000;
+
+  &:hover,
+  &:focus {
+    box-shadow: -4px 4px 0px 2px ${getColor('clr-dark-200')};
+  }
 
   & svg > * {
     fill: black;
