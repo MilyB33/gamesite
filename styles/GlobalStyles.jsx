@@ -9,9 +9,9 @@ const GlobalStyles = createGlobalStyle`
 }
 
 body {
-  background: linear-gradient(${getColor('clr-dark-300')}, ${getColor(
-  'clr-additional-300'
-)});
+  background: linear-gradient(180deg,${getColor(
+    'clr-dark-400'
+  )} 75%, ${getColor('clr-additional-300')} 100%);
 }
 
 html {
