@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getColor } from '../styles/utils';
+import { getColor } from '../../styles/utils';
 
 import Link from 'next/link';
 import PlatformIcon from './PlatformIcon';

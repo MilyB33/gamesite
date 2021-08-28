@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Image from 'next/dist/client/image';
 import Link from 'next/dist/client/link';
-import { getColor } from '../styles/utils';
+import { getColor } from '../../styles/utils';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

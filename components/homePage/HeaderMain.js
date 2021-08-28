@@ -1,7 +1,7 @@
 import { faLongArrowAltDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled, { keyframes } from 'styled-components';
-import { getColor } from '../styles/utils';
+import { getColor } from '../../styles/utils';
 
 const bounce = keyframes`
   from{

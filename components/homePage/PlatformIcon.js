@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
-import Android from '../assets/android.svg';
-import Pc from '../assets/pc.svg';
-import Ps from '../assets/ps.svg';
-import Wii from '../assets/wii.svg';
-import Xbox from '../assets/xbox.svg';
+import Android from '../../assets/android.svg';
+import Pc from '../../assets/pc.svg';
+import Ps from '../../assets/ps.svg';
+import Wii from '../../assets/wii.svg';
+import Xbox from '../../assets/xbox.svg';
 
 function PlatformIcon({ icon, className }) {
   return (

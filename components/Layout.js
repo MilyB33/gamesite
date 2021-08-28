@@ -1,6 +1,6 @@
 import React from 'react';
 import Navigation from './navigation/Navigation';
-import Footer from './Footer';
+import Footer from './Footer/Footer';
 import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 

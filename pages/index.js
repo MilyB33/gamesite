@@ -3,9 +3,9 @@ import Layout from '../components/Layout';
 import getData from '../api/basic';
 import ContentfulClient from '../api/contentful';
 import { flattenData } from '../utlis/filter';
-import Header from '../components/HeaderMain';
-import Platforms from '../components/Platforms';
-import Latest from '../components/Latest';
+import Header from '../components/homePage/HeaderMain';
+import Platforms from '../components/homePage/Platforms';
+import Latest from '../components/homePage/Latest';
 
 export default function Home({ data, articleCards }) {
   console.log(articleCards);
