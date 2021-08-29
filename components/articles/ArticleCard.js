@@ -31,7 +31,6 @@ const Card = styled.section`
 `;
 
 const ArticleCard = ({ card }) => {
-  console.log(card);
   return (
     <Card bg={card.image.url}>
       <h5>{card.createDate}</h5>
