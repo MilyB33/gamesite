@@ -23,7 +23,6 @@ class ContentfulClient {
     return this.client
       .getEntries({
         content_type: 'article',
-        'fields.isDisplayedOnHomePage': 'true',
       })
       .then((res) => res)
       .catch((err) => console.error(err));
