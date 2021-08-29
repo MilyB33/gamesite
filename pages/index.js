@@ -38,5 +38,5 @@ export async function getStaticProps(context) {
 }
 
 Home.getLayout = function displayLayout(page) {
-  return <Layout>{page}</Layout>;
+  return <Layout title="Home">{page}</Layout>;
 };
