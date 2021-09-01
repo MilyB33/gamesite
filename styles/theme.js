@@ -18,7 +18,12 @@ export const color = {
   ['clr-additional-300']: '#753e3e',
 };
 
-export const medias = {};
+export const medias = {
+  mobile: '480px',
+  tablet: '768px',
+  laptop: '1024px',
+  desktop: '1200px',
+};
 
 const theme = {
   fontFamily,

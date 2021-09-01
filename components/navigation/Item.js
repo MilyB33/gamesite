@@ -10,9 +10,11 @@ const Item = ({ text, href, className }) => {
 
   return (
     <Li className={className} router={router} href={href}>
-      <h5>
-        <Link href={href}>{text}</Link>
-      </h5>
+      <Link href={href}>
+        <a>
+          <h5>{text}</h5>
+        </a>
+      </Link>
     </Li>
   );
 };
@@ -21,7 +23,7 @@ const Li = styled.li.attrs(({ router, href }) => ({
   color: router.pathname == href ? 'clr-dark-100' : 'clr-light-100',
   width: router.pathname == href ? '100%' : '0%',
 }))`
-  * > a {
+  * h5 {
     color: ${({ color }) => getColor(color)};
 
     position: relative;
