@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Item from './Item';
@@ -61,6 +61,22 @@ const Navigation = () => {
   const onMobileChange = () => {
     setIsMobileDisplayed(!isMobileDisplayed);
   };
+
+  const handleChange = (event) => {
+    if (event.matches) setIsMobileDisplayed(false);
+  };
+
+  useEffect(() => {
+    const media = window.matchMedia(`(min-width: 1024px)`);
+
+    if (media.matches) setIsMobileDisplayed(false);
+
+    media.addEventListener('change', handleChange);
+
+    return () => {
+      media.removeEventListener('change', handleChange);
+    };
+  }, []);
 
   const mobile = isMobileDisplayed && (
     <MobileMenu onClick={onMobileChange} />

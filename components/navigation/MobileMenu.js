@@ -35,29 +35,27 @@ const CloseButtonWrapper = styled.li`
   font-size: 4em;
 `;
 
-const MobileMenu = ({ onClick }) => {
-  return (
-    <Portal>
-      <Wrapper>
-        <Nav>
-          <StyledList>
-            <CloseButtonWrapper>
-              <Button onClick={onClick}>
-                <FontAwesomeIcon icon={faTimes} />
-              </Button>
-            </CloseButtonWrapper>
+const MobileMenu = ({ onClick }) => (
+  <Portal>
+    <Wrapper>
+      <Nav>
+        <StyledList>
+          <CloseButtonWrapper>
+            <Button onClick={onClick}>
+              <FontAwesomeIcon icon={faTimes} />
+            </Button>
+          </CloseButtonWrapper>
 
-            <Item text="Home" href="/" />
-            <Item text="Games" href="/games" />
-            <Item text="Articles" href="/articles" />
-            <Item text="Contact" href="/contact" />
-            <Item text="Log in / Register" href="/sign" />
-          </StyledList>
-        </Nav>
-      </Wrapper>
-    </Portal>
-  );
-};
+          <Item text="Home" href="/" />
+          <Item text="Games" href="/games" />
+          <Item text="Articles" href="/articles" />
+          <Item text="Contact" href="/contact" />
+          <Item text="Log in / Register" href="/sign" />
+        </StyledList>
+      </Nav>
+    </Wrapper>
+  </Portal>
+);
 
 MobileMenu.propTypes = {
   onClick: PropTypes.func.isRequired,
