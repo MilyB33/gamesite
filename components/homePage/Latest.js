@@ -1,10 +1,15 @@
 import styled from 'styled-components';
+import { getMedias } from '../../styles/utils';
 import LatestArticle from './LatestArticle';
 
 const Section = styled.section`
   min-height: 80vh;
   text-align: center;
   padding: 5em 10em;
+
+  @media (max-width: ${getMedias('tablet')}) {
+    padding: 5em 2em;
+  }
 `;
 
 const ArticlesWrapper = styled.div`
@@ -13,6 +18,19 @@ const ArticlesWrapper = styled.div`
   align-items: center;
   gap: 5em;
   margin-top: 10em;
+
+  @media (max-width: ${getMedias('desktop')}) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  @media (max-width: ${getMedias('tablet')}) {
+    gap: 2.5em;
+  }
+
+  @media (max-width: ${getMedias('mobile')}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 function Latest({ data }) {
