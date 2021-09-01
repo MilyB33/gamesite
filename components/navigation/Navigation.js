@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Item from './Item';
@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { getColor, getMedias } from '../../styles/utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import MobileMenu from './MobileMenu';
 
 const Wrapper = styled.nav`
   position: fixed;
@@ -18,6 +19,9 @@ const Wrapper = styled.nav`
   background: ${getColor('clr-dark-200')};
   width: 100%;
   z-index: 99999;
+  transition: 0.5s;
+  opacity: ${({ mobileVisibility }) =>
+    mobileVisibility ? '0' : '1'};
 `;
 
 const StyledList = styled.ul`
@@ -52,8 +56,20 @@ const Hamburger = styled(Button)`
 `;
 
 const Navigation = () => {
+  const [isMobileDisplayed, setIsMobileDisplayed] = useState(false);
+
+  const onMobileChange = () => {
+    setIsMobileDisplayed(!isMobileDisplayed);
+  };
+
+  const mobile = isMobileDisplayed && (
+    <MobileMenu onClick={onMobileChange} />
+  );
+
   return (
-    <Wrapper>
+    <Wrapper mobileVisibility={isMobileDisplayed}>
+      {mobile}
+
       <LogoWrapper>
         <Link href="/">
           <a>
@@ -79,11 +95,10 @@ const Navigation = () => {
         />
       </StyledList>
 
-      <Hamburger>
+      <Hamburger onClick={onMobileChange}>
         <FontAwesomeIcon icon={faBars} />
       </Hamburger>
     </Wrapper>
   );
 };
-
 export default Navigation;

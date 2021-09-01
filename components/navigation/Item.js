@@ -20,7 +20,8 @@ const Item = ({ text, href, className }) => {
 };
 
 const Li = styled.li.attrs(({ router, href }) => ({
-  color: router.pathname == href ? 'clr-dark-100' : 'clr-light-100',
+  color:
+    router.pathname == href ? 'clr-additional-200' : 'clr-light-100',
   width: router.pathname == href ? '100%' : '0%',
 }))`
   * h5 {
@@ -43,7 +44,7 @@ const Li = styled.li.attrs(({ router, href }) => ({
     }
 
     &:hover {
-      color: ${getColor('clr-dark-100')};
+      color: ${getColor('clr-purple-200')};
 
       &::after {
         width: 100%;
