@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getColor } from '../../styles/utils';
+import { getColor, getMedias } from '../../styles/utils';
 
 import Link from 'next/link';
 import PlatformIcon from './PlatformIcon';
@@ -7,12 +7,22 @@ import PlatformIcon from './PlatformIcon';
 const Card = styled.div`
   display: flex;
   align-items: center;
-  width: clamp(15em, 20vw, 45em);
+
   background: ${getColor('clr-additional-200')};
   padding: 2em;
   gap: 2em;
-
   box-shadow: -4px 4px 0px 2px ${getColor('clr-purple-100')};
+
+  @media (max-width: ${getMedias('tablet')}) {
+    width: 45%;
+    gap: 0;
+    padding: 2em 1.5em;
+  }
+
+  @media (max-width: ${getMedias('mobile')}) {
+    width: 100%;
+    margin: 0 4em;
+  }
 `;
 
 const Icon = styled(PlatformIcon)``;
