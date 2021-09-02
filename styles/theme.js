@@ -1,3 +1,5 @@
+import { keyframes } from 'styled-components';
+
 export const fontFamily = {};
 
 export const fontWeight = {};
@@ -18,13 +20,38 @@ export const color = {
   ['clr-additional-300']: '#753e3e',
 };
 
-export const medias = {};
+export const medias = {
+  mobile: '480px',
+  tablet: '768px',
+  laptop: '1024px',
+  desktop: '1200px',
+};
+
+export const animations = {
+  openMobileMenu: keyframes`
+  from {
+    right: -100%;
+  }
+  to {
+    right: 0;
+  }
+  `,
+  fadeIn: keyframes`
+  from {
+    opacity: 0;
+  } 
+  to {
+    opacity: 1;
+  }
+  `,
+};
 
 const theme = {
   fontFamily,
   fontWeight,
   color,
   medias,
+  animations,
 };
 
 export default theme;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Platform from './Platform';
+import { getMedias } from '../../styles/utils';
 
 const Section = styled.section`
   display: flex;
@@ -10,19 +11,21 @@ const Section = styled.section`
   min-height: 60vh;
 `;
 
-const Ul = styled.ul`
-  display: inherit;
+const PlatformsWrapper = styled.div`
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 5rem;
   margin-top: 5em;
+
+  @media (max-width: ${getMedias('tablet')}) {
+    gap: 2em;
+  }
 `;
 
 const renderPlatforms = (platforms) =>
   platforms.map((platform) => (
-    <li key={platform.id}>
-      <Platform platform={platform} />
-    </li>
+    <Platform platform={platform} key={platform.id} />
   ));
 
 const Platforms = ({ platforms }) => (
@@ -30,7 +33,7 @@ const Platforms = ({ platforms }) => (
     <header>
       <h2>Platforms</h2>
     </header>
-    <Ul>{renderPlatforms(platforms)}</Ul>
+    <PlatformsWrapper>{renderPlatforms(platforms)}</PlatformsWrapper>
   </Section>
 );
 
