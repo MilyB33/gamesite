@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Image from 'next/dist/client/image';
-import { getColor } from '../../styles/utils';
+import { getColor, getMedias } from '../../styles/utils';
 
 const Card = styled.section`
   position: relative;
@@ -18,7 +17,9 @@ const Card = styled.section`
       rgba(38, 38, 38, 0.7) 50%
     ),
     url(${({ bg }) => bg});
-  background-size: 100% 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 
   & :is(h4, h5) {
     padding-inline: 2rem;
@@ -27,6 +28,15 @@ const Card = styled.section`
   &:first-child,
   &:nth-child(6) {
     grid-column: span 2;
+  }
+
+  @media (max-width: ${getMedias('laptop')}) {
+    max-width: 100%;
+
+    &:first-child,
+    &:nth-child(6) {
+      grid-column: 1;
+    }
   }
 `;
 
