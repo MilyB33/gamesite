@@ -18,6 +18,9 @@ export const color = {
   ['clr-additional-100']: '#faaeae',
   ['clr-additional-200']: '#db4343',
   ['clr-additional-300']: '#753e3e',
+
+  ['clr-glitch-100']: '#0ff',
+  ['clr-glitch-200']: '#f0f',
 };
 
 export const medias = {
@@ -44,6 +47,27 @@ export const animations = {
     opacity: 1;
   }
   `,
+
+  glitch: keyframes`
+	0% {
+		transform: translate(0)
+	}
+	20% {
+		transform: translate(-5px, 5px)
+	}
+	40% {
+		transform: translate(-5px, -5px)
+	}
+	60% {
+		transform: translate(5px, 5px)
+	}
+	80% {
+		transform: translate(5px, -5px)
+	}
+	to {
+		transform: translate(0)
+	}
+`,
 };
 
 const theme = {

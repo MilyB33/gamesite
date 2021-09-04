@@ -40,6 +40,10 @@ button {
 
 // TYPOGRAPHY
 
+a {
+  cursor: pointer;
+}
+
 p,a {
   font-size: 1.6rem;
 }
