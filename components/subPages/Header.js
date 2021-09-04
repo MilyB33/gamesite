@@ -2,12 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/dist/client/image';
 import headerSub from '../../assets/headerSub.png';
-import { getColor } from '../../styles/utils';
+import { getColor, getMedias } from '../../styles/utils';
 import Link from 'next/dist/client/link';
 
 const HeaderWrapper = styled.header`
   position: relative;
   width: 100%;
+  background: ${getColor('clr-dark-100')};
+
+  @media (max-width: ${getMedias('laptop')}) {
+    padding-top: 7rem;
+  }
+
+  @media (max-width: ${getMedias('mobile')}) {
+    padding-top: 10em;
+  }
 `;
 
 const HeaderText = styled.div`
