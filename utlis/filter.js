@@ -11,15 +11,41 @@ const getConnectedData = (res) => {
   );
 };
 
-export const flattenData = (res) => {
-  const connected = getConnectedData(res);
-  return connected.map((item) => {
+const connectAssets = (data) => {
+  const { Asset: assets } = data.includes;
+  const { items } = data;
+
+  return items.map((item) => {
     return {
       ...item.fields,
-      image: {
-        title: item.fields.image.fields.title,
-        url: `https:${item.fields.image.fields.file.url}`,
-      },
+      mainImage: assets.find(
+        (asset) => asset.sys.id === item.fields.mainImage.sys.id
+      ),
+      galleryImages: item.fields.galleryImages.map((item) =>
+        assets.find((asset) => asset.sys.id === item.sys.id)
+      ),
     };
   });
+};
+
+export const flattenArticlesData = (res) => {
+  const connected = connectAssets(res);
+
+  return connected.map(flattenRules);
+};
+
+const flattenRules = (item) => {
+  return {
+    ...item,
+    mainImage: {
+      title: item.mainImage.fields.title,
+      url: `https:${item.mainImage.fields.file.url}`,
+    },
+    galleryImages: item.galleryImages.map((item) => {
+      return {
+        title: item.fields.title,
+        url: `https:${item.fields.file.url}`,
+      };
+    }),
+  };
 };

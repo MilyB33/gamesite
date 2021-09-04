@@ -2,14 +2,20 @@ const contentful = require('contentful');
 
 class ContentfulClient {
   constructor() {
-    this.client = contentful.createClient({
-      space: process.env.CONTENTFUL_SPACE_ID,
-      environment: 'master',
-      accessToken: process.env.CONTENTFUL_ACCESS_KEY,
-    });
+    this.cache.articles = this.getAllArticlesCards();
   }
 
-  async getArticlesCardHome() {
+  cache = {
+    articles: {},
+  };
+
+  client = contentful.createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    environment: 'master',
+    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+  });
+
+  getArticlesCardHome() {
     return this.client
       .getEntries({
         content_type: 'article',
@@ -19,7 +25,7 @@ class ContentfulClient {
       .catch((err) => console.error(err));
   }
 
-  async getAllArticlesCards() {
+  getAllArticlesCards() {
     return this.client
       .getEntries({
         content_type: 'article',
