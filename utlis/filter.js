@@ -28,12 +28,6 @@ const connectAssets = (data) => {
   });
 };
 
-export const flattenArticlesData = (res) => {
-  const connected = connectAssets(res);
-
-  return connected.map(flattenRules);
-};
-
 const flattenRules = (item) => {
   return {
     ...item,
@@ -48,4 +42,16 @@ const flattenRules = (item) => {
       };
     }),
   };
+};
+
+export const flattenArticlesData = (res) => {
+  const connected = connectAssets(res);
+
+  return connected.map(flattenRules);
+};
+
+export const homeArticles = (res) => {
+  return flattenArticlesData(res).filter(
+    (item) => item.isDisplayedOnHomePage
+  );
 };

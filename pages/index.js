@@ -2,7 +2,7 @@ import _ from 'lodash';
 import Layout from '../components/Layout';
 import getData from '../api/basic';
 import ContentfulClient from '../api/contentful';
-import { flattenArticlesData } from '../utlis/filter';
+import { homeArticles } from '../utlis/filter';
 import Header from '../components/homePage/HeaderMain';
 import Platforms from '../components/homePage/Platforms';
 import Latest from '../components/homePage/Latest';
@@ -26,7 +26,7 @@ export async function getStaticProps(context) {
 
   const res = await ContentfulClient.cache.articles;
 
-  const articleCards = flattenArticlesData(res);
+  const articleCards = homeArticles(res);
 
   const { data } = platforms;
   return {
