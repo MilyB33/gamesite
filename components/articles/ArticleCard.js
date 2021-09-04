@@ -42,7 +42,7 @@ const Card = styled.section`
 
 const ArticleCard = ({ card }) => {
   return (
-    <Card bg={card.image.url}>
+    <Card bg={card.mainImage.url}>
       <h5>{card.createDate}</h5>
       <h5>{card.title}</h5>
     </Card>

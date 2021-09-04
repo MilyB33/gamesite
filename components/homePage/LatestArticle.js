@@ -32,7 +32,7 @@ const Date = styled.p`
 const StyledImage = styled.div`
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1.5 / 1;
 `;
 
 const StyledLink = styled.a`
@@ -66,13 +66,13 @@ const LatestArticle = ({ article }) => {
     <Card>
       <StyledImage>
         <Image
-          src={article.image.url}
-          alt={article.image.title}
+          src={article.mainImage.url}
+          alt={article.mainImage.title}
           layout="fill"
         />
       </StyledImage>
       <Date>{article.createDate}</Date>
-      {documentToReactComponents(article.content)}
+      {documentToReactComponents(article.aboutShort)}
       <Link href="#">
         <StyledLink>
           Read More

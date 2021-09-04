@@ -28,7 +28,7 @@ const ArticlesWrapper = styled.main`
 
   @media (max-width: ${getMedias('mobile')}) {
     padding: 1em;
-    gap: 1em;
+    gap: 2.5em;
     grid-auto-rows: 300px;
   }
 `;

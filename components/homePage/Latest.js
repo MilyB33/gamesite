@@ -14,7 +14,7 @@ const Section = styled.section`
 
 const ArticlesWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
   gap: 5em;
   margin-top: 10em;

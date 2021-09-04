@@ -40,33 +40,42 @@ button {
 
 // TYPOGRAPHY
 
-p,a {
-  font-size: 1.6rem;
-}
-
 a {
+  cursor: pointer;
   color: inherit;
   text-decoration: none;
 }
 
+p,a {
+  font-size: 1.6rem;
+
+  @media(max-width: ${getMedias('tablet')}) {font-size: 1rem;}  
+}
+
 h1 {
   font-size: 10rem;
+  @media(max-width: ${getMedias('tablet')}) {font-size: 6rem;}  
 }
 
 h2 {
   font-size: 6rem;
+  @media(max-width: ${getMedias('tablet')}) {font-size: 4.5rem;}  
 }
 
 h3 {
   font-size: 4.5rem;
+  @media(max-width: ${getMedias('tablet')}) {font-size: 3rem;} 
+  @media(max-width: ${getMedias('mobile')}) {font-size: 2rem;}  
 }
 
 h4 {
   font-size: 3rem;
+  @media(max-width: ${getMedias('tablet')}) {font-size: 2rem;}  
 }
 
 h5 {
   font-size: 2.3rem;
+  @media(max-width: ${getMedias('tablet')}) {font-size: 1.5rem;}  
 }
 
 // LISTS
@@ -75,31 +84,9 @@ ol {
   list-style: none;
 }
 
-@media(max-width: ${getMedias('mobile')}) {
-  p {
-  font-size: 1rem;
-}
 
-h1 {
-  font-size: 6rem;
-}
 
-h2 {
-  font-size: 4.5rem;
-}
 
-h3 {
-  font-size: 3rem;
-}
-
-h4 {
-  font-size: 2rem;
-}
-
-h5 {
-  font-size: 1.5rem;
-}
-}
 
 `;
 
