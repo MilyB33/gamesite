@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Navigation from '../components/navigation/Navigation';
-import { getAnimation, getColor } from '../styles/utils';
+import { getAnimation, getColor, getMedias } from '../styles/utils';
 
 import Link from 'next/link';
 
@@ -11,8 +11,9 @@ const Section = styled.section`
   justify-content: center;
   height: 100vh;
   background: ${getColor('clr-dark-100')};
+  text-align: center;
 
-  & > h3 {
+  & h3 {
     color: ${getColor('clr-glitch-100')};
     text-shadow: 1px 1px 4px ${getColor('clr-glitch-200')};
   }
@@ -20,6 +21,10 @@ const Section = styled.section`
   & > header {
     min-height: 400px;
     position: relative;
+
+    @media (max-width: ${getMedias('mobile')}) {
+      min-height: 200px;
+    }
   }
 
   & > header > h1 {
@@ -30,6 +35,14 @@ const Section = styled.section`
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
+
+    @media (max-width: ${getMedias('laptop')}) {
+      font-size: 20rem;
+    }
+
+    @media (max-width: ${getMedias('mobile')}) {
+      font-size: 10rem;
+    }
 
     &::after,
     &::before {
@@ -46,14 +59,14 @@ const Section = styled.section`
       color: ${getColor('clr-glitch-200')};
       z-index: -2;
       left: 0;
-      animation: ${getAnimation('glitch')} 2s
+      animation: ${getAnimation('glitch')} 4s
         cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
     }
 
     &::before {
       color: ${getColor('clr-glitch-100')};
       z-index: -1;
-      animation: ${getAnimation('glitch')} 2s
+      animation: ${getAnimation('glitch')} 4s
         cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
     }
   }
@@ -63,8 +76,6 @@ const StyledLink = styled.h3`
   padding: 0.5em;
   border-radius: 50px;
   border: 2px solid ${getColor('clr-glitch-100')};
-  color: ${getColor('clr-glitch-100')};
-  text-shadow: 1px 1px 4px ${getColor('clr-glitch-200')};
   transition: 0.3s;
 
   &:hover {
