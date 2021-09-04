@@ -15,16 +15,6 @@ class ContentfulClient {
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
   });
 
-  getArticlesCardHome() {
-    return this.client
-      .getEntries({
-        content_type: 'article',
-        'fields.isDisplayedOnHomePage': 'true',
-      })
-      .then((res) => res)
-      .catch((err) => console.error(err));
-  }
-
   getAllArticlesCards() {
     return this.client
       .getEntries({
@@ -32,30 +22,6 @@ class ContentfulClient {
       })
       .then((res) => res)
       .catch((err) => console.error(err));
-  }
-
-  // async getData() {
-  //   return this.client
-  //     .getEntries()
-  //     .then((res) => this.getConnectedData(res))
-  //     .catch(console.error);
-  // }
-
-  getConnectedData(data) {
-    return data.items.map((item) =>
-      item.fields.image1
-        ? {
-            ...item,
-            image1: res.includes.Asset.find(
-              (asset) => asset.sys.id === item.fields.image1.sys.id
-            ),
-          }
-        : item
-    );
-  }
-
-  filterData(data) {
-    return data.items.map((item) => documentToHtmlString(item));
   }
 }
 
