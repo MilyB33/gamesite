@@ -47,9 +47,12 @@ a {
 }
 
 p,a {
-  font-size: 1.6rem;
+  font-size: 2rem;
+  line-height: 35px;
 
-  @media(max-width: ${getMedias('tablet')}) {font-size: 1rem;}  
+  @media(max-width: ${getMedias(
+    'tablet'
+  )}) {font-size: 1rem;line-height: 20px;}  
 }
 
 h1 {
