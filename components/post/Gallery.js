@@ -8,67 +8,10 @@ const Wrapper = styled.section`
   display: flex;
   gap: 5rem;
   max-width: 100%;
+  max-height: 550px;
 
   @media (max-width: ${getMedias('laptop')}) {
     flex-direction: column;
-  }
-`;
-
-const SliderWrapper = styled.div`
-  width: 20%;
-
-  @media (max-width: ${getMedias('laptop')}) {
-    width: 100%;
-  }
-
-  .slick-slider {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1em;
-  }
-
-  .slick-slide > div {
-    padding: 1em 0;
-  }
-
-  .slick-list {
-    margin: -1rem 0;
-  }
-
-  .slick-arrow {
-    position: initial;
-  }
-
-  .slick-prev,
-  .slick-next {
-    transform: rotate(90deg);
-  }
-
-  @media (max-width: ${getMedias('laptop')}) {
-    .slick-slider {
-      width: 100%;
-      display: block;
-    }
-
-    .slick-arrow {
-      position: absolute;
-    }
-
-    .slick-prev,
-    .slick-next {
-      transform: rotate(0deg);
-    }
-
-    .slick-slide > div {
-      padding: 0em 0.5em;
-    }
-
-    .slick-list {
-      margin: 0rem 0em;
-    }
   }
 `;
 
