@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { getColor, getMedias } from './utils';
+import { getColor, getMedias, getFontFamily } from './utils';
 
 const GlobalStyles = createGlobalStyle`
 
@@ -12,6 +12,7 @@ body {
   background: linear-gradient(180deg,${getColor(
     'clr-dark-400'
   )} 75%, ${getColor('clr-additional-300')} 100%);
+  min-height: 100vh;
 }
 
 html {
@@ -21,9 +22,8 @@ html {
 *,
 *::after,
 *::before {
-  font-family: 'Chakra Petch', sans-serif, -apple-system,
-    BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: ${getFontFamily('primary')}, sans-serif, -apple-system,
+    BlinkMacSystemFont, Segoe UI, Roboto;
   margin: 0;
   padding: 0;
   box-sizing: border-box;

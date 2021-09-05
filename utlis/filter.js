@@ -55,3 +55,9 @@ export const homeArticles = (res) => {
     (item) => item.isDisplayedOnHomePage
   );
 };
+
+export const getExactPost = (res, slug) => {
+  const flattened = flattenArticlesData(res);
+
+  return flattened.find((post) => post.slug === slug);
+};

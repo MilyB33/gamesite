@@ -73,7 +73,7 @@ const LatestArticle = ({ article }) => {
       </StyledImage>
       <Date>{article.createDate}</Date>
       {documentToReactComponents(article.aboutShort)}
-      <Link href="#">
+      <Link href={`/posts/${article.slug}`}>
         <StyledLink>
           Read More
           <FontAwesomeIcon icon={faArrowRight} />
