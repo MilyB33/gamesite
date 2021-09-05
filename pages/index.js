@@ -29,6 +29,7 @@ export async function getStaticProps(context) {
   const articleCards = homeArticles(res);
 
   const { data } = platforms;
+
   return {
     props: {
       data,

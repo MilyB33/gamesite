@@ -1,6 +1,9 @@
 import { keyframes } from 'styled-components';
 
-export const fontFamily = {};
+export const fontFamily = {
+  primary: 'Chakra Petch',
+  secondary: 'roboto',
+};
 
 export const fontWeight = {};
 

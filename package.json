@@ -21,7 +21,9 @@
     "next-svgr": "^0.0.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-slick": "^0.28.1",
     "sass": "^1.37.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.0"
   },
   "devDependencies": {
