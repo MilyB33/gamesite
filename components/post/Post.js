@@ -14,16 +14,11 @@ const Wrapper = styled.main`
   gap: 5rem;
   padding: 15vh 15vw;
   min-height: 100vh;
-  background: linear-gradient(180deg, #938686 0%, #e4dfdf 100%);
+  background: ${getColor('clr-dark-300')};
   text-align: center;
 
   @media (max-width: ${getMedias('desktop')}) {
-    padding: 16rem 10vw;
-  }
-
-  @media (max-width: ${getMedias('laptop')}) {
-    padding: 16rem 5vw;
-    gap: 2rem;
+    padding: 16rem 2vw;
   }
 
   @media (max-width: ${getMedias('tablet')}) {
@@ -36,7 +31,8 @@ const Wrapper = styled.main`
 
   & * {
     font-family: ${getFontFamily('secondary')};
-    color: ${getColor('clr-dark-100')};
+    color: ${getColor('clr-light-200')};
+    font-family: sans-serif;
   }
 
   & > h5 {
@@ -44,9 +40,14 @@ const Wrapper = styled.main`
   }
 
   & > article {
+    width: 80%;
     display: grid;
     gap: 1rem;
     text-align: left;
+
+    @media (max-width: ${getMedias('laptop')}) {
+      width: 100%;
+    }
   }
 
   @media (max-width: ${getMedias('mobile')}) {
