@@ -9,7 +9,7 @@ import PostWrapper from '../../components/post/Post';
 const Post = ({ post }) => <PostWrapper post={post} />;
 
 export async function getStaticPaths() {
-  const res = await ContentfulClient.cache.articles;
+  const res = await ContentfulClient.getAllArticlesCards();
 
   const flattened = flattenArticlesData(res);
 
@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const res = await ContentfulClient.cache.articles;
+  const res = await ContentfulClient.getAllArticlesCards();
 
   const post = getExactPost(res, params.id);
 
