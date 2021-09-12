@@ -1,8 +1,6 @@
 import React from 'react';
 import Navigation from './navigation/Navigation';
 import Footer from './Footer/Footer';
-import { ThemeProvider } from 'styled-components';
-import theme from '../styles/theme';
 import Head from 'next/head';
 
 const Layout = ({ children, title }) => {
@@ -11,11 +9,11 @@ const Layout = ({ children, title }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <ThemeProvider theme={theme}>
+      <main>
         <Navigation />
         {children}
         <Footer />
-      </ThemeProvider>
+      </main>
     </>
   );
 };

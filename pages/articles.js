@@ -12,9 +12,8 @@ ArticlesPage.getLayout = function displayLayout(page) {
   return <LayoutSub title="Articles">{page}</LayoutSub>;
 };
 
-export async function getStaticProps(context) {
-  const res = await ContentfulClient.cache.articles;
-
+export async function getStaticProps() {
+  const res = await ContentfulClient.getAllArticlesCards();
   const articleCards = flattenArticlesData(res);
 
   return {
