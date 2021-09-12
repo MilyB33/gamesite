@@ -4,23 +4,27 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  aspect-ratio: 2 / 1;
-
-  @supports not (aspect-ratio: 2 / 1) {
-    min-height: 300px;
-  }
+  padding-top: ${({ square }) => (square ? '75%' : '50%')};
 `;
 
-const ImageWrapper = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+const ImageWrapper = ({ children, className, square }) => {
+  return (
+    <Wrapper className={className} square={square}>
+      {children}
+    </Wrapper>
+  );
 };
 
 ImageWrapper.defaultProps = {
   children: null,
+  className: null,
+  square: false,
 };
 
 ImageWrapper.propTypes = {
   children: PropTypes.node,
+  className: PropTypes.string,
+  square: PropTypes.bool,
 };
 
 export default ImageWrapper;

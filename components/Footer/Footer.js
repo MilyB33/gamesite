@@ -13,6 +13,7 @@ const Footer = () => {
 const StyledFooter = styled.footer`
   padding: 3rem;
   background: ${getColor('clr-dark-200')};
+  box-shadow: 0 -2px 32px ${getColor('clr-dark-100')};
 `;
 
 export default Footer;

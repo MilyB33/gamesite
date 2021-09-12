@@ -9,6 +9,7 @@ const HeaderWrapper = styled.header`
   position: relative;
   width: 100%;
   background: ${getColor('clr-dark-100')};
+  box-shadow: 0 2px 32px ${getColor('clr-dark-100')};
 
   @media (max-width: ${getMedias('laptop')}) {
     padding-top: 7rem;
@@ -40,6 +41,13 @@ const HeaderText = styled.div`
   & :is(h5, a) {
     -webkit-text-stroke: 1px ${getColor('clr-purple-100')};
   }
+
+  & > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+  }
 `;
 
 const Header = ({ title }) => {
@@ -48,12 +56,16 @@ const Header = ({ title }) => {
       <Image src={headerSub} alt="header" />
       <HeaderText>
         <h2>{title}</h2>
-        <h5>
+        <span>
           <Link href="/">
-            <a>Home </a>
+            <a>
+              <h5>Home </h5>
+            </a>
           </Link>
-          &gt;&gt; {title}
-        </h5>
+
+          <h5>&gt;&gt;</h5>
+          <h5>{title}</h5>
+        </span>
       </HeaderText>
     </HeaderWrapper>
   );

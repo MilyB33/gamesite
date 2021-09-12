@@ -59,7 +59,7 @@ const SliderWrapper = styled.div`
   }
 
   .slick-slide > div {
-    padding: 1em 0;
+    padding: 0.5em 0;
   }
 
   .slick-list {
@@ -100,12 +100,16 @@ const SliderWrapper = styled.div`
   }
 `;
 
+const StyledImageWrapper = styled(ImageWrapper)`
+  box-shadow: 0 -2px 0px 0px #fb8b24, 0 2px 0px 0px #fb8b24;
+`;
+
 const Carousel = ({ images }) => {
   const renderImages = () =>
     images.map((image, index) => (
-      <ImageWrapper key={index}>
+      <StyledImageWrapper key={index} square>
         <Image src={image.url} layout="fill" alt={image.title} />
-      </ImageWrapper>
+      </StyledImageWrapper>
     ));
 
   return (
