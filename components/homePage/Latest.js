@@ -7,8 +7,12 @@ const Section = styled.section`
   text-align: center;
   padding: 5em 10em;
 
+  @media (max-width: ${getMedias('laptop')}) {
+    padding: 5em 4em;
+  }
+
   @media (max-width: ${getMedias('tablet')}) {
-    padding: 5em 2em;
+    padding: 5em 1em;
   }
 `;
 
@@ -25,10 +29,6 @@ const ArticlesWrapper = styled.div`
   }
 
   @media (max-width: ${getMedias('tablet')}) {
-    gap: 2.5em;
-  }
-
-  @media (max-width: ${getMedias('mobile')}) {
     grid-template-columns: 1fr;
   }
 `;

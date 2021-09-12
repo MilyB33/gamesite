@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { getMedias, randomColor } from '../../styles/utils';
+import { getMedias } from '../../styles/utils';
 import Link from 'next/link';
 
 const Card = styled.section`
@@ -8,6 +8,10 @@ const Card = styled.section`
     15px 15px 0px 0px #413d3a, 20px 20px 0px 0px #534e47,
     25px 25px 0px 0px #655e53, 5px 5px 15px 5px rgba(0, 0, 0, 0);
   transition: 0.3s;
+
+  @media (max-width: ${getMedias('laptop')}) {
+    box-shadow: 2px 2px 0px 0px #0a0a0a, 6px 6px 0px 0px #2a2829;
+  }
 
   background: linear-gradient(
       180deg,
