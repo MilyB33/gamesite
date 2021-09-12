@@ -47,12 +47,8 @@ a {
 }
 
 p,a {
-  font-size: 2rem;
+  font-size: clamp(1rem,1vw + 1rem, 2rem);
   line-height: 35px;
-
-  @media(max-width: ${getMedias(
-    'tablet'
-  )}) {font-size: 1rem;line-height: 20px;}  
 }
 
 h1 {

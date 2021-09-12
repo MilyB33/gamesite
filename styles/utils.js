@@ -22,3 +22,6 @@ export const getAnimation =
   (animationName) =>
   ({ theme }) =>
     theme.animations[animationName];
+
+export const randomColor = () =>
+  `#${Math.floor(Math.random() * 16777215).toString(16)}`;

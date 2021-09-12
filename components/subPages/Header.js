@@ -9,6 +9,7 @@ const HeaderWrapper = styled.header`
   position: relative;
   width: 100%;
   background: ${getColor('clr-dark-100')};
+  box-shadow: 0 2px 32px ${getColor('clr-dark-100')};
 
   @media (max-width: ${getMedias('laptop')}) {
     padding-top: 7rem;
