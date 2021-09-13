@@ -8,6 +8,7 @@ import { getColor, getMedias } from '../../styles/utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import MobileMenu from './MobileMenu';
+import useMobile from '../../hooks/useMobile';
 
 const Wrapper = styled.nav`
   position: fixed;
@@ -63,27 +64,11 @@ const ImageWrapper = styled.div`
 `;
 
 const Navigation = () => {
-  const [isMobileDisplayed, setIsMobileDisplayed] = useState(false);
+  const [isMobileDisplayed, changeOnClick] = useMobile('1024', false);
 
   const onMobileChange = () => {
-    setIsMobileDisplayed(!isMobileDisplayed);
+    changeOnClick(!isMobileDisplayed);
   };
-
-  const handleChange = (event) => {
-    if (event.matches) setIsMobileDisplayed(false);
-  };
-
-  useEffect(() => {
-    const media = window.matchMedia(`(min-width: 1024px)`);
-
-    if (media.matches) setIsMobileDisplayed(false);
-
-    media.addEventListener('change', handleChange);
-
-    return () => {
-      media.removeEventListener('change', handleChange);
-    };
-  }, []);
 
   const mobile = isMobileDisplayed && (
     <MobileMenu onClick={onMobileChange} />
