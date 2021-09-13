@@ -42,6 +42,7 @@ const RegisterItem = styled(Item)`
 const LogoWrapper = styled.div`
   display: flex;
   justify-content: center;
+  width: 10%;
   margin: 1em 5em 1em 0;
 `;
 
@@ -53,6 +54,12 @@ const Hamburger = styled(Button)`
   @media (max-width: ${getMedias('laptop')}) {
     display: initial;
   }
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
+  width: clamp(50px, 8vw, 80px);
+  padding-top: 100%;
 `;
 
 const Navigation = () => {
@@ -89,12 +96,13 @@ const Navigation = () => {
       <LogoWrapper>
         <Link href="/">
           <a>
-            <Image
-              src="/static/logo.png"
-              height={71}
-              width={71}
-              alt="logo"
-            />
+            <ImageWrapper>
+              <Image
+                src="/static/logo.png"
+                layout="fill"
+                alt="logo"
+              />
+            </ImageWrapper>
           </a>
         </Link>
       </LogoWrapper>
