@@ -19,7 +19,7 @@ const Wrapper = styled.nav`
   padding: 0 4em;
   background: ${getColor('clr-dark-200')};
   width: 100%;
-  z-index: 99999;
+  z-index: 5;
   transition: 0.5s;
   opacity: ${({ mobileVisibility }) =>
     mobileVisibility ? '0' : '1'};
