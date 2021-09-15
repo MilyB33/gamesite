@@ -1,6 +1,8 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { getMixins, getColor } from '../../styles/utils';
 import { createGlobalStyle } from 'styled-components';
+import Slider from './SliderGallery';
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -18,21 +20,31 @@ const Wrapper = styled.section`
 `;
 
 const Backdrop = styled.div`
-  ${getMixins('absolute')};
   width: 100%;
   height: 100%;
-  background: rgba(32, 34, 36, 0.8);
+  background: rgba(10, 10, 10, 0.9);
 `;
 
-const PhotoGallery = () => {
+const PhotoGallery = ({ closeGallery, activePhoto, images }) => {
   return (
     <>
       <GlobalStyles />
       <Wrapper>
-        <Backdrop />
+        <Slider activePhoto={activePhoto} images={images} />
+        <Backdrop
+          onClick={() => {
+            closeGallery();
+          }}
+        />
       </Wrapper>
     </>
   );
+};
+
+PhotoGallery.propTypes = {
+  images: PropTypes.instanceOf(Array).isRequired,
+  closeGallery: PropTypes.func.isRequired,
+  activePhoto: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default PhotoGallery;

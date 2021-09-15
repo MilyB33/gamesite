@@ -80,6 +80,12 @@ export const mixins = {
     left: 0;
     top: 0;
   `,
+  absoluteCenter: `
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  `,
   flexbox: `
     display: flex;
     align-items: center;

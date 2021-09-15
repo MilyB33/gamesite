@@ -104,15 +104,40 @@ const SliderWrapper = styled.div`
 
 const Carousel = ({ images }) => {
   const [isGallery, setIsGallery] = useState(false);
+  const [activePhoto, setActivePhoto] = useState(null);
+
+  const openGallery = (image) => {
+    setActivePhoto(image);
+    setIsGallery(true);
+  };
+
+  const closeGallery = () => {
+    setIsGallery(false);
+    setActivePhoto(null);
+  };
 
   const renderImages = () =>
     images.map((image, index) => (
-      <CarouselItem image={image} key={index} />
+      <CarouselItem
+        image={image}
+        key={index}
+        openGallery={openGallery}
+        setActive={setActivePhoto}
+      />
     ));
 
   return (
     <>
-      <Portal>{isGallery && <PhotoGallery />}</Portal>
+      <Portal>
+        {isGallery && (
+          <PhotoGallery
+            closeGallery={closeGallery}
+            activePhoto={activePhoto}
+            images={images}
+          />
+        )}
+      </Portal>
+
       <SliderWrapper>
         <Slider {...settings}>{renderImages()}</Slider>
       </SliderWrapper>

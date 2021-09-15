@@ -37,14 +37,18 @@ const Icon = styled(FontAwesomeIcon)`
   }
 `;
 
-const CarouselItem = ({ image }) => {
+const CarouselItem = ({ image, openGallery }) => {
   const { url, title } = image;
+
+  const onClick = () => {
+    openGallery(image);
+  };
 
   return (
     <StyledImageWrapper square>
       <Image src={url} layout="fill" alt={title} />
 
-      <HoverPlaceholder>
+      <HoverPlaceholder onClick={onClick}>
         <Icon icon={faSearchPlus} />
       </HoverPlaceholder>
     </StyledImageWrapper>
@@ -52,8 +56,8 @@ const CarouselItem = ({ image }) => {
 };
 
 CarouselItem.propTypes = {
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  image: PropTypes.instanceOf(Object).isRequired,
+  openGallery: PropTypes.func.isRequired,
 };
 
 export default CarouselItem;
