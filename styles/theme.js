@@ -74,12 +74,32 @@ export const animations = {
 `,
 };
 
+export const mixins = {
+  absolute: `
+    position: absolute;
+    left: 0;
+    top: 0;
+  `,
+  absoluteCenter: `
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  `,
+  flexbox: `
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `,
+};
+
 const theme = {
   fontFamily,
   fontWeight,
   color,
   medias,
   animations,
+  mixins,
 };
 
 export default theme;

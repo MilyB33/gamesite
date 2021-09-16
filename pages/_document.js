@@ -57,6 +57,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <div id="mobileMenu" />
+          <div id="galleryPortal" />
           <NextScript />
         </body>
       </Html>

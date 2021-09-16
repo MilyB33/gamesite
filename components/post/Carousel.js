@@ -1,11 +1,13 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Image from 'next/image';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { getMedias } from '../../styles/utils';
-import ImageWrapper from '../all/ImageWrapper';
+import CarouselItem from './CarouselItem';
+import Portal from '../../hoc/Portal';
+import PhotoGallery from '../PhotoGallery/PhotoGallery';
 
 const settings = {
   vertical: true,
@@ -100,22 +102,46 @@ const SliderWrapper = styled.div`
   }
 `;
 
-const StyledImageWrapper = styled(ImageWrapper)`
-  box-shadow: 0 -2px 0px 0px #fb8b24, 0 2px 0px 0px #fb8b24;
-`;
-
 const Carousel = ({ images }) => {
+  const [isGallery, setIsGallery] = useState(false);
+  const [activePhoto, setActivePhoto] = useState(null);
+
+  const openGallery = (image) => {
+    setActivePhoto(image);
+    setIsGallery(true);
+  };
+
+  const closeGallery = () => {
+    setIsGallery(false);
+    setActivePhoto(null);
+  };
+
   const renderImages = () =>
     images.map((image, index) => (
-      <StyledImageWrapper key={index} square>
-        <Image src={image.url} layout="fill" alt={image.title} />
-      </StyledImageWrapper>
+      <CarouselItem
+        image={image}
+        key={index}
+        openGallery={openGallery}
+        setActive={setActivePhoto}
+      />
     ));
 
   return (
-    <SliderWrapper>
-      <Slider {...settings}>{renderImages()}</Slider>
-    </SliderWrapper>
+    <>
+      <Portal>
+        {isGallery && (
+          <PhotoGallery
+            closeGallery={closeGallery}
+            activePhoto={activePhoto}
+            images={images}
+          />
+        )}
+      </Portal>
+
+      <SliderWrapper>
+        <Slider {...settings}>{renderImages()}</Slider>
+      </SliderWrapper>
+    </>
   );
 };
 

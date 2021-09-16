@@ -8,6 +8,7 @@ import { getColor, getMedias } from '../../styles/utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import MobileMenu from './MobileMenu';
+import useMobile from '../../hooks/useMobile';
 
 const Wrapper = styled.nav`
   position: fixed;
@@ -18,7 +19,7 @@ const Wrapper = styled.nav`
   padding: 0 4em;
   background: ${getColor('clr-dark-200')};
   width: 100%;
-  z-index: 99999;
+  z-index: 5;
   transition: 0.5s;
   opacity: ${({ mobileVisibility }) =>
     mobileVisibility ? '0' : '1'};
@@ -42,6 +43,7 @@ const RegisterItem = styled(Item)`
 const LogoWrapper = styled.div`
   display: flex;
   justify-content: center;
+  width: 10%;
   margin: 1em 5em 1em 0;
 `;
 
@@ -55,28 +57,18 @@ const Hamburger = styled(Button)`
   }
 `;
 
+const ImageWrapper = styled.div`
+  position: relative;
+  width: clamp(50px, 8vw, 80px);
+  padding-top: 100%;
+`;
+
 const Navigation = () => {
-  const [isMobileDisplayed, setIsMobileDisplayed] = useState(false);
+  const [isMobileDisplayed, changeOnClick] = useMobile('1024', false);
 
   const onMobileChange = () => {
-    setIsMobileDisplayed(!isMobileDisplayed);
+    changeOnClick(!isMobileDisplayed);
   };
-
-  const handleChange = (event) => {
-    if (event.matches) setIsMobileDisplayed(false);
-  };
-
-  useEffect(() => {
-    const media = window.matchMedia(`(min-width: 1024px)`);
-
-    if (media.matches) setIsMobileDisplayed(false);
-
-    media.addEventListener('change', handleChange);
-
-    return () => {
-      media.removeEventListener('change', handleChange);
-    };
-  }, []);
 
   const mobile = isMobileDisplayed && (
     <MobileMenu onClick={onMobileChange} />
@@ -89,12 +81,13 @@ const Navigation = () => {
       <LogoWrapper>
         <Link href="/">
           <a>
-            <Image
-              src="/static/logo.png"
-              height={71}
-              width={71}
-              alt="logo"
-            />
+            <ImageWrapper>
+              <Image
+                src="/static/logo.png"
+                layout="fill"
+                alt="logo"
+              />
+            </ImageWrapper>
           </a>
         </Link>
       </LogoWrapper>
