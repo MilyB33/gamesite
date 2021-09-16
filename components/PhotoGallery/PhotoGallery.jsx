@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { getMixins, getColor } from '../../styles/utils';
 import { createGlobalStyle } from 'styled-components';
 import Slider from './SliderGallery';
 
@@ -30,7 +29,7 @@ const PhotoGallery = ({ closeGallery, activePhoto, images }) => {
     <>
       <GlobalStyles />
       <Wrapper>
-        <Slider activePhoto={activePhoto} images={images} />
+        <Slider initialSlide={activePhoto} images={images} />
         <Backdrop
           onClick={() => {
             closeGallery();
