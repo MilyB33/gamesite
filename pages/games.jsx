@@ -6,7 +6,7 @@ import { flattenGamesData } from '../utlis/filter';
 
 const GamesPage = ({ games }) => (
   <>
-    <Games data={games} />;
+    <Games data={games} />
   </>
 );
 

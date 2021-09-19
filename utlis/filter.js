@@ -54,12 +54,9 @@ const flattenRules = (item) => {
 
 const flattenPlatforms = (platforms) => {
   return platforms
-    .filter((platform) => platform.platform_logo)
+    .filter((platform) => platform.abbreviation)
     .map((platform) => ({
-      alt: platform.name,
-      url: `https:${platform.platform_logo.url
-        .replace('jpg', 'png')
-        .replace('t_thumb', 't_logo_med')}`,
+      name: platform.abbreviation,
       id: platform.platform_logo.id,
       width: platform.platform_logo.width,
       height: platform.platform_logo.height,

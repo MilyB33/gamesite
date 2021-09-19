@@ -25,7 +25,7 @@ class IGDBClient {
     return this.client
       .post(
         'games',
-        `fields name,rating,rating_count,slug,first_release_date,cover.*,platforms.*,platforms.platform_logo.*; sort rating desc; where rating_count >= 1000 & themes != (42);  limit ${limit};`
+        `fields name,rating,rating_count,slug,first_release_date,cover.*,platforms.*,platforms.platform_logo.*,genres.name; sort rating desc; where rating_count >= 1000 & themes != (42);  limit ${limit};`
       )
       .then((res) => res.data);
   };
