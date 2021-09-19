@@ -8,8 +8,36 @@ import LinkBorder from '../../all/Link';
 
 const StyledImageWrapper = styled(ImageWrapper)`
   padding-top: 110%;
-  transition: 0.3s;
-  filter: blur(2px);
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: ${getColor('clr-dark-200')};
+    transition: 0.3s;
+  }
+
+  &::after {
+    bottom: 0;
+    left: 0;
+  }
+
+  &::before {
+    top: 0;
+    right: 0;
+    z-index: 1;
+  }
+`;
+
+const StyledLink = styled(LinkBorder)`
+  margin-top: auto;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
 `;
 
 const StyledCard = styled(Card)`
@@ -18,6 +46,7 @@ const StyledCard = styled(Card)`
   border-radius: 15px;
   overflow: hidden;
   cursor: initial;
+  transition: 0.3s;
 
   & > h4 {
     padding: 2rem 0;
@@ -26,13 +55,20 @@ const StyledCard = styled(Card)`
     text-shadow: -2px -2px 0 ${getColor('clr-additional-300')};
   }
 
-  &:hover ${StyledImageWrapper} {
-    filter: blur(0px);
-  }
-`;
+  &:hover {
+    & ${StyledImageWrapper}::after {
+      left: 100%;
+    }
 
-const StyledLink = styled(LinkBorder)`
-  margin-top: auto;
+    & ${StyledImageWrapper}::before {
+      right: 100%;
+    }
+
+    & ${StyledLink} {
+      background: ${getColor('clr-light-100')};
+      color: ${getColor('clr-dark-100')};
+    }
+  }
 `;
 
 const GameCard = ({ game }) => {

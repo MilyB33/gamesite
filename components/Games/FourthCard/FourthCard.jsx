@@ -6,18 +6,13 @@ import { getColor } from '../../../styles/utils';
 import ImageWrapper from '../../all/ImageWrapper';
 import LinkBorder from '../../all/Link';
 
-const StyledImageWrapper = styled(ImageWrapper)`
-  padding-top: 110%;
-  transition: 0.3s;
-  filter: blur(2px);
-`;
-
 const StyledCard = styled(Card)`
   background: ${getColor('clr-dark-200')};
   padding: 0 0 2rem 0;
   border-radius: 15px;
   overflow: hidden;
   cursor: initial;
+  transition: 0.3s;
 
   & > h4 {
     padding: 2rem 0;
@@ -26,9 +21,13 @@ const StyledCard = styled(Card)`
     text-shadow: -2px -2px 0 ${getColor('clr-additional-300')};
   }
 
-  &:hover ${StyledImageWrapper} {
-    filter: blur(0px);
+  &:hover {
+    transform: scale(1.2);
   }
+`;
+
+const StyledImageWrapper = styled(ImageWrapper)`
+  padding-top: 110%;
 `;
 
 const StyledLink = styled(LinkBorder)`

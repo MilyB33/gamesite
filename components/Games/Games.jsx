@@ -4,6 +4,9 @@ import { getColor } from '../../styles/utils';
 import GameCard from './FlipCard/GameCard';
 import SecondCard from './NormalCard/Card';
 import ThirdCard from './ThirdCard/ThirdCard';
+import FourthCard from './FourthCard/FourthCard';
+import FifthCard from './FifthCard/FifthCard';
+import SixthCard from './SixthCard/SixthCard';
 
 const Wrapper = styled.main`
   background: ${getColor('clr-dark-200')};
@@ -40,6 +43,21 @@ const Games = ({ data: games }) => {
       .slice(0, 5)
       .map((game) => <ThirdCard key={game.id} game={game} />);
 
+  const renderFourth = () =>
+    games
+      .slice(0, 5)
+      .map((game) => <FourthCard key={game.id} game={game} />);
+
+  const renderFifth = () =>
+    games
+      .slice(0, 5)
+      .map((game) => <FifthCard key={game.id} game={game} />);
+
+  const renderSixth = () =>
+    games
+      .slice(0, 5)
+      .map((game) => <SixthCard key={game.id} game={game} />);
+
   return (
     <Wrapper>
       <h2>Most Popular</h2>
@@ -48,6 +66,12 @@ const Games = ({ data: games }) => {
       <MostPopularWrapper>{renderSecond()}</MostPopularWrapper>
       <h2>Most Popular Third</h2>
       <MostPopularWrapper>{renderThird()}</MostPopularWrapper>
+      <h2>Most Popular Fourth</h2>
+      <MostPopularWrapper>{renderFourth()}</MostPopularWrapper>
+      <h2>Most Popular Fifth</h2>
+      <MostPopularWrapper>{renderFifth()}</MostPopularWrapper>
+      <h2>Most Popular Sixth</h2>
+      <MostPopularWrapper>{renderSixth()}</MostPopularWrapper>
     </Wrapper>
   );
 };
