@@ -21,11 +21,11 @@ class IGDBClient {
       .then((res) => res.data);
   };
 
-  getGames = async (limit = 10) => {
+  getAllGames = async (limit = 10) => {
     return this.client
       .post(
         'games',
-        `fields name,category,cover,genres,platforms,slug,release_dates,aggregated_rating; limit ${limit};`
+        `fields name,rating,rating_count,slug,first_release_date,cover.*,platforms.*,platforms.platform_logo.*; sort rating desc; where rating_count >= 1000 & themes != (42);  limit ${limit};`
       )
       .then((res) => res.data);
   };

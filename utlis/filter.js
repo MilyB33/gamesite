@@ -1,3 +1,11 @@
+import _ from 'lodash';
+
+const DATE_OPTIONS = {
+  day: 'numeric',
+  year: 'numeric',
+  month: 'numeric',
+};
+
 const getConnectedData = (res) => {
   return res.items.map((item) =>
     item.fields.image1
@@ -42,6 +50,29 @@ const flattenRules = (item) => {
       };
     }),
   };
+};
+
+export const flattenGamesData = (data) => {
+  return data.map((game) => ({
+    ...game,
+    cover: {
+      id: game.cover.id,
+      width: game.cover.width,
+      height: game.cover.height,
+      url: `https:${game.cover.url}`,
+      alt: game.name,
+    },
+    first_release_date: new Date(
+      game.first_release_date * 1000
+    ).toLocaleString('en-US', DATE_OPTIONS),
+    platforms: game.platforms.map((platform) => ({
+      alt: platform.name,
+      url: `https:${platform.platform_logo.url}`,
+      id: platform.platform_logo.id,
+      width: platform.platform_logo.width,
+      height: platform.platform_logo.height,
+    })),
+  }));
 };
 
 export const flattenArticlesData = (res) => {

@@ -2,9 +2,10 @@ import React from 'react';
 import LayoutSub from '../components/LayoutSub';
 import IGDBClient from '../api/IGDBClient';
 import Games from '../components/Games/Games';
+import { flattenGamesData } from '../utlis/filter';
 
 const GamesPage = ({ games }) => {
-  return <Games />;
+  return <Games data={games} />;
 };
 
 GamesPage.getLayout = function displayLayout(page) {
@@ -12,7 +13,10 @@ GamesPage.getLayout = function displayLayout(page) {
 };
 
 export async function getStaticProps() {
-  const games = await IGDBClient.getGames();
+  const res = await IGDBClient.getAllGames(5);
+
+  const games = flattenGamesData(res);
+
   return {
     props: {
       games,
