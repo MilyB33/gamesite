@@ -52,6 +52,18 @@ const flattenRules = (item) => {
   };
 };
 
+const flattenPlatforms = (platforms) => {
+  return platforms
+    .filter((platform) => platform.platform_logo)
+    .map((platform) => ({
+      alt: platform.name,
+      url: platform.platform_logo.url,
+      id: platform.platform_logo.id,
+      width: platform.platform_logo.width,
+      height: platform.platform_logo.height,
+    }));
+};
+
 export const flattenGamesData = (data) => {
   return data.map((game) => ({
     ...game,
@@ -65,13 +77,7 @@ export const flattenGamesData = (data) => {
     first_release_date: new Date(
       game.first_release_date * 1000
     ).toLocaleString('en-US', DATE_OPTIONS),
-    platforms: game.platforms.map((platform) => ({
-      alt: platform.name,
-      url: `https:${platform.platform_logo.url}`,
-      id: platform.platform_logo.id,
-      width: platform.platform_logo.width,
-      height: platform.platform_logo.height,
-    })),
+    platforms: flattenPlatforms(game.platforms),
   }));
 };
 

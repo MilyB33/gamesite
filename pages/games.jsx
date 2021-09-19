@@ -4,18 +4,20 @@ import IGDBClient from '../api/IGDBClient';
 import Games from '../components/Games/Games';
 import { flattenGamesData } from '../utlis/filter';
 
-const GamesPage = ({ games }) => {
-  return <Games data={games} />;
-};
+const GamesPage = ({ games }) => (
+  <>
+    <Games data={games} />;
+  </>
+);
 
 GamesPage.getLayout = function displayLayout(page) {
   return <LayoutSub title="Games">{page}</LayoutSub>;
 };
 
 export async function getStaticProps() {
-  const res = await IGDBClient.getAllGames(5);
+  const res = await IGDBClient.getAllGames(54);
 
-  const games = flattenGamesData(res);
+  const games = await flattenGamesData(res);
 
   return {
     props: {
