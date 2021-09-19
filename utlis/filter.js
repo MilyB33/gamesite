@@ -57,7 +57,9 @@ const flattenPlatforms = (platforms) => {
     .filter((platform) => platform.platform_logo)
     .map((platform) => ({
       alt: platform.name,
-      url: platform.platform_logo.url,
+      url: `https:${platform.platform_logo.url
+        .replace('jpg', 'png')
+        .replace('t_thumb', 't_logo_med')}`,
       id: platform.platform_logo.id,
       width: platform.platform_logo.width,
       height: platform.platform_logo.height,
@@ -71,7 +73,9 @@ export const flattenGamesData = (data) => {
       id: game.cover.id,
       width: game.cover.width,
       height: game.cover.height,
-      url: `https:${game.cover.url}`,
+      url: `https:${game.cover.url
+        .replace('jpg', 'png')
+        .replace('t_thumb', 't_720p')}`,
       alt: game.name,
     },
     first_release_date: new Date(

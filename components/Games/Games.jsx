@@ -5,6 +5,7 @@ import GameCard from './GameCard';
 
 const Wrapper = styled.main`
   background: ${getColor('clr-dark-200')};
+  padding-top: 5rem;
 
   & > h2 {
     text-shadow: -2px -2px 0 ${getColor('clr-purple-100')};
@@ -15,8 +16,9 @@ const Wrapper = styled.main`
 const MostPopularWrapper = styled.section`
   display: flex;
   justify-content: center;
-  align-items: center;
+
   padding: 5rem;
+  gap: 5rem;
 `;
 
 const Games = ({ data: games }) => {
