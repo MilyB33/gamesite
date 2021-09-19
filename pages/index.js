@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import Layout from '../components/Layout';
-import getData from '../api/basic';
+import IGDBClient from '../api/IGDBClient';
 import { homeArticles } from '../utlis/filter';
 import Header from '../components/homePage/HeaderMain';
 import Platforms from '../components/homePage/Platforms';
@@ -17,11 +17,8 @@ export default function Home({ platforms, articleCards }) {
   );
 }
 
-export async function getStaticProps(context) {
-  const platforms = await getData.post(
-    'platforms',
-    'fields name,slug,platform_logo; sort id; where id = (5,6,7,11,34);'
-  );
+export async function getStaticProps() {
+  const platforms = await IGDBClient.getPlatforms();
 
   const res = await ContentfulClient.getAllArticlesCards();
 
@@ -29,7 +26,7 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      platforms: platforms.data,
+      platforms,
       articleCards,
     },
   };

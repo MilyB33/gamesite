@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
 body {
   background: linear-gradient(180deg,${getColor(
     'clr-dark-400'
-  )} 75%, ${getColor('clr-additional-300')} 100%);
+  )} 75%, ${getColor('clr-dark-300')} 100%);
   min-height: 100vh;
 }
 
