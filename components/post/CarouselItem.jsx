@@ -7,8 +7,6 @@ import ImageWrapper from '../all/ImageWrapper';
 import { getMixins, getColor } from '../../styles/utils';
 
 const StyledImageWrapper = styled(ImageWrapper)`
-  box-shadow: 0 -2px 0px 0px #fb8b24, 0 2px 0px 0px #fb8b24;
-
   cursor: pointer;
 
   &:hover > div {

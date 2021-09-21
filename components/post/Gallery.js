@@ -5,12 +5,14 @@ import ImageWrapper from '../all/ImageWrapper';
 import Carousel from './Carousel';
 
 const Wrapper = styled.section`
-  display: flex;
+  display: grid;
+  grid-template-columns: 80% 15%;
   gap: 5rem;
   max-width: 100%;
 
   @media (max-width: ${getMedias('laptop')}) {
-    flex-direction: column;
+    grid-template-columns: 100%;
+    grid-template-rows: max-content max-content;
     gap: 1rem;
   }
 `;

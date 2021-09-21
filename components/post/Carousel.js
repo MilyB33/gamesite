@@ -41,35 +41,25 @@ const settings = {
 };
 
 const SliderWrapper = styled.div`
-  width: 20%;
-
   @media (max-width: ${getMedias('laptop')}) {
-    width: 100%;
+    padding: 0rem 5%;
   }
 
-  @media (max-width: ${getMedias('mobile')}) {
-    padding: 0rem 5rem;
-  }
-
-  .slick-slider {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1em;
+  @media (max-width: 400px) {
+    padding: 0rem 10%;
   }
 
   .slick-slide > div {
     padding: 0.5em 0;
   }
 
-  .slick-list {
-    margin: -1rem 0;
+  .slick-track {
+    max-height: 605px;
   }
 
   .slick-arrow {
     position: initial;
+    margin: 1rem auto;
   }
 
   .slick-prev,
@@ -80,11 +70,11 @@ const SliderWrapper = styled.div`
   @media (max-width: ${getMedias('laptop')}) {
     .slick-slider {
       width: 100%;
-      display: block;
     }
 
     .slick-arrow {
       position: absolute;
+      margin: 0;
     }
 
     .slick-prev,
