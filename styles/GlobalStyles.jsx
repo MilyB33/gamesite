@@ -38,18 +38,23 @@ button {
   border: none;
 }
 
+input,
 select {
-  
-  appearance: none;
-  background-color: transparent;
   border: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
+  background-color: transparent;
   font-family: inherit;
   font-size: inherit;
   cursor: inherit;
   line-height: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+select
+ {
+  appearance: none;
+  background-color: transparent;
+  width: 100%;
 }
 
 select::-ms-expand {

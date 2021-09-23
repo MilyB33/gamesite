@@ -15,7 +15,8 @@ const Wrapper = styled.main`
 `;
 
 const MostPopularWrapper = styled.section`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   justify-content: center;
 
   padding: 5rem;

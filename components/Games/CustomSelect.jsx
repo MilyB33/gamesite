@@ -9,7 +9,7 @@ const Order = styled.div`
   overflow: hidden;
 
   & > select {
-    padding: 2rem;
+    padding: 2rem 3rem;
     font-size: 2rem;
     background: ${getColor('clr-dark-300')};
     cursor: pointer;

@@ -1,5 +1,11 @@
 import CustomSelect from './CustomSelect';
 import CustomSearch from './CustomSearch';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faThList,
+  faThLarge,
+} from '@fortawesome/free-solid-svg-icons';
+import CustomIcon from './CustomIcon';
 
 const Filters = () => {
   return (
@@ -23,6 +29,14 @@ const Filters = () => {
       </CustomSelect>
 
       <CustomSearch name="search" placeholder="Search for Game" />
+
+      <CustomIcon>
+        <FontAwesomeIcon icon={faThList} />
+      </CustomIcon>
+
+      <CustomIcon>
+        <FontAwesomeIcon icon={faThLarge} />
+      </CustomIcon>
     </>
   );
 };

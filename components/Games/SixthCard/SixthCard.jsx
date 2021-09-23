@@ -42,6 +42,7 @@ const StyledLink = styled(LinkBorder)`
 `;
 
 const StyledCard = styled(Card)`
+  width: 100%;
   background: ${getColor('clr-dark-200')};
   padding: 0 0 2rem 0;
   border-radius: 15px;
