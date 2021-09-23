@@ -38,6 +38,7 @@ const StyledLink = styled(LinkBorder)`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+  background: ${getColor('clr-dark-200')};
 `;
 
 const StyledCard = styled(Card)`
@@ -62,11 +63,6 @@ const StyledCard = styled(Card)`
 
     & ${StyledImageWrapper}::before {
       right: 100%;
-    }
-
-    & ${StyledLink} {
-      background: ${getColor('clr-light-100')};
-      color: ${getColor('clr-dark-100')};
     }
   }
 `;

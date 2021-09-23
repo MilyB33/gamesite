@@ -1,12 +1,8 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { getColor } from '../../styles/utils';
-import GameCard from './FlipCard/GameCard';
-import SecondCard from './NormalCard/Card';
-import ThirdCard from './ThirdCard/ThirdCard';
-import FourthCard from './FourthCard/FourthCard';
-import FifthCard from './FifthCard/FifthCard';
 import SixthCard from './SixthCard/SixthCard';
+import Filters from './Filters';
 
 const Wrapper = styled.main`
   background: ${getColor('clr-dark-200')};
@@ -26,34 +22,16 @@ const MostPopularWrapper = styled.section`
   gap: 5rem;
 `;
 
+const FilterWrapper = styled.section`
+  display: flex;
+  justify-content: center;
+
+  padding: 5rem;
+  gap: 5rem;
+`;
+
 const Games = ({ data: games }) => {
-  console.log(games);
   const renderMostPopular = () =>
-    games
-      .slice(0, 5)
-      .map((game) => <GameCard key={game.id} game={game} />);
-
-  const renderSecond = () =>
-    games
-      .slice(0, 5)
-      .map((game) => <SecondCard key={game.id} game={game} />);
-
-  const renderThird = () =>
-    games
-      .slice(0, 5)
-      .map((game) => <ThirdCard key={game.id} game={game} />);
-
-  const renderFourth = () =>
-    games
-      .slice(0, 5)
-      .map((game) => <FourthCard key={game.id} game={game} />);
-
-  const renderFifth = () =>
-    games
-      .slice(0, 5)
-      .map((game) => <FifthCard key={game.id} game={game} />);
-
-  const renderSixth = () =>
     games
       .slice(0, 5)
       .map((game) => <SixthCard key={game.id} game={game} />);
@@ -62,16 +40,9 @@ const Games = ({ data: games }) => {
     <Wrapper>
       <h2>Most Popular</h2>
       <MostPopularWrapper>{renderMostPopular()}</MostPopularWrapper>
-      <h2>Most Popular Second</h2>
-      <MostPopularWrapper>{renderSecond()}</MostPopularWrapper>
-      <h2>Most Popular Third</h2>
-      <MostPopularWrapper>{renderThird()}</MostPopularWrapper>
-      <h2>Most Popular Fourth</h2>
-      <MostPopularWrapper>{renderFourth()}</MostPopularWrapper>
-      <h2>Most Popular Fifth</h2>
-      <MostPopularWrapper>{renderFifth()}</MostPopularWrapper>
-      <h2>Most Popular Sixth</h2>
-      <MostPopularWrapper>{renderSixth()}</MostPopularWrapper>
+      <FilterWrapper>
+        <Filters />
+      </FilterWrapper>
     </Wrapper>
   );
 };

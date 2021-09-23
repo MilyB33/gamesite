@@ -38,6 +38,24 @@ button {
   border: none;
 }
 
+select {
+  
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
 // TYPOGRAPHY
 
 a {
