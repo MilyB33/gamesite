@@ -78,7 +78,6 @@ export const flattenGamesData = (data) => {
     first_release_date: new Date(
       game.first_release_date * 1000
     ).toLocaleString('en-US', DATE_OPTIONS),
-    platforms: flattenPlatforms(game.platforms),
   }));
 };
 

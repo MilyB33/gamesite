@@ -38,6 +38,29 @@ button {
   border: none;
 }
 
+input,
+select {
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+select
+ {
+  appearance: none;
+  background-color: transparent;
+  width: 100%;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
 // TYPOGRAPHY
 
 a {
