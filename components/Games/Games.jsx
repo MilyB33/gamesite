@@ -4,7 +4,6 @@ import { getColor } from '../../styles/utils';
 import SixthCard from './SixthCard/SixthCard';
 import Filters from './Filters';
 import useFilter from '../../hooks/useFilter';
-import { useEffect } from 'react';
 
 const Wrapper = styled.main`
   background: ${getColor('clr-dark-200')};
@@ -39,11 +38,8 @@ const Games = ({ data: games, platforms }) => {
     state: { filteredData: filteredGames },
     sortGames,
     filterByPlatform,
-  } = useFilter(games);
-
-  useEffect(() => {
-    console.log(filteredGames);
-  }, [filteredGames]);
+    filterByName,
+  } = useFilter(games, platforms);
 
   const renderMostPopular = () =>
     games
@@ -63,6 +59,7 @@ const Games = ({ data: games, platforms }) => {
         <Filters
           sort={sortGames}
           filter={filterByPlatform}
+          search={filterByName}
           platforms={platforms}
         />
       </FilterWrapper>

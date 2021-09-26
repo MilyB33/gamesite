@@ -14,7 +14,7 @@ const ViewWrapper = styled.div`
   gap: inherit;
 `;
 
-const Filters = ({ filter, sort, platforms }) => {
+const Filters = ({ filter, sort, platforms, search }) => {
   const renderPlatformsOptions = () =>
     platforms.map((platform) => (
       <option value={platform.id} key={platform.id}>
@@ -37,7 +37,11 @@ const Filters = ({ filter, sort, platforms }) => {
         {renderPlatformsOptions()}
       </CustomSelect>
 
-      <CustomSearch name="search" placeholder="Search for Game" />
+      <CustomSearch
+        name="search"
+        placeholder="Search for Game"
+        search={search}
+      />
 
       <ViewWrapper>
         <CustomIcon>
@@ -56,6 +60,7 @@ Filters.propTypes = {
   sort: PropTypes.func.isRequired,
   filter: PropTypes.func.isRequired,
   platforms: PropTypes.instanceOf(Array).isRequired,
+  search: PropTypes.func.isRequired,
 };
 
 export default Filters;

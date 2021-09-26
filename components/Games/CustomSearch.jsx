@@ -24,11 +24,12 @@ const Input = styled.input`
   }
 `;
 
-const CustomSearch = ({ name, placeholder }) => {
+const CustomSearch = ({ name, placeholder, search }) => {
   const [Inputvalue, setInputValue] = useState('');
 
   const onChangeValue = (event) => {
     setInputValue(event.target.value);
+    search(event);
   };
 
   return (
@@ -49,6 +50,7 @@ CustomSearch.defaultProps = {
 CustomSearch.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
+  search: PropTypes.func.isRequired,
 };
 
 export default CustomSearch;
