@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import CustomSelect from './CustomSelect';
 import CustomSearch from './CustomSearch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,38 +9,53 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import CustomIcon from './CustomIcon';
 
-const Filters = () => {
+const ViewWrapper = styled.div`
+  display: inherit;
+  gap: inherit;
+`;
+
+const Filters = ({ filter, sort, platforms }) => {
+  const renderPlatformsOptions = () =>
+    platforms.map((platform) => (
+      <option value={platform.id} key={platform.id}>
+        {platform.abbreviation}
+      </option>
+    ));
+
   return (
     <>
-      <CustomSelect name="order">
-        <option value="popularity_asc">Popularity asc</option>
-        <option value="popularity_desc">Popularity desc</option>
-        <option value="rating_asc">rating asc</option>
-        <option value="rating_asc">rating desc</option>
-        <option value="name_asc">name asc</option>
-        <option value="name_desc">name desc</option>
+      <CustomSelect name="order" filter={sort}>
+        <option value="POPULARITY_ASC">Popularity asc</option>
+        <option value="POPULARITY_DESC">Popularity desc</option>
+        <option value="RATING_ASC">Rating asc</option>
+        <option value="RATING_DESC">Rating desc</option>
+        <option value="NAME_ASC">Name asc</option>
+        <option value="NAME_DESC">Name desc</option>
       </CustomSelect>
 
-      <CustomSelect name="platform">
-        <option value="popularity_asc">PS4</option>
-        <option value="popularity_desc">PS5</option>
-        <option value="rating_asc">PC</option>
-        <option value="rating_asc">Switch</option>
-        <option value="name_asc">Android</option>
-        <option value="name_desc">Wii</option>
+      <CustomSelect name="platform" filter={filter}>
+        {renderPlatformsOptions()}
       </CustomSelect>
 
       <CustomSearch name="search" placeholder="Search for Game" />
 
-      <CustomIcon>
-        <FontAwesomeIcon icon={faThList} />
-      </CustomIcon>
+      <ViewWrapper>
+        <CustomIcon>
+          <FontAwesomeIcon icon={faThList} />
+        </CustomIcon>
 
-      <CustomIcon>
-        <FontAwesomeIcon icon={faThLarge} />
-      </CustomIcon>
+        <CustomIcon>
+          <FontAwesomeIcon icon={faThLarge} />
+        </CustomIcon>
+      </ViewWrapper>
     </>
   );
+};
+
+Filters.propTypes = {
+  sort: PropTypes.func.isRequired,
+  filter: PropTypes.func.isRequired,
+  platforms: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default Filters;

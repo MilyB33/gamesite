@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { getColor } from '../../styles/utils';
 
 const Order = styled.div`
+  --clr-default-light: ${getColor('clr-light-300')};
+  --clr-default-dark: ${getColor('clr-dark-200')};
+
   position: relative;
   border: none;
   border-radius: 10px;
@@ -11,8 +15,10 @@ const Order = styled.div`
   & > select {
     padding: 2rem 3rem;
     font-size: 2rem;
-    background: ${getColor('clr-dark-300')};
+    background: var(--clr-default-dark);
     cursor: pointer;
+    color: var(--clr-default-light);
+    transition: 0.3s;
   }
 
   &::after {
@@ -26,14 +32,28 @@ const Order = styled.div`
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-top: 14px solid ${getColor('white')};
+    border-top: 14px solid var(--clr-default-light);
+    transition: 0.3s;
+  }
+
+  &:hover::after,
+  &:hover select {
+    --clr-default-light: ${getColor('clr-light-100')};
   }
 `;
 
-const CustomSelect = ({ children, name }) => {
+const CustomSelect = ({ children, name, filter }) => {
+  const [selectValue, setSelectValue] = useState('');
+
+  const onChange = (event) => {
+    setSelectValue(event.target.value);
+    filter(event);
+  };
   return (
     <Order>
-      <select name={name}>{children}</select>
+      <select name={name} value={selectValue} onChange={onChange}>
+        {children}
+      </select>
     </Order>
   );
 };

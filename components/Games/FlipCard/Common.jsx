@@ -23,6 +23,7 @@ const FlipCardInner = styled.div`
 const Card = styled.article`
   position: relative;
   min-height: 450px;
+  max-width: 307px;
   display: grid;
   gap: 1rem;
   width: 25%;

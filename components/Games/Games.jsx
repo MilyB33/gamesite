@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { getColor } from '../../styles/utils';
 import SixthCard from './SixthCard/SixthCard';
 import Filters from './Filters';
+import useFilter from '../../hooks/useFilter';
+import { useEffect } from 'react';
 
 const Wrapper = styled.main`
   background: ${getColor('clr-dark-200')};
@@ -14,42 +16,65 @@ const Wrapper = styled.main`
   }
 `;
 
-const MostPopularWrapper = styled.section`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+const GamesWrapper = styled.section`
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 
-  padding: 5rem;
+  padding: 5rem 4rem;
   gap: 5rem;
 `;
 
 const FilterWrapper = styled.section`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 
   padding: 5rem;
   gap: 5rem;
 `;
 
-const Games = ({ data: games }) => {
+const Games = ({ data: games, platforms }) => {
+  const {
+    state: { filteredData: filteredGames },
+    sortGames,
+    filterByPlatform,
+  } = useFilter(games);
+
+  useEffect(() => {
+    console.log(filteredGames);
+  }, [filteredGames]);
+
   const renderMostPopular = () =>
     games
       .slice(0, 5)
       .map((game) => <SixthCard key={game.id} game={game} />);
 
+  const renderGames = () =>
+    filteredGames.map((game) => (
+      <SixthCard key={game.id} game={game} />
+    ));
+
   return (
     <Wrapper>
       <h2>Most Popular</h2>
-      <MostPopularWrapper>{renderMostPopular()}</MostPopularWrapper>
+      <GamesWrapper>{renderMostPopular()}</GamesWrapper>
       <FilterWrapper>
-        <Filters />
+        <Filters
+          sort={sortGames}
+          filter={filterByPlatform}
+          platforms={platforms}
+        />
       </FilterWrapper>
+
+      <GamesWrapper>{renderGames()}</GamesWrapper>
     </Wrapper>
   );
 };
 
 Games.propTypes = {
   data: PropTypes.instanceOf(Array).isRequired,
+  platforms: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default Games;

@@ -4,21 +4,23 @@ import styled from 'styled-components';
 import { getColor } from '../../styles/utils';
 
 const Input = styled.input`
+  --clr-default-light: ${getColor('clr-light-300')};
+  --clr-default-dark: ${getColor('clr-dark-200')};
+
   font-size: 2rem;
   padding: 2rem;
-  min-width: 70rem;
-  background: ${getColor('clr-dark-300')};
-  cursor: pointer;
+  min-width: 40%;
+  background: var(--clr-default-dark);
   border-radius: 10px;
 
   &::placeholder {
-    color: ${getColor('clr-light-300')};
+    color: var(--clr-default-light);
     transition: 0.5s;
   }
 
   &:focus::placeholder,
   &:hover::placeholder {
-    color: ${getColor('clr-light-200')};
+    --clr-default-light: ${getColor('clr-light-100')};
   }
 `;
 
