@@ -4,17 +4,25 @@ import {
   ScreenshotsGrid,
   ScreenshotBig,
   ScreenshotWrapper,
+  ViewAll,
 } from './Game.styles';
 
 const Screenshots = ({ screenshots }) => {
+  const ViewTooltip = (
+    <ViewAll>
+      <p>View All</p>
+    </ViewAll>
+  );
+
   const renderScreenshots = () =>
-    screenshots.map((screenshot) => (
+    screenshots.slice(1, 5).map((screenshot) => (
       <ScreenshotWrapper key={screenshot.id}>
         <Image
           src={screenshot.url}
           alt={screenshot.alt}
           layout="fill"
         />
+        {ViewTooltip}
       </ScreenshotWrapper>
     ));
 
@@ -26,6 +34,7 @@ const Screenshots = ({ screenshots }) => {
           alt={screenshots[0].alt}
           layout="fill"
         />
+        {ViewTooltip}
       </ScreenshotBig>
 
       {renderScreenshots()}

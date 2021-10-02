@@ -54,14 +54,7 @@ const flattenRules = (item) => {
 };
 
 const flattenPlatforms = (platforms) => {
-  return platforms
-    .filter((platform) => platform.abbreviation)
-    .map((platform) => ({
-      name: platform.abbreviation,
-      id: platform.platform_logo.id,
-      width: platform.platform_logo.width,
-      height: platform.platform_logo.height,
-    }));
+  return platforms.filter((platform) => platform.abbreviation);
 };
 
 const filterCompanies = (companies) => {
@@ -96,6 +89,7 @@ export const flattenGameData = (data) => {
   const game = data[0];
   const { age_ratings } = game;
   delete game.age_ratings;
+
   const filteredCompanies = filterCompanies(game.involved_companies);
 
   return {
@@ -116,16 +110,14 @@ export const flattenGameData = (data) => {
       't_thumb',
       't_screenshot_huge'
     )}`,
-    screenshots: game.screenshots
-      .map((screenshot) => ({
-        ...screenshot,
-        url: `https:${screenshot.url.replace(
-          't_thumb',
-          't_screenshot_big'
-        )}`,
-        alt: game.name,
-      }))
-      .slice(0, 5),
+    screenshots: game.screenshots.map((screenshot) => ({
+      ...screenshot,
+      url: `https:${screenshot.url.replace(
+        't_thumb',
+        't_screenshot_big'
+      )}`,
+      alt: game.name,
+    })),
     rating: Math.floor(game.rating),
     age_rating: age_ratings
       .filter((rating) => rating.category === 2)
@@ -135,13 +127,14 @@ export const flattenGameData = (data) => {
           (ageRating) => ageRating.value === rating.rating
         ).name,
       })),
-    platforms: game.platforms.map((platform) => ({
+    platforms: flattenPlatforms(game.platforms).map((platform) => ({
       ...platform,
       name: platform.abbreviation,
     })),
     involved_companies: filteredCompanies,
     developer: filteredCompanies.find((company) => company.developer),
     publisher: filteredCompanies.find((company) => company.publisher),
+    videos: game.videos[0],
   };
 };
 

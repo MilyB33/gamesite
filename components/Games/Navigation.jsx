@@ -13,6 +13,7 @@ const Nav = styled.nav`
   width: 100%auto;
   background: transparent;
   padding: 1rem 10rem;
+  z-index: 1;
 
   & > a {
     font-size: 5rem;

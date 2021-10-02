@@ -3,6 +3,7 @@ import { Grid, Header } from './Game.styles';
 import HeaderInfo from './HeaderInfo';
 import GameInfo from './GameInfo';
 import Screenshots from './Screenshots';
+import Video from './Video';
 import { About } from './Game.styles';
 
 const Game = ({ gameData }) => {
@@ -25,6 +26,7 @@ const Game = ({ gameData }) => {
         <p>{summary}</p>
       </About>
       <GameInfo game={gameData} />
+      <Video video={screenshots[0]} />
     </Grid>
   );
 };
