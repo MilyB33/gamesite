@@ -16,6 +16,7 @@ export const color = {
   ['clr-dark-200']: 'rgba(0, 0, 0, 0.6)',
   ['clr-dark-300']: 'rgb(38, 38, 38)',
   ['clr-dark-400']: '#262626',
+  ['clr-dark-500']: '#6c757d',
 
   ['clr-purple-100']: 'rgb(199, 60, 221)',
   ['clr-purple-200']: 'rgba(199, 60, 221, 0.62)',

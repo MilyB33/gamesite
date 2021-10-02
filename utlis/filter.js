@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import ageRatings from './ageRatingHelpers';
 
 const DATE_OPTIONS = {
   day: 'numeric',
@@ -63,6 +64,16 @@ const flattenPlatforms = (platforms) => {
     }));
 };
 
+const filterCompanies = (companies) => {
+  return companies.map((company) => ({
+    name: company.company.name,
+    id: company.company.id,
+    url: company.company.url,
+    developer: company.developer,
+    publisher: company.publisher,
+  }));
+};
+
 export const flattenGamesData = (data) => {
   return data.map((game) => ({
     ...game,
@@ -83,6 +94,9 @@ export const flattenGamesData = (data) => {
 
 export const flattenGameData = (data) => {
   const game = data[0];
+  const { age_ratings } = game;
+  delete game.age_ratings;
+  const filteredCompanies = filterCompanies(game.involved_companies);
 
   return {
     ...game,
@@ -102,13 +116,32 @@ export const flattenGameData = (data) => {
       't_thumb',
       't_screenshot_huge'
     )}`,
-    screenshots: game.screenshots.map((screenshot) => ({
-      ...screenshot,
-      url: `https:${screenshot.url.replace(
-        't_thumb',
-        't_screenshot_medium'
-      )}`,
+    screenshots: game.screenshots
+      .map((screenshot) => ({
+        ...screenshot,
+        url: `https:${screenshot.url.replace(
+          't_thumb',
+          't_screenshot_big'
+        )}`,
+        alt: game.name,
+      }))
+      .slice(0, 5),
+    rating: Math.floor(game.rating),
+    age_rating: age_ratings
+      .filter((rating) => rating.category === 2)
+      .map((rating) => ({
+        ...rating,
+        name: ageRatings.find(
+          (ageRating) => ageRating.value === rating.rating
+        ).name,
+      })),
+    platforms: game.platforms.map((platform) => ({
+      ...platform,
+      name: platform.abbreviation,
     })),
+    involved_companies: filteredCompanies,
+    developer: filteredCompanies.find((company) => company.developer),
+    publisher: filteredCompanies.find((company) => company.publisher),
   };
 };
 
@@ -129,3 +162,6 @@ export const getExactPost = (res, slug) => {
 
   return flattened.find((post) => post.slug === slug);
 };
+
+export const arrayToString = (arr, separator) =>
+  arr.map((ob) => ob.name).join(`${separator} `);

@@ -5,6 +5,7 @@ import {
   getExactGame,
 } from '../../utlis/filter';
 import Game from '../../components/Games/Game';
+import GameLayout from '../../components/Layouts/GameLayout';
 
 const gamePage = ({ game }) => <Game gameData={game} />;
 
@@ -27,5 +28,16 @@ export async function getStaticProps({ params }) {
 
   return { props: { game } };
 }
+
+gamePage.getLayout = function displayLayout(page, pageProps) {
+  const {
+    game: { background, name },
+  } = pageProps;
+  return (
+    <GameLayout title={name} background={background}>
+      {page}
+    </GameLayout>
+  );
+};
 
 export default gamePage;
