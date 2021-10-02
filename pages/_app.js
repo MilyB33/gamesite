@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
         <ReactQueryDevtools initialIsOpen={false} />
         <ThemeProvider theme={theme}>
           <GlobalStyles />
-          {getLayout(<Component {...pageProps} />)}
+          {getLayout(<Component {...pageProps} />, pageProps)}
         </ThemeProvider>
       </Hydrate>
     </QueryClientProvider>
