@@ -29,6 +29,15 @@ class IGDBClient {
       )
       .then((res) => res.data);
   };
+
+  getExactGame = async (slug) => {
+    return this.client
+      .post(
+        'games',
+        `fields follows,name,rating,rating_count,slug,first_release_date,cover.*,platforms.*,genres.name,expansions.name,screenshots.*,themes.*,videos.*; sort rating desc; where slug="${slug}" & themes != (42);`
+      )
+      .then((res) => res.data);
+  };
 }
 
 export default new IGDBClient();

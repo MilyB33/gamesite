@@ -81,6 +81,37 @@ export const flattenGamesData = (data) => {
   }));
 };
 
+export const flattenGameData = (data) => {
+  const game = data[0];
+
+  return {
+    ...game,
+    cover: {
+      id: game.cover.id,
+      width: game.cover.width,
+      height: game.cover.height,
+      url: `https:${game.cover.url
+        .replace('jpg', 'png')
+        .replace('t_thumb', 't_720p')}`,
+      alt: game.name,
+    },
+    first_release_date: new Date(
+      game.first_release_date * 1000
+    ).toLocaleString('en-US', DATE_OPTIONS),
+    background: `https:${game.screenshots[0].url.replace(
+      't_thumb',
+      't_screenshot_huge'
+    )}`,
+    screenshots: game.screenshots.map((screenshot) => ({
+      ...screenshot,
+      url: `https:${screenshot.url.replace(
+        't_thumb',
+        't_screenshot_medium'
+      )}`,
+    })),
+  };
+};
+
 export const flattenArticlesData = (res) => {
   const connected = connectAssets(res);
 

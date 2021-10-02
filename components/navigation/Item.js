@@ -24,6 +24,8 @@ const Li = styled.li.attrs(({ router, href }) => ({
     router.pathname == href ? 'clr-additional-200' : 'clr-light-100',
   width: router.pathname == href ? '100%' : '0%',
 }))`
+  list-style: none;
+
   * h5 {
     color: ${({ color }) => getColor(color)};
 
