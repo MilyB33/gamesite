@@ -12,7 +12,7 @@ const Nav = styled.nav`
   top: 0;
   width: 100%auto;
   background: transparent;
-  padding: 1rem 10rem;
+  padding: 1rem 2rem;
   z-index: 1;
 
   & > a {
@@ -20,14 +20,11 @@ const Nav = styled.nav`
     cursor: pointer;
     padding: 1rem 1rem 1rem 0;
     transition: 0.5s;
+    margin-right: auto;
 
     &:hover {
       transform: scale(1.2);
     }
-  }
-
-  & > input {
-    margin: 0 auto;
   }
 `;
 
@@ -39,8 +36,6 @@ const Navigation = () => {
           <FontAwesomeIcon icon={faArrowLeft} />
         </a>
       </Link>
-
-      <CustomSearch name="gameSearch" placeholder="Search Game" />
 
       <Item text="Log in / Register" href="/" />
     </Nav>

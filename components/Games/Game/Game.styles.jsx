@@ -1,14 +1,35 @@
 import styled from 'styled-components';
-import { getColor } from '../../../styles/utils';
+import { getColor, getMedias } from '../../../styles/utils';
 
 const Grid = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  margin: 2rem 20rem;
+  margin: 2rem clamp(2rem, 5vw, 20rem);
   gap: 3rem 10rem;
+
+  @media (max-width: 1600px) {
+    margin: 2rem 1rem;
+  }
+
+  @media (max-width: 650px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const Header = styled.header`
+  @media (max-width: 1400px) {
+    grid-column: span 2;
+  }
+
+  @media (max-width: 650px) {
+    text-align: center;
+  }
+
+  h1 {
+    margin-top: 0;
+  }
+
   & > div {
     display: flex;
   }
@@ -17,6 +38,15 @@ const Header = styled.header`
 const HeaderInfoBox = styled.div`
   text-align: center;
   padding: 2rem 5rem;
+
+  @media (max-width: 650px) {
+    padding: 2rem;
+    margin-inline: auto;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
 
   & + & {
     border-left: 0.3rem solid ${getColor('clr-additional-300')};
@@ -34,6 +64,10 @@ const Info = styled.section`
 `;
 
 const About = styled.article`
+  @media (max-width: 1400px) {
+    grid-row: 2/3;
+  }
+
   & > p {
     margin-top: 5rem;
   }
@@ -53,9 +87,12 @@ const ScreenshotsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-row: span 2;
-  grid-column: 2;
+  grid-column: 2 / 3;
   gap: 2rem;
-  padding: 5rem;
+
+  @media (max-width: ${getMedias('laptop')}) {
+    grid-row: initial;
+  }
 `;
 
 const ViewAll = styled.div`
@@ -94,7 +131,6 @@ const ScreenshotWrapper = styled.div`
 `;
 
 const ScreenshotBig = styled(ScreenshotWrapper)`
-  margin-top: 5rem;
   grid-column: span 2;
 `;
 

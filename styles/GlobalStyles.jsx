@@ -70,18 +70,22 @@ a {
 }
 
 p,a {
-  font-size: clamp(1rem,1vw + 1rem, 2rem);
+  font-size: clamp(0.5rem,3vw + 0.1rem, 2rem);
   line-height: 35px;
 }
 
 h1 {
   font-size: 10rem;
   @media(max-width: ${getMedias('tablet')}) {font-size: 6rem;}  
+  @media(max-width: ${getMedias('mobile')}) {font-size: 4rem;}  
+
 }
 
 h2 {
   font-size: 6rem;
   @media(max-width: ${getMedias('tablet')}) {font-size: 4.5rem;}  
+  @media(max-width: ${getMedias('mobile')}) {font-size: 3.5rem;}  
+
 }
 
 h3 {
@@ -93,11 +97,15 @@ h3 {
 h4 {
   font-size: 3rem;
   @media(max-width: ${getMedias('tablet')}) {font-size: 2rem;}  
+  @media(max-width: ${getMedias('mobile')}) {font-size: 1.5rem;}  
+
 }
 
 h5 {
   font-size: 2.3rem;
   @media(max-width: ${getMedias('tablet')}) {font-size: 1.5rem;}  
+  @media(max-width: ${getMedias('mobile')}) {font-size: 1rem;}  
+
 }
 
 // LISTS
