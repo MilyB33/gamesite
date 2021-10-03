@@ -135,6 +135,14 @@ export const flattenGameData = (data) => {
     developer: filteredCompanies.find((company) => company.developer),
     publisher: filteredCompanies.find((company) => company.publisher),
     videos: game.videos[0],
+    websites: game.websites.filter(
+      (website) =>
+        (website.category === 1 ||
+          website.category === 13 ||
+          website.category === 16 ||
+          website.category === 17) &&
+        website.trusted
+    ),
   };
 };
 

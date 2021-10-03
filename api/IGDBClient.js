@@ -34,7 +34,7 @@ class IGDBClient {
     return this.client
       .post(
         'games',
-        `fields franchises.games.name,game_modes.*,age_ratings.*,involved_companies.*,involved_companies.company.*,summary,follows,name,rating,rating_count,slug,first_release_date,cover.*,platforms.*,genres.name,expansions.name,screenshots.*,themes.*,videos.*; sort rating desc; where slug="${slug}" & themes != (42);`
+        `fields websites.*,collection.games.name,ports,similar_games.name,franchises.name,game_modes.*,age_ratings.*,involved_companies.*,involved_companies.company.*,summary,follows,name,rating,rating_count,slug,first_release_date,cover.*,platforms.*,genres.name,expansions.name,screenshots.*,themes.*,videos.*; sort rating desc; where slug="${slug}" & themes != (42);`
       )
       .then((res) => res.data);
   };

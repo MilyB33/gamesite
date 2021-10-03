@@ -104,6 +104,30 @@ const VideoGrid = styled.section`
   text-align: center;
 `;
 
+const GamesCollectionsWrapper = styled.section`
+  grid-column: ${({ isWide }) => (isWide ? 'span 2' : 'initial')};
+
+  & > p {
+    color: ${getColor('clr-light-300')};
+    margin-bottom: 3rem;
+  }
+
+  & > div {
+    display: flex;
+
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    & > a {
+      transition: 0.3s;
+
+      &:hover {
+        color: ${getColor('clr-light-300')};
+      }
+    }
+  }
+`;
+
 export {
   Grid,
   Header,
@@ -116,4 +140,5 @@ export {
   ScreenshotBig,
   ViewAll,
   VideoGrid,
+  GamesCollectionsWrapper,
 };
