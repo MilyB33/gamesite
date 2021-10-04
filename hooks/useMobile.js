@@ -1,13 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/router';
 
 const useMobile = (mediaQuery, defaultValue) => {
-  const [isMobileDisplayed, setIsMobileDisplayed] = useState();
-
-  const setDefaultValue = () => {
-    if (typeof value !== 'boolean') return;
-
-    setIsMobileDisplayed(defaultValue);
-  };
+  const router = useRouter();
+  const [isMobileDisplayed, setIsMobileDisplayed] =
+    useState(defaultValue);
 
   const handleChange = (event) => {
     if (event.matches) setIsMobileDisplayed(false);
@@ -19,8 +16,16 @@ const useMobile = (mediaQuery, defaultValue) => {
     setIsMobileDisplayed(value);
   };
 
+  const closeMobileMenu = useCallback(() => {
+    setIsMobileDisplayed(false);
+  }, []);
+
+  const openMobileMenu = () => {
+    setIsMobileDisplayed(true);
+  };
+
   useEffect(() => {
-    setDefaultValue();
+    router.events.on('routeChangeComplete', closeMobileMenu);
     const media = window.matchMedia(`(min-width: ${mediaQuery}px)`);
 
     if (media.matches) setIsMobileDisplayed(false);
@@ -29,10 +34,16 @@ const useMobile = (mediaQuery, defaultValue) => {
 
     return () => {
       media.removeEventListener('change', handleChange);
+      router.events.off('routeChangeComplete', closeMobileMenu);
     };
-  }, [mediaQuery]);
+  }, [mediaQuery, router.events, closeMobileMenu]);
 
-  return [isMobileDisplayed, changeOnClick];
+  return {
+    isMobileDisplayed,
+    changeOnClick,
+    closeMobileMenu,
+    openMobileMenu,
+  };
 };
 
 export default useMobile;

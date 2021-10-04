@@ -64,14 +64,11 @@ const ImageWrapper = styled.div`
 `;
 
 const Navigation = () => {
-  const [isMobileDisplayed, changeOnClick] = useMobile('1024', false);
-
-  const onMobileChange = () => {
-    changeOnClick(!isMobileDisplayed);
-  };
+  const { isMobileDisplayed, closeMobileMenu, openMobileMenu } =
+    useMobile('1024', false);
 
   const mobile = isMobileDisplayed && (
-    <MobileMenu onClick={onMobileChange} />
+    <MobileMenu onClick={closeMobileMenu} />
   );
 
   return (
@@ -104,7 +101,7 @@ const Navigation = () => {
         />
       </StyledList>
 
-      <Hamburger onClick={onMobileChange}>
+      <Hamburger onClick={openMobileMenu}>
         <FontAwesomeIcon icon={faBars} />
       </Hamburger>
     </Wrapper>
