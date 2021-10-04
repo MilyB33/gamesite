@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  padding-top: ${({ square }) => (square ? '75%' : '50%')};
+  padding-top: ${({ square }) => (square ? '75%' : '45%')};
 `;
 
 const ImageWrapper = ({ children, className, square }) => {

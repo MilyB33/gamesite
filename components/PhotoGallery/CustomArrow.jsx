@@ -11,9 +11,9 @@ const Arrow = styled.div`
 
   &::before {
     position: absolute;
-    top: 50%;
+    bottom: 300%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     font-size: 5rem;
 
     @media (max-width: ${getMedias('tablet')}) {

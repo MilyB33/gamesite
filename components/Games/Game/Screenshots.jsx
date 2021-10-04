@@ -6,17 +6,36 @@ import {
   ScreenshotWrapper,
   ViewAll,
 } from './Game.styles';
+import PhotoGallery from '../../PhotoGallery/PhotoGallery';
+import Portal from '../../../hoc/Portal';
+import useGallery from '../../../hooks/useGallery';
 
 const Screenshots = ({ screenshots }) => {
+  const { openGallery, closeGallery, activePhoto, isGalleryOpen } =
+    useGallery();
+
   const ViewTooltip = (
     <ViewAll>
       <p>View All</p>
     </ViewAll>
   );
 
+  const gallery = isGalleryOpen && (
+    <PhotoGallery
+      closeGallery={closeGallery}
+      activePhoto={activePhoto}
+      images={screenshots}
+    />
+  );
+
   const renderScreenshots = () =>
     screenshots.slice(1, 5).map((screenshot) => (
-      <ScreenshotWrapper key={screenshot.id}>
+      <ScreenshotWrapper
+        key={screenshot.id}
+        onClick={() => {
+          openGallery(screenshot);
+        }}
+      >
         <Image
           src={screenshot.url}
           alt={screenshot.alt}
@@ -27,18 +46,26 @@ const Screenshots = ({ screenshots }) => {
     ));
 
   return (
-    <ScreenshotsGrid>
-      <ScreenshotBig>
-        <Image
-          src={screenshots[0].url}
-          alt={screenshots[0].alt}
-          layout="fill"
-        />
-        {ViewTooltip}
-      </ScreenshotBig>
+    <>
+      <Portal>{gallery}</Portal>
 
-      {renderScreenshots()}
-    </ScreenshotsGrid>
+      <ScreenshotsGrid>
+        <ScreenshotBig
+          onClick={() => {
+            openGallery(screenshots[0]);
+          }}
+        >
+          <Image
+            src={screenshots[0].url}
+            alt={screenshots[0].alt}
+            layout="fill"
+          />
+          {ViewTooltip}
+        </ScreenshotBig>
+
+        {renderScreenshots()}
+      </ScreenshotsGrid>
+    </>
   );
 };
 

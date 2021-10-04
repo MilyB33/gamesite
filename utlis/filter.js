@@ -7,19 +7,6 @@ const DATE_OPTIONS = {
   month: 'numeric',
 };
 
-const getConnectedData = (res) => {
-  return res.items.map((item) =>
-    item.fields.image1
-      ? {
-          ...item,
-          image1: res.includes.Asset.find(
-            (asset) => asset.sys.id === item.fields.image1.sys.id
-          ),
-        }
-      : item
-  );
-};
-
 const connectAssets = (data) => {
   const { Asset: assets } = data.includes;
   const { items } = data;

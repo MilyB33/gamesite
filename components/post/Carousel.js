@@ -8,6 +8,7 @@ import { getMedias } from '../../styles/utils';
 import CarouselItem from './CarouselItem';
 import Portal from '../../hoc/Portal';
 import PhotoGallery from '../PhotoGallery/PhotoGallery';
+import useGallery from '../../hooks/useGallery';
 
 const settings = {
   vertical: true,
@@ -93,18 +94,8 @@ const SliderWrapper = styled.div`
 `;
 
 const Carousel = ({ images }) => {
-  const [isGallery, setIsGallery] = useState(false);
-  const [activePhoto, setActivePhoto] = useState(null);
-
-  const openGallery = (image) => {
-    setActivePhoto(image);
-    setIsGallery(true);
-  };
-
-  const closeGallery = () => {
-    setIsGallery(false);
-    setActivePhoto(null);
-  };
+  const { openGallery, closeGallery, activePhoto, isGalleryOpen } =
+    useGallery();
 
   const renderImages = () =>
     images.map((image, index) => (
@@ -112,21 +103,20 @@ const Carousel = ({ images }) => {
         image={image}
         key={index}
         openGallery={openGallery}
-        setActive={setActivePhoto}
       />
     ));
 
+  const gallery = isGalleryOpen && (
+    <PhotoGallery
+      closeGallery={closeGallery}
+      activePhoto={activePhoto}
+      images={images}
+    />
+  );
+
   return (
     <>
-      <Portal>
-        {isGallery && (
-          <PhotoGallery
-            closeGallery={closeGallery}
-            activePhoto={activePhoto}
-            images={images}
-          />
-        )}
-      </Portal>
+      <Portal>{gallery}</Portal>
 
       <SliderWrapper>
         <Slider {...settings}>{renderImages()}</Slider>
