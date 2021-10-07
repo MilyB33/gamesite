@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { Grid, Header } from './Game.styles';
-import HeaderInfo from './HeaderInfo';
+import { Grid } from './Game.styles';
+import Header from './Header';
 import GameInfo from './GameInfo';
 import Screenshots from './Screenshots';
 import Video from './Video';
@@ -8,7 +8,6 @@ import GamesCollections from './GamesCollections';
 import { About } from './Game.styles';
 
 const Game = ({ gameData }) => {
-  console.log(gameData);
   const {
     name,
     rating,
@@ -21,14 +20,12 @@ const Game = ({ gameData }) => {
   } = gameData;
   return (
     <Grid>
-      <Header>
-        <h1>{name}</h1>
-        <div>
-          <HeaderInfo text="Rating" value={rating} />
-          <HeaderInfo text="Follows" value={follows} />
-          <HeaderInfo text="Age Rating" value={age_rating[0].name} />
-        </div>
-      </Header>
+      <Header
+        name={name}
+        rating={rating}
+        follows={follows}
+        age_rating={age_rating}
+      />
       <Screenshots screenshots={screenshots} />
       <About>
         <h2>About</h2>

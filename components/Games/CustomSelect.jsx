@@ -49,6 +49,7 @@ const CustomSelect = ({ children, name, filter }) => {
     setSelectValue(event.target.value);
     filter(event);
   };
+
   return (
     <Order>
       <select name={name} value={selectValue} onChange={onChange}>

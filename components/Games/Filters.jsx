@@ -14,13 +14,23 @@ const ViewWrapper = styled.div`
   gap: inherit;
 `;
 
-const Filters = ({ filter, sort, platforms, search }) => {
+const Filters = ({
+  filter,
+  sort,
+  platforms,
+  search,
+  handleView,
+  isList,
+}) => {
   const renderPlatformsOptions = () =>
     platforms.map((platform) => (
       <option value={platform.id} key={platform.id}>
         {platform.abbreviation}
       </option>
     ));
+
+  const setGalleryView = () => handleView(false);
+  const setListView = () => handleView(true);
 
   return (
     <>
@@ -44,11 +54,11 @@ const Filters = ({ filter, sort, platforms, search }) => {
       />
 
       <ViewWrapper>
-        <CustomIcon>
+        <CustomIcon changeView={setListView} isList={isList}>
           <FontAwesomeIcon icon={faThList} />
         </CustomIcon>
 
-        <CustomIcon>
+        <CustomIcon changeView={setGalleryView} isList={!isList}>
           <FontAwesomeIcon icon={faThLarge} />
         </CustomIcon>
       </ViewWrapper>
@@ -61,6 +71,8 @@ Filters.propTypes = {
   filter: PropTypes.func.isRequired,
   platforms: PropTypes.instanceOf(Array).isRequired,
   search: PropTypes.func.isRequired,
+  handleView: PropTypes.func.isRequired,
+  isList: PropTypes.bool.isRequired,
 };
 
 export default Filters;

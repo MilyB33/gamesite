@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { HeaderInfoBox } from './Game.styles';
+import { HeaderInfoBox } from './Header.styles';
 
 const HeaderInfo = ({ text, value }) => {
   return (

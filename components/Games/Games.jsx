@@ -2,8 +2,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { getColor } from '../../styles/utils';
 import SixthCard from './SixthCard/SixthCard';
+import ListCard from './ListCard/ListCard';
 import Filters from './Filters';
 import useFilter from '../../hooks/useFilter';
+import { useState } from 'react';
 
 const Wrapper = styled.main`
   background: ${getColor('clr-dark-200')};
@@ -17,6 +19,7 @@ const Wrapper = styled.main`
 
 const GamesWrapper = styled.section`
   display: flex;
+  flex-direction: ${({ isList }) => (isList ? 'column' : 'initial')};
   flex-wrap: wrap;
   justify-content: center;
 
@@ -34,7 +37,7 @@ const FilterWrapper = styled.section`
 `;
 
 const Games = ({ data: games, platforms }) => {
-  console.log(games);
+  const [isList, setIsList] = useState(true);
 
   const {
     state: { filteredData: filteredGames },
@@ -48,9 +51,14 @@ const Games = ({ data: games, platforms }) => {
       .slice(0, 5)
       .map((game) => <SixthCard key={game.id} game={game} />);
 
-  const renderGames = () =>
+  const renderGridGames = () =>
     filteredGames.map((game) => (
       <SixthCard key={game.id} game={game} />
+    ));
+
+  const renderListGames = () =>
+    filteredGames.map((game) => (
+      <ListCard key={game.id} game={game} />
     ));
 
   return (
@@ -63,10 +71,14 @@ const Games = ({ data: games, platforms }) => {
           filter={filterByPlatform}
           search={filterByName}
           platforms={platforms}
+          handleView={setIsList}
+          isList={isList}
         />
       </FilterWrapper>
 
-      <GamesWrapper>{renderGames()}</GamesWrapper>
+      <GamesWrapper isList={isList}>
+        {isList ? renderListGames() : renderGridGames()}
+      </GamesWrapper>
     </Wrapper>
   );
 };

@@ -74,14 +74,13 @@ const flattenRules = (item) => {
   };
 };
 
-const flattenPlatforms = (platforms) => {
-  return platforms
+const flattenPlatforms = (platforms) =>
+  platforms
     .filter((platform) => platform.abbreviation)
     .map((platform) => ({
       ...platform,
       name: platform.abbreviation,
     }));
-};
 
 const filterAgeRating = (ageRating) =>
   ageRating
@@ -127,7 +126,7 @@ export const flattenGameData = (data) => {
     },
     first_release_date: fixDateFormat(game.first_release_date),
     background: fixURL(
-      game.screenshots[0],
+      game.screenshots[0].url,
       false,
       't_screenshot_huge'
     ),

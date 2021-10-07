@@ -9,7 +9,8 @@ const Icon = styled.div`
 
   & * {
     transition: 0.3s;
-    color: ${getColor('clr-light-300')};
+    color: ${({ isList }) =>
+      isList ? getColor('clr-light-100') : getColor('clr-light-300')};
   }
 
   &:hover * {
@@ -17,8 +18,17 @@ const Icon = styled.div`
   }
 `;
 
-const CustomIcon = ({ children }) => {
-  return <Icon>{children}</Icon>;
+const CustomIcon = ({ children, changeView, isList }) => {
+  return (
+    <Icon onClick={changeView} isList={isList}>
+      {children}
+    </Icon>
+  );
+};
+
+CustomIcon.defaultProps = {
+  changeView: () => {},
+  isList: false,
 };
 
 CustomIcon.propTypes = {
@@ -26,6 +36,8 @@ CustomIcon.propTypes = {
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]),
+  changeView: PropTypes.func,
+  isList: PropTypes.bool,
 };
 
 export default CustomIcon;

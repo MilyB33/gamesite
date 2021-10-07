@@ -33,6 +33,7 @@ gamePage.getLayout = function displayLayout(page, pageProps) {
   const {
     game: { background, name },
   } = pageProps;
+
   return (
     <GameLayout title={name} background={background}>
       {page}

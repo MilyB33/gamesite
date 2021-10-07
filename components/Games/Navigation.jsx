@@ -10,7 +10,7 @@ const Nav = styled.nav`
   align-items: center;
   position: sticky;
   top: 0;
-  width: 100%auto;
+  width: 100%;
   background: transparent;
   padding: 1rem 2rem;
   z-index: 1;

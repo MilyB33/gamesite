@@ -7,6 +7,7 @@ const StyledLink = styled.div`
   position: relative;
 
   & > a {
+    position: relative;
     margin: auto auto 0;
     height: min-content;
     width: min-content;
@@ -19,7 +20,7 @@ const StyledLink = styled.div`
       content: '';
       position: absolute;
       width: 8px;
-      height: 6px;
+      height: 4px;
       background: ${getColor('clr-dark-300')};
       transition: 0.3s;
     }
