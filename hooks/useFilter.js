@@ -1,4 +1,7 @@
 import { useEffect, useReducer, useCallback } from 'react';
+import IGDBClient from '../api/IGDBClient';
+import { flattenGamesData } from '../utlis/filter';
+import { useQuery } from 'react-query';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -84,7 +87,14 @@ const useFilter = (data, platforms) => {
     dispatch({ type: event.target.value });
   };
 
-  const filterByPlatform = (event) => {
+  const filterByPlatform = async (event) => {
+    // const platformID = event.target.value;
+
+    // const res = await IGDBClient.getFilteredGames(platformID);
+
+    // const flattenedGamesData = flattenGamesData(res);
+
+    // console.log(platformID);
     dispatch({
       type: 'PLATFORM',
       payload: parseInt(event.target.value),

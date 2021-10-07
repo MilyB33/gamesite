@@ -70,7 +70,7 @@ a {
 }
 
 p,a {
-  font-size: clamp(0.5rem,3vw + 0.1rem, 2rem);
+  font-size: clamp(0.5rem,3vw + 0.3rem, 2rem);
   line-height: 35px;
 }
 

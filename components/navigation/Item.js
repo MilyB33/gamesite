@@ -20,18 +20,18 @@ const Item = ({ text, href, className }) => {
 };
 
 const Li = styled.li.attrs(({ router, href }) => ({
-  color:
-    router.pathname == href ? 'clr-additional-200' : 'clr-light-100',
-  width: router.pathname == href ? '100%' : '0%',
+  active: router.pathname == href ? true : false,
 }))`
   list-style: none;
 
   * h5 {
-    color: ${({ color }) => getColor(color)};
+    color: ${({ active }) =>
+      active
+        ? getColor('clr-glitch-100')
+        : getColor('clr-glitch-200')};
 
     position: relative;
     padding: 1rem 3rem;
-    -webkit-text-stroke: 1px ${getColor('clr-purple-100')};
     transition: 0.5s;
 
     &::after {
@@ -39,14 +39,14 @@ const Li = styled.li.attrs(({ router, href }) => ({
       position: absolute;
       bottom: 0;
       left: 0;
-      width: ${({ width }) => width};
+      width: ${({ active }) => (active ? '100%' : '0%')};
       height: 0.5rem;
-      background: ${getColor('clr-purple-200')};
+      background: ${getColor('clr-glitch-100')};
       transition: 0.5s;
     }
 
     &:hover {
-      color: ${getColor('clr-purple-200')};
+      color: ${getColor('clr-glitch-100')};
 
       &::after {
         width: 100%;

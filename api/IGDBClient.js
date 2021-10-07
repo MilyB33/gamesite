@@ -30,6 +30,15 @@ class IGDBClient {
       .then((res) => res.data);
   };
 
+  getFilteredGames = async (platformID) => {
+    return this.client
+      .post(
+        'games',
+        `fields follows,name,rating,rating_count,slug,first_release_date,cover.*,platforms.*,genres.name; sort rating desc; where rating_count >= 1000 & themes != (42) & release_dates.platform = 6;`
+      )
+      .then((res) => res.data);
+  };
+
   getExactGame = async (slug) => {
     return this.client
       .post(

@@ -7,6 +7,8 @@ const DATE_OPTIONS = {
   month: 'numeric',
 };
 
+// HELPER FUNCTIONS
+
 const connectAssets = (data) => {
   const { Asset: assets } = data.includes;
   const { items } = data;
@@ -24,25 +26,27 @@ const connectAssets = (data) => {
   });
 };
 
-const flattenRules = (item) => {
-  return {
-    ...item,
-    mainImage: {
-      title: item.mainImage.fields.title,
-      url: `https:${item.mainImage.fields.file.url}`,
-    },
-    galleryImages: item.galleryImages.map((item) => {
-      return {
-        title: item.fields.title,
-        url: `https:${item.fields.file.url}`,
-      };
-    }),
-  };
+const fixURL = (URL, isFormatReplaced = false, size = null) => {
+  let fixedURL = `https:${URL}`;
+
+  if (isFormatReplaced) fixedURL = fixedURL.replace('jpg', 'png');
+  if (size) fixedURL = fixedURL.replace('t_thumb', `${size}`);
+
+  return fixedURL;
 };
 
-const flattenPlatforms = (platforms) => {
-  return platforms.filter((platform) => platform.abbreviation);
-};
+const fixDateFormat = (date) =>
+  new Date(date * 1000).toLocaleString('en-US', DATE_OPTIONS);
+
+const filterWebsites = (websites) =>
+  websites.filter(
+    (website) =>
+      (website.category === 1 ||
+        website.category === 13 ||
+        website.category === 16 ||
+        website.category === 17) &&
+      website.trusted
+  );
 
 const filterCompanies = (companies) => {
   return companies.map((company) => ({
@@ -54,6 +58,43 @@ const filterCompanies = (companies) => {
   }));
 };
 
+const flattenRules = (item) => {
+  return {
+    ...item,
+    mainImage: {
+      title: item.mainImage.fields.title,
+      url: fixURL(item.mainImage.fields.file.url),
+    },
+    galleryImages: item.galleryImages.map((item) => {
+      return {
+        title: item.fields.title,
+        url: fixURL(item.fields.file.url),
+      };
+    }),
+  };
+};
+
+const flattenPlatforms = (platforms) => {
+  return platforms
+    .filter((platform) => platform.abbreviation)
+    .map((platform) => ({
+      ...platform,
+      name: platform.abbreviation,
+    }));
+};
+
+const filterAgeRating = (ageRating) =>
+  ageRating
+    .filter((rating) => rating.category === 2)
+    .map((rating) => ({
+      ...rating,
+      name: ageRatings.find(
+        (ageRating) => ageRating.value === rating.rating
+      ).name,
+    }));
+
+// FILTERING
+
 export const flattenGamesData = (data) => {
   return data.map((game) => ({
     ...game,
@@ -61,14 +102,10 @@ export const flattenGamesData = (data) => {
       id: game.cover.id,
       width: game.cover.width,
       height: game.cover.height,
-      url: `https:${game.cover.url
-        .replace('jpg', 'png')
-        .replace('t_thumb', 't_720p')}`,
+      url: fixURL(game.cover.url, true, 't_720p'),
       alt: game.name,
     },
-    first_release_date: new Date(
-      game.first_release_date * 1000
-    ).toLocaleString('en-US', DATE_OPTIONS),
+    first_release_date: fixDateFormat(game.first_release_date),
   }));
 };
 
@@ -85,51 +122,28 @@ export const flattenGameData = (data) => {
       id: game.cover.id,
       width: game.cover.width,
       height: game.cover.height,
-      url: `https:${game.cover.url
-        .replace('jpg', 'png')
-        .replace('t_thumb', 't_720p')}`,
+      url: fixURL(game.cover.url, true, 't_720p'),
       alt: game.name,
     },
-    first_release_date: new Date(
-      game.first_release_date * 1000
-    ).toLocaleString('en-US', DATE_OPTIONS),
-    background: `https:${game.screenshots[0].url.replace(
-      't_thumb',
+    first_release_date: fixDateFormat(game.first_release_date),
+    background: fixURL(
+      game.screenshots[0],
+      false,
       't_screenshot_huge'
-    )}`,
+    ),
     screenshots: game.screenshots.map((screenshot) => ({
       ...screenshot,
-      url: `https:${screenshot.url.replace(
-        't_thumb',
-        't_screenshot_big'
-      )}`,
+      url: fixURL(screenshot.url, false, 't_screenshot_big'),
       alt: game.name,
     })),
     rating: Math.floor(game.rating),
-    age_rating: age_ratings
-      .filter((rating) => rating.category === 2)
-      .map((rating) => ({
-        ...rating,
-        name: ageRatings.find(
-          (ageRating) => ageRating.value === rating.rating
-        ).name,
-      })),
-    platforms: flattenPlatforms(game.platforms).map((platform) => ({
-      ...platform,
-      name: platform.abbreviation,
-    })),
+    age_rating: filterAgeRating(age_ratings),
+    platforms: flattenPlatforms(game.platforms),
     involved_companies: filteredCompanies,
     developer: filteredCompanies.find((company) => company.developer),
     publisher: filteredCompanies.find((company) => company.publisher),
     videos: game.videos[0],
-    websites: game.websites.filter(
-      (website) =>
-        (website.category === 1 ||
-          website.category === 13 ||
-          website.category === 16 ||
-          website.category === 17) &&
-        website.trusted
-    ),
+    websites: filterWebsites(game.websites),
   };
 };
 

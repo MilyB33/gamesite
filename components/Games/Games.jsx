@@ -34,6 +34,8 @@ const FilterWrapper = styled.section`
 `;
 
 const Games = ({ data: games, platforms }) => {
+  console.log(games);
+
   const {
     state: { filteredData: filteredGames },
     sortGames,
