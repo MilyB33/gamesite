@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Image from 'next/image';
-import ImageWrapper from '../all/ImageWrapper';
+import ImageWrapper from '../Generic/ImageWrapper';
 
 const CarouselItem = ({ image }) => {
   const { url, title } = image;

@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
 import { getMedias, getMixins } from '../../styles/utils';
 import CarouselItem from './CarouselItem';
-import ImageWrapper from '../all/ImageWrapper';
+import ImageWrapper from '../Generic/ImageWrapper';
 import Image from 'next/image';
 import CustomArrow from './CustomArrow';
 

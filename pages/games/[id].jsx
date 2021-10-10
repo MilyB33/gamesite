@@ -2,7 +2,6 @@ import IGDBClient from '../../api/IGDBClient';
 import {
   flattenGamesData,
   flattenGameData,
-  getExactGame,
 } from '../../utlis/filter';
 import Game from '../../components/Games/Game';
 import GameLayout from '../../components/Layouts/GameLayout';

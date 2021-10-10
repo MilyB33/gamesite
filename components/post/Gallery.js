@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import { getMedias } from '../../styles/utils';
-import ImageWrapper from '../all/ImageWrapper';
+import ImageWrapper from '../Generic/ImageWrapper';
 import Carousel from './Carousel';
 
 const Wrapper = styled.section`

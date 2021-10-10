@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearchPlus } from '@fortawesome/free-solid-svg-icons';
-import ImageWrapper from '../all/ImageWrapper';
+import ImageWrapper from '../Generic/ImageWrapper';
 import { getMixins, getColor } from '../../styles/utils';
 
 const StyledImageWrapper = styled(ImageWrapper)`

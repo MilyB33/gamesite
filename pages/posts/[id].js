@@ -3,7 +3,7 @@ import {
   getExactPost,
   flattenArticlesData,
 } from '../../utlis/filter';
-import Layout from '../../components/Layout';
+import Layout from '../../components/Layouts/Layout';
 import PostWrapper from '../../components/post/Post';
 
 const Post = ({ post }) => <PostWrapper post={post} />;

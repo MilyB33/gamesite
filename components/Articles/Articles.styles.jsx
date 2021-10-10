@@ -64,7 +64,7 @@ const Card = styled.section`
     gap: 2rem;
     width: 100%;
     height: 100%;
-    padding: 2rem 0;
+    padding: 2rem;
     transition: 0.3s;
   }
 

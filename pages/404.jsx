@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Navigation from '../components/navigation/Navigation';
+import Navigation from '../components/Navigation';
 import { getAnimation, getColor, getMedias } from '../styles/utils';
 
 import Link from 'next/link';
