@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { getColor, getMedias } from '../../../styles/utils';
-import LinkBorder from '../../all/Link';
+import LinkBorder from '../../Generic/Link';
 
 const Card = styled.article`
   --imageColumnWidth: 20%;

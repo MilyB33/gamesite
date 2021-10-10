@@ -1,7 +1,35 @@
-import React from 'react';
 import styled from 'styled-components';
-import { getMedias } from '../../styles/utils';
-import Link from 'next/link';
+import { getColor, getMedias } from '../../styles/utils';
+
+const ArticlesWrapper = styled.main`
+  display: grid;
+  grid-auto-rows: 500px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
+  min-height: 100vh;
+  padding: 5em 18em;
+  background: ${getColor('clr-light-100')};
+
+  @media (max-width: ${getMedias('1400')}) {
+    padding: 5em 10em;
+  }
+
+  @media (max-width: ${getMedias('desktop')}) {
+    padding: 5em;
+  }
+
+  @media (max-width: ${getMedias('laptop')}) {
+    padding: 3em;
+    gap: 3em;
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: ${getMedias('mobile')}) {
+    padding: 1em;
+    gap: 2.5em;
+    grid-auto-rows: 300px;
+  }
+`;
 
 const Card = styled.section`
   box-shadow: 5px 5px 0px 0px #0a0a0a, 10px 10px 0px 0px #2a2829,
@@ -59,18 +87,4 @@ const Card = styled.section`
   }
 `;
 
-const ArticleCard = ({ card }) => {
-  console.log(card);
-  return (
-    <Card bg={card.mainImage.url}>
-      <Link href={`posts/${card.slug}`}>
-        <a>
-          <h5>{card.createDate}</h5>
-          <h5>{card.title}</h5>
-        </a>
-      </Link>
-    </Card>
-  );
-};
-
-export default ArticleCard;
+export { ArticlesWrapper, Card };

@@ -1,18 +1,13 @@
-import _ from 'lodash';
-import Layout from '../components/Layout';
+import Layout from '../components/Layouts/Layout';
 import IGDBClient from '../api/IGDBClient';
 import { homeArticles } from '../utlis/filter';
-import Header from '../components/homePage/HeaderMain';
-import Platforms from '../components/homePage/Platforms';
-import Latest from '../components/homePage/Latest';
+import HomePageView from '../components/Views/HomePageView';
 import ContentfulClient from '../api/contentful';
 
-export default function Home({ platforms, articleCards }) {
+export default function Home({ homePageData }) {
   return (
     <>
-      <Header />
-      <Platforms platforms={platforms} />
-      <Latest data={articleCards} />
+      <HomePageView homePageData={homePageData} />
     </>
   );
 }
@@ -26,10 +21,14 @@ export async function getStaticProps() {
 
   const articleCards = homeArticles(res);
 
+  const homePageData = {
+    platforms,
+    articleCards,
+  };
+
   return {
     props: {
-      platforms,
-      articleCards,
+      homePageData,
     },
   };
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import Articles from '../components/articles/Articles';
-import LayoutSub from '../components/LayoutSub';
+import Articles from '../components/Articles/Articles';
+import LayoutSub from '../components/Layouts/LayoutSub';
 import ContentfulClient from '../api/contentful';
 import { flattenArticlesData } from '../utlis/filter';
 

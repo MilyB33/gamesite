@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { Card } from '../FlipCard/Common';
 import { getColor } from '../../../styles/utils';
-import ImageWrapper from '../../all/ImageWrapper';
-import LinkBorder from '../../all/Link';
+import ImageWrapper from '../../Generic/ImageWrapper';
+import LinkBorder from '../../Generic/Link';
 
 const StyledImageWrapper = styled(ImageWrapper)`
   padding-top: 110%;

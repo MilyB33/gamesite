@@ -1,5 +1,5 @@
 import React from 'react';
-import LayoutSub from '../components/LayoutSub';
+import LayoutSub from '../components/Layouts/LayoutSub';
 import IGDBClient from '../api/IGDBClient';
 import Games from '../components/Games/Games';
 import { flattenGamesData } from '../utlis/filter';
