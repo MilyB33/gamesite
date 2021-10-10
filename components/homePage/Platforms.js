@@ -17,6 +17,7 @@ const PlatformsWrapper = styled.div`
   justify-content: center;
   gap: 5rem;
   margin-top: 5em;
+  padding: 0 5rem;
 
   @media (max-width: ${getMedias('tablet')}) {
     gap: 2em;

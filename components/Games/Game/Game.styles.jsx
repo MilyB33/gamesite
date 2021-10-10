@@ -15,6 +15,10 @@ const Grid = styled.section`
     display: flex;
     flex-direction: column;
   }
+
+  @media (max-width: 1400px) {
+    gap: 3rem 2rem;
+  }
 `;
 
 const Info = styled.section`
@@ -102,6 +106,10 @@ const VideoGrid = styled.section`
 
 const GamesCollectionsWrapper = styled.section`
   grid-column: ${({ isWide }) => (isWide ? 'span 2' : 'initial')};
+
+  @media (max-width: 1400px) {
+    grid-column: span 2;
+  }
 
   & > p {
     color: ${getColor('clr-light-300')};

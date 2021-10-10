@@ -18,7 +18,9 @@ export default function Home({ platforms, articleCards }) {
 }
 
 export async function getStaticProps() {
-  const platforms = await IGDBClient.getPlatforms([5, 6, 7, 11, 34]);
+  const platforms = await IGDBClient.getPlatforms([
+    8, 167, 48, 9, 46, 12, 49, 169, 6, 34, 41, 534,
+  ]);
 
   const res = await ContentfulClient.getAllArticlesCards();
 

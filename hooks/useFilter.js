@@ -2,6 +2,7 @@ import { useEffect, useReducer, useCallback } from 'react';
 import IGDBClient from '../api/IGDBClient';
 import { flattenGamesData } from '../utlis/filter';
 import { useQuery } from 'react-query';
+import { useRouter } from 'next/router';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -78,6 +79,7 @@ const reducer = (state, action) => {
 };
 
 const useFilter = (data, platforms) => {
+  const router = useRouter();
   const [state, dispatch] = useReducer(reducer, {
     data,
     filteredData: data,
@@ -95,16 +97,27 @@ const useFilter = (data, platforms) => {
     // const flattenedGamesData = flattenGamesData(res);
 
     // console.log(platformID);
+
     dispatch({
       type: 'PLATFORM',
       payload: parseInt(event.target.value),
     });
   };
 
-  const setDefaultFilter = useCallback(() => {
+  const setDefaultFilter = useCallback(async () => {
+    // This will be changed later to in navigation links
+    const platformID = router.query.platform
+      ? parseInt(router.query.platform)
+      : 6;
+
+    console.log(platformID);
     dispatch({ type: 'POPULARITY_ASC' });
-    dispatch({ type: 'PLATFORM', payload: platforms[0].id });
-  }, [platforms]);
+
+    dispatch({
+      type: 'PLATFORM',
+      payload: platformID,
+    });
+  }, [router]);
 
   const filterByName = (event) => {
     dispatch({ type: 'SEARCH', payload: event.target.value });
