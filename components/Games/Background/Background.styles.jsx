@@ -20,8 +20,8 @@ const Wrapper = styled.div`
     background: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.53) 0%,
-      rgba(38, 38, 38, 0.96) 70%,
-      rgba(38, 38, 38, 0.99) 76.83%
+      rgba(38, 38, 38, 0.96) 30%,
+      rgba(38, 38, 38, 1) 80.83%
     );
   }
 `;

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { getColor } from '../../styles/utils';
+import { getColor, getMedias } from '../../styles/utils';
 import SixthCard from './SixthCard/SixthCard';
 import ListCard from './ListCard/ListCard';
 import Filters from './Filters';
@@ -25,6 +25,10 @@ const GamesWrapper = styled.section`
 
   padding: 5rem 4rem;
   gap: 5rem;
+
+  @media (max-width: ${getMedias('mobile')}) {
+    padding: 5rem 2rem;
+  }
 `;
 
 const FilterWrapper = styled.section`
