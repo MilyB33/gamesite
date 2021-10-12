@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import Navigation from '../Games/Navigation';
 import Head from 'next/head';
-import Background from '../Games/Background';
+import Background from '../Games/Game/Background';
 
 const GameLayout = ({ children, title, background }) => {
   return (

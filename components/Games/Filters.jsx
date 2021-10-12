@@ -8,6 +8,7 @@ import {
   faThLarge,
 } from '@fortawesome/free-solid-svg-icons';
 import CustomIcon from './CustomIcon';
+import { FilterWrapper } from './Games.styles';
 
 const ViewWrapper = styled.div`
   display: inherit;
@@ -33,7 +34,7 @@ const Filters = ({
   const setListView = () => handleView(true);
 
   return (
-    <>
+    <FilterWrapper>
       <CustomSelect name="order" filter={sort}>
         <option value="POPULARITY_ASC">Popularity asc</option>
         <option value="POPULARITY_DESC">Popularity desc</option>
@@ -62,7 +63,7 @@ const Filters = ({
           <FontAwesomeIcon icon={faThLarge} />
         </CustomIcon>
       </ViewWrapper>
-    </>
+    </FilterWrapper>
   );
 };
 

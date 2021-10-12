@@ -1,12 +1,12 @@
 import React from 'react';
 import LayoutSub from '../components/Layouts/LayoutSub';
 import IGDBClient from '../api/IGDBClient';
-import Games from '../components/Games/Games';
+import GamesView from '../components/Views/GamesView';
 import { flattenGamesData } from '../utlis/filter';
 
 const GamesPage = ({ games, platforms }) => (
   <>
-    <Games data={games} platforms={platforms} />
+    <GamesView games={games} platforms={platforms} />
   </>
 );
 

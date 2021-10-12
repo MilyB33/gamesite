@@ -1,7 +1,4 @@
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Image from 'next/image';
-import { Card } from '../FlipCard/Common';
 import { getColor } from '../../../styles/utils';
 import ImageWrapper from '../../Generic/ImageWrapper';
 import LinkBorder from '../../Generic/Link';
@@ -41,13 +38,17 @@ const StyledLink = styled(LinkBorder)`
   background: ${getColor('clr-dark-200')};
 `;
 
-const StyledCard = styled(Card)`
+const Card = styled.article`
+  position: relative;
+  min-height: 450px;
   width: 100%;
+  max-width: 307px;
+  display: grid;
+  gap: 1rem;
   background: ${getColor('clr-dark-200')};
   padding: 0 0 2rem 0;
   border-radius: 15px;
   overflow: hidden;
-  cursor: initial;
   transition: 0.3s;
 
   & > h4 {
@@ -68,27 +69,4 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const GameCard = ({ game }) => {
-  const {
-    cover: { url, alt },
-    slug,
-  } = game;
-
-  return (
-    <StyledCard>
-      <StyledImageWrapper>
-        <Image src={url} alt={alt} layout="fill" quality={100} />
-      </StyledImageWrapper>
-
-      <h4>{game.name}</h4>
-
-      <StyledLink slug={slug}>More</StyledLink>
-    </StyledCard>
-  );
-};
-
-GameCard.propTypes = {
-  game: PropTypes.instanceOf(Object).isRequired,
-};
-
-export default GameCard;
+export { StyledImageWrapper, StyledLink, Card };

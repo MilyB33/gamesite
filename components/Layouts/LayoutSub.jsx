@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Header from '../subPages/Header';
+import Header from '../SubPagesHero/Header';
 import Layout from './Layout';
 
 const LayoutSub = ({ children, title }) => {
