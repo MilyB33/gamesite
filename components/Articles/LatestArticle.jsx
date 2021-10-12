@@ -4,15 +4,15 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  ArticleCard,
+  LatestArticleCard,
   Date,
   StyledImage,
   StyledLink,
-} from './HomePage.styles';
+} from './Articles.styles';
 
 const LatestArticle = ({ article }) => {
   return (
-    <ArticleCard>
+    <LatestArticleCard>
       <StyledImage>
         <Image
           src={article.mainImage.url}
@@ -28,7 +28,7 @@ const LatestArticle = ({ article }) => {
           <FontAwesomeIcon icon={faArrowRight} />
         </StyledLink>
       </Link>
-    </ArticleCard>
+    </LatestArticleCard>
   );
 };
 

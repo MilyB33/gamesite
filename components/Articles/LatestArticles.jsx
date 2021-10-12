@@ -1,5 +1,8 @@
 import LatestArticle from './LatestArticle';
-import { LatestSection, ArticlesWrapper } from './HomePage.styles';
+import {
+  LatestSection,
+  LatestArticlesWrapper,
+} from './Articles.styles';
 
 function Latest({ data }) {
   // Index should be changed
@@ -11,7 +14,9 @@ function Latest({ data }) {
   return (
     <LatestSection>
       <h2>Latest</h2>
-      <ArticlesWrapper>{renderArticles()}</ArticlesWrapper>
+      <LatestArticlesWrapper>
+        {renderArticles()}
+      </LatestArticlesWrapper>
     </LatestSection>
   );
 }

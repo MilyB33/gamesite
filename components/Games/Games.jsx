@@ -53,7 +53,7 @@ const Games = ({ games, platforms }) => {
 };
 
 Games.propTypes = {
-  data: PropTypes.instanceOf(Array).isRequired,
+  games: PropTypes.instanceOf(Array).isRequired,
   platforms: PropTypes.instanceOf(Array).isRequired,
 };
 

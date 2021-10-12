@@ -3,7 +3,7 @@ import Platform from './Platform';
 import {
   PlatformsSection,
   PlatformsWrapper,
-} from './HomePage.styles';
+} from './Platforms.styles';
 
 const renderPlatforms = (platforms) =>
   platforms.map((platform) => (

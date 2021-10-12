@@ -3,10 +3,10 @@ import {
   flattenGamesData,
   flattenGameData,
 } from '../../utlis/filter';
-import Game from '../../components/Games/Game';
+import GameView from '../../components/Views/GameView';
 import GameLayout from '../../components/Layouts/GameLayout';
 
-const gamePage = ({ game }) => <Game gameData={game} />;
+const gamePage = ({ game }) => <GameView gameData={game} />;
 
 export async function getStaticPaths() {
   const res = await IGDBClient.getAllGames();

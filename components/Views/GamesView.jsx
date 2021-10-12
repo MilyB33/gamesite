@@ -11,7 +11,7 @@ const GamesView = ({ games, platforms }) => {
 };
 
 GamesView.propTypes = {
-  data: PropTypes.instanceOf(Array).isRequired,
+  games: PropTypes.instanceOf(Array).isRequired,
   platforms: PropTypes.instanceOf(Array).isRequired,
 };
 

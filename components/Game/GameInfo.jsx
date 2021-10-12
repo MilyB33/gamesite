@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import InfoWrapper from './InfoWrapper';
-import { Info, About } from './Game.styles';
-import { arrayToString } from '../../../utlis/filter';
+import { Info } from './Game.styles';
+import { arrayToString } from '../../utlis/filter';
 
 const GameInfo = ({ game }) => {
   const {

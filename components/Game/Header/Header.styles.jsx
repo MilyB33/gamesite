@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getColor } from '../../../../styles/utils';
+import { getColor } from '../../../styles/utils';
 
 const Header = styled.header`
   @media (max-width: 1400px) {

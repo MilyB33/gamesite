@@ -6,9 +6,9 @@ import {
   ScreenshotWrapper,
   ViewAll,
 } from './Game.styles';
-import PhotoGallery from '../../PhotoGallery/PhotoGallery';
-import Portal from '../../../hoc/Portal';
-import useGallery from '../../../hooks/useGallery';
+import PhotoGallery from '../PhotoGallery/PhotoGallery';
+import Portal from '../../hoc/Portal';
+import useGallery from '../../hooks/useGallery';
 
 const Screenshots = ({ screenshots }) => {
   const { openGallery, closeGallery, activePhoto, isGalleryOpen } =

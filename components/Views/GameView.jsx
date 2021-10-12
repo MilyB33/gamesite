@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import { Grid } from './Game.styles';
-import Header from './Header';
-import GameInfo from './GameInfo';
-import Screenshots from './Screenshots';
-import Video from './Video';
-import GamesCollections from './GamesCollections';
-import { About } from './Game.styles';
+import { GameGrid } from './Views.styles';
+import Header from '../Game/Header';
+import GameInfo from '../Game/GameInfo';
+import Screenshots from '../Game/Screenshots';
+import Video from '../Game/Video';
+import GamesCollections from '../Game/GamesCollections';
+import About from '../Game/About';
 
 const Game = ({ gameData }) => {
   const {
@@ -19,7 +19,7 @@ const Game = ({ gameData }) => {
     collection: { games: collection_games },
   } = gameData;
   return (
-    <Grid>
+    <GameGrid>
       <Header
         name={name}
         rating={rating}
@@ -27,10 +27,7 @@ const Game = ({ gameData }) => {
         age_rating={age_rating}
       />
       <Screenshots screenshots={screenshots} />
-      <About>
-        <h2>About</h2>
-        <p>{summary}</p>
-      </About>
+      <About summary={summary} />
       <GameInfo game={gameData} />
       <Video video={screenshots[0]} />
       <GamesCollections games={similar_games} type="Similar games" />
@@ -39,7 +36,7 @@ const Game = ({ gameData }) => {
         type="Games from collection"
         isWide
       />
-    </Grid>
+    </GameGrid>
   );
 };
 

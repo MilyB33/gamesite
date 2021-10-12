@@ -1,6 +1,6 @@
-import Header from '../HomePage/HeaderMain';
-import Platforms from '../HomePage/Platforms';
-import Latest from '../HomePage/Latest';
+import Header from '../HeaderHome/HeaderHome';
+import Platforms from '../Platforms/Platforms';
+import Latest from '../Articles/LatestArticles';
 
 const HomePageView = ({ homePageData }) => {
   const { platforms, articleCards } = homePageData;

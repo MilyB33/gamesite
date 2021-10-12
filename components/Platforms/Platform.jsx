@@ -1,4 +1,4 @@
-import { PlatformCard } from './HomePage.styles';
+import { PlatformCard } from './Platforms.styles';
 import Link from 'next/link';
 
 const Platform = ({ platform }) => {

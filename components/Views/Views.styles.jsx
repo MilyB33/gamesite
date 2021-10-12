@@ -11,4 +11,24 @@ const GamesPageWrapper = styled.main`
   }
 `;
 
-export { GamesPageWrapper };
+const GameGrid = styled.section`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 2rem clamp(2rem, 5vw, 20rem);
+  gap: 3rem 10rem;
+
+  @media (max-width: 1600px) {
+    margin: 2rem 1rem;
+  }
+
+  @media (max-width: 650px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 1400px) {
+    gap: 3rem 2rem;
+  }
+`;
+
+export { GamesPageWrapper, GameGrid };
