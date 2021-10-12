@@ -4,7 +4,7 @@ import {
   flattenArticlesData,
 } from '../../utlis/filter';
 import Layout from '../../components/Layouts/Layout';
-import PostWrapper from '../../components/post/Post';
+import PostWrapper from '../../components/Post/Post';
 
 const Post = ({ post }) => <PostWrapper post={post} />;
 

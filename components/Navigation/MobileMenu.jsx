@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Portal from '../../hooks/Portal';
+import Portal from '../../hoc/Portal';
 import Item from './Item';
 import Button from '../Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Image from 'next/dist/client/image';
+import Image from 'next/image';
 import headerSub from '../../assets/headerSub.png';
 import { getColor, getMedias } from '../../styles/utils';
 import Link from 'next/dist/client/link';
@@ -8,8 +8,6 @@ import Link from 'next/dist/client/link';
 const HeaderWrapper = styled.header`
   position: relative;
   width: 100%;
-  background: ${getColor('clr-dark-100')};
-  box-shadow: 0 2px 32px ${getColor('clr-dark-100')};
 
   @media (max-width: ${getMedias('laptop')}) {
     padding-top: 7rem;
@@ -17,6 +15,25 @@ const HeaderWrapper = styled.header`
 
   @media (max-width: ${getMedias('mobile')}) {
     padding-top: 10em;
+  }
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
+
+  &::after {
+    content: '';
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.53) 0%,
+      rgba(0, 0, 0, 0.6) 90%,
+      rgba(0, 0, 0, 0.8) 99.83%
+    );
   }
 `;
 
@@ -34,12 +51,12 @@ const HeaderText = styled.div`
   word-spacing: 1em;
 
   & > h2 {
-    -webkit-text-stroke: 3px ${getColor('clr-purple-100')};
+    text-shadow: 3px 3px 16px ${getColor('clr-glitch-200')};
     margin-bottom: auto;
   }
 
-  & :is(h5, a) {
-    -webkit-text-stroke: 1px ${getColor('clr-purple-100')};
+  & *:is(h5, a) {
+    text-shadow: 3px 3px 16px ${getColor('clr-glitch-200')};
   }
 
   & > span {
@@ -53,7 +70,10 @@ const HeaderText = styled.div`
 const Header = ({ title }) => {
   return (
     <HeaderWrapper>
-      <Image src={headerSub} alt="header" />
+      <ImageWrapper>
+        <Image src={headerSub} alt="header" />
+      </ImageWrapper>
+
       <HeaderText>
         <h2>{title}</h2>
         <span>

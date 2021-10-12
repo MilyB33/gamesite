@@ -39,7 +39,8 @@ button {
 }
 
 input,
-select {
+select,
+textarea {
   border: none;
   background-color: transparent;
   font-family: inherit;
@@ -48,6 +49,7 @@ select {
   line-height: inherit;
   padding: 0;
   margin: 0;
+  resize: none;
 }
 
 select
