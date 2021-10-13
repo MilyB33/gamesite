@@ -42,8 +42,8 @@ const Order = styled.div`
   }
 `;
 
-const CustomSelect = ({ children, name, filter }) => {
-  const [selectValue, setSelectValue] = useState('');
+const CustomSelect = ({ children, name, filter, defaultValue }) => {
+  const [selectValue, setSelectValue] = useState(defaultValue);
 
   const onChange = (event) => {
     setSelectValue(event.target.value);
@@ -59,12 +59,20 @@ const CustomSelect = ({ children, name, filter }) => {
   );
 };
 
+CustomSelect.defaultProps = {
+  defaultValue: '',
+};
+
 CustomSelect.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]).isRequired,
   name: PropTypes.string.isRequired,
+  defaultValue: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
 };
 
 export default CustomSelect;

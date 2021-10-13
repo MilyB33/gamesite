@@ -32,7 +32,7 @@ const Form = styled.form`
 
 const IconWrapper = styled.div`
   grid-column: span 2;
-  font-size: clamp(6rem, 15vw, 20rem);
+  font-size: clamp(6rem, 12vw, 20rem);
   margin: 0 auto;
 
   @media (max-width: ${getMedias('tablet')}) {

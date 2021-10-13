@@ -9,6 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import CustomIcon from './CustomIcon';
 import { FilterWrapper } from './Games.styles';
+import { useRouter } from 'next/router';
 
 const ViewWrapper = styled.div`
   display: inherit;
@@ -23,6 +24,7 @@ const Filters = ({
   handleView,
   isList,
 }) => {
+  const router = useRouter();
   const renderPlatformsOptions = () =>
     platforms.map((platform) => (
       <option value={platform.id} key={platform.id}>
@@ -44,7 +46,11 @@ const Filters = ({
         <option value="NAME_DESC">Name desc</option>
       </CustomSelect>
 
-      <CustomSelect name="platform" filter={filter}>
+      <CustomSelect
+        name="platform"
+        filter={filter}
+        defaultValue={router.query.platform}
+      >
         {renderPlatformsOptions()}
       </CustomSelect>
 

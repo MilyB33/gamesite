@@ -5,6 +5,7 @@ import Filters from './Filters';
 import useFilter from '../../hooks/useFilter';
 import { useState } from 'react';
 import { GamesWrapper } from './Games.styles';
+import { useEffect } from 'react';
 
 const Games = ({ games, platforms }) => {
   const [isList, setIsList] = useState(false);

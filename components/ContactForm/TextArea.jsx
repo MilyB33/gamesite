@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { getMedias } from '../../styles/utils';
+import { getColor, getMedias } from '../../styles/utils';
 
 const Label = styled.label`
   width: clamp(10rem, 15vw, 40rem);
@@ -8,6 +8,7 @@ const Label = styled.label`
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap: 1rem;
 
   @media (max-width: ${getMedias('tablet')}) {
     grid-row: 3;
@@ -22,6 +23,15 @@ const Textarea = styled.textarea`
   box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 4px,
     rgba(0, 0, 0, 0.5) 0px 7px 13px -3px,
     rgba(0, 0, 0, 0.4) 0px -3px 0px inset;
+
+  &::placeholder {
+    transition: 0.3s;
+  }
+
+  &:hover::placeholder,
+  &:focus::placeholder {
+    color: ${getColor('clr-light-100')};
+  }
 `;
 
 const Input = ({ id, placeholder, text }) => {

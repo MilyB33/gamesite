@@ -90,14 +90,6 @@ const useFilter = (data, platforms) => {
   };
 
   const filterByPlatform = async (event) => {
-    // const platformID = event.target.value;
-
-    // const res = await IGDBClient.getFilteredGames(platformID);
-
-    // const flattenedGamesData = flattenGamesData(res);
-
-    // console.log(platformID);
-
     dispatch({
       type: 'PLATFORM',
       payload: parseInt(event.target.value),
