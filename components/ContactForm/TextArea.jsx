@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { getColor, getMedias } from '../../styles/utils';
 
@@ -34,23 +35,45 @@ const Textarea = styled.textarea`
   }
 `;
 
-const Input = ({ id, placeholder, text }) => {
+const Input = ({ id, placeholder, text, validate }) => {
+  const [inputValue, setInputValue] = useState('');
+  const [toolTipText, setToolTipText] = useState('');
+  const [isValid, setIsValid] = useState(true);
+
+  const onChangeValue = (event) => {
+    setInputValue(event.target.value);
+
+    const info = validate(event);
+
+    setToolTipText(info.message);
+    setIsValid(info.valid);
+  };
+
   return (
     <Label htmlFor={id}>
       <p>{text}</p>
-      <Textarea id={id} placeholder={placeholder} />
+
+      <Textarea
+        id={id}
+        name={id}
+        placeholder={placeholder}
+        value={inputValue}
+        onChange={onChangeValue}
+      />
     </Label>
   );
 };
 
 Input.defaultProps = {
   placeholder: '',
+  validate: () => {},
 };
 
 Input.propTypes = {
   id: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   text: PropTypes.string.isRequired,
+  validate: PropTypes.func,
 };
 
 export default Input;

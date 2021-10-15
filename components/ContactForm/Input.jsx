@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import styled from 'styled-components';
-import { getMedias, getColor } from '../../styles/utils';
+import { getColor } from '../../styles/utils';
 
 const Label = styled.label`
   width: clamp(10rem, 15vw, 40rem);
@@ -27,23 +28,40 @@ const StyledInput = styled.input`
   }
 `;
 
-const Input = ({ id, placeholder, text }) => {
+const Input = ({ id, placeholder, text, validate }) => {
+  const [inputValue, setInputValue] = useState('');
+
+  const onChangeValue = (event) => {
+    setInputValue(event.target.value);
+
+    validate(event);
+  };
+
   return (
     <Label htmlFor={id}>
       <p>{text}</p>
-      <StyledInput type="text" id={id} placeholder={placeholder} />
+      <StyledInput
+        type="text"
+        name={id}
+        id={id}
+        placeholder={placeholder}
+        value={inputValue}
+        onChange={onChangeValue}
+      />
     </Label>
   );
 };
 
 Input.defaultProps = {
   placeholder: '',
+  validate: () => {},
 };
 
 Input.propTypes = {
   id: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   text: PropTypes.string.isRequired,
+  validate: PropTypes.func,
 };
 
 export default Input;
