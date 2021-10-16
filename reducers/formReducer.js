@@ -14,6 +14,7 @@ const formReducer = (state, action) => {
         [action.payload.name]: {
           ...state[action.payload.name],
           valid: action.payload.value,
+          message: action.payload.message,
         },
       };
     default:

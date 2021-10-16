@@ -17,6 +17,7 @@ const Form = styled.form`
     rgba(0, 0, 0, 0.5) 0px 7px 13px -3px,
     rgba(0, 0, 0, 0.4) 0px -3px 0px inset;
   font-size: 2rem;
+  background: ${getColor('clr-dark-200')};
 
   @media (max-width: ${getMedias('laptop')}) {
     margin: 5rem 5vw;
@@ -32,7 +33,7 @@ const Form = styled.form`
 `;
 
 const IconWrapper = styled.div`
-  --shadowColor: ${getColor('clr-dark-100')};
+  --shadowColor: ${getColor('clr-light-100')};
   --shadow: 0px 0px 8px var(--shadowColor);
 
   display: flex;
@@ -41,7 +42,7 @@ const IconWrapper = styled.div`
   font-size: clamp(6rem, 12vw, 20rem);
 
   & path {
-    fill: ${getColor('clr-dark-200')};
+    fill: ${getColor('clr-light-200')};
     -webkit-filter: drop-shadow(var(--shadow));
     stroke: var(--shadowColor);
     filter: drop-shadow(var(--shadow));
@@ -53,11 +54,17 @@ const IconWrapper = styled.div`
 
   @media (max-width: ${getMedias('tablet')}) {
     grid-column: initial;
+    flex-direction: column;
+    text-align: center;
   }
 `;
 
 const ContactForm = () => {
-  const { isValidated, onSubmit, validate } = useValidation();
+  const {
+    onSubmit,
+    getValue,
+    state: { name, email, message },
+  } = useValidation();
 
   return (
     <Form onSubmit={onSubmit}>
@@ -70,21 +77,24 @@ const ContactForm = () => {
         id="name"
         placeholder="Name"
         text="Name :"
-        validate={validate}
+        getValue={getValue}
+        validation={name}
       />
 
       <TextArea
         id="message"
         placeholder="Message"
         text="Message"
-        validate={validate}
+        getValue={getValue}
+        validation={message}
       />
 
       <Input
         id="email"
         placeholder="Email"
         text="Email :"
-        validate={validate}
+        getValue={getValue}
+        validation={email}
       />
 
       <FormButton>Send ME</FormButton>

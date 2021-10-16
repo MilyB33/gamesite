@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { getColor, getMedias } from '../../styles/utils';
+import ToolTip from '../Generic/ToolTip';
 
 const Label = styled.label`
   width: clamp(10rem, 15vw, 40rem);
@@ -24,6 +25,7 @@ const Textarea = styled.textarea`
   box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 4px,
     rgba(0, 0, 0, 0.5) 0px 7px 13px -3px,
     rgba(0, 0, 0, 0.4) 0px -3px 0px inset;
+  background: ${getColor('clr-dark-300')};
 
   &::placeholder {
     transition: 0.3s;
@@ -35,24 +37,19 @@ const Textarea = styled.textarea`
   }
 `;
 
-const Input = ({ id, placeholder, text, validate }) => {
+const Input = ({ id, placeholder, text, getValue, validation }) => {
   const [inputValue, setInputValue] = useState('');
-  const [toolTipText, setToolTipText] = useState('');
-  const [isValid, setIsValid] = useState(true);
 
   const onChangeValue = (event) => {
     setInputValue(event.target.value);
 
-    const info = validate(event);
-
-    setToolTipText(info.message);
-    setIsValid(info.valid);
+    getValue(event);
   };
 
   return (
     <Label htmlFor={id}>
       <p>{text}</p>
-
+      <ToolTip message={validation.message} />
       <Textarea
         id={id}
         name={id}
@@ -66,14 +63,15 @@ const Input = ({ id, placeholder, text, validate }) => {
 
 Input.defaultProps = {
   placeholder: '',
-  validate: () => {},
+  getValue: () => {},
 };
 
 Input.propTypes = {
   id: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   text: PropTypes.string.isRequired,
-  validate: PropTypes.func,
+  getValue: PropTypes.func,
+  validation: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Input;

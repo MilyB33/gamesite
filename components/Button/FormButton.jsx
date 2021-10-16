@@ -9,10 +9,12 @@ const StyledButton = styled(Button)`
     rgba(0, 0, 0, 0.4) 0px -3px 0px inset;
   padding: 2rem;
   transition: 0.2s;
+  background: ${getColor('clr-light-100')};
+  color: ${getColor('clr-dark-100')};
 
   &:hover {
-    color: ${getColor('clr-dark-100')};
-    background: ${getColor('clr-light-100')};
+    color: ${getColor('clr-light-100')};
+    background: ${getColor('clr-dark-300')};
   }
 `;
 

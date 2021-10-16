@@ -27,6 +27,8 @@ export const color = {
 
   ['clr-glitch-100']: '#0ff',
   ['clr-glitch-200']: '#f0f',
+
+  ['clr-error-100']: '#f25c54',
 };
 
 export const medias = {

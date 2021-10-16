@@ -1,28 +1,37 @@
-import { useState, useReducer } from 'react';
+import { useReducer } from 'react';
 import formReducer from '../reducers/formReducer';
+import _ from 'lodash';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const LETTERS_REGEX = /[^a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/g;
 const INITIAL_STATE = {
   name: {
+    name: 'name',
     value: '',
     valid: false,
+    message: '',
   },
   email: {
+    name: 'email',
     value: '',
     valid: false,
+    message: '',
   },
   message: {
+    name: 'message',
     value: '',
     valid: false,
+    message: '',
   },
 };
 
 const useValidation = () => {
   const [state, dispatch] = useReducer(formReducer, INITIAL_STATE);
-  const [isValidated, setIsValidated] = useState(false);
 
-  const getValue = (name, value) => {
+  const getValue = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+
     dispatch({ type: 'CHANGE_VALUE', payload: { name, value } });
   };
 
@@ -38,22 +47,17 @@ const useValidation = () => {
     if (regex) {
       return name === 'name'
         ? LETTERS_REGEX.test(value)
-        : EMAIL_REGEX.test(value);
+        : !EMAIL_REGEX.test(value);
     }
 
     return value.length > length;
   };
 
-  const validate = (input) => {
+  const validate = (inputName, inputValue) => {
     let inputError = {
       message: '',
       valid: false,
     };
-
-    const inputName = input.target.name;
-    const inputValue = input.target.value;
-
-    getValue(inputName, inputValue);
 
     switch (true) {
       case inputValue.length < 3:
@@ -81,21 +85,34 @@ const useValidation = () => {
 
     dispatch({
       type: 'CHANGE_VALIDITY',
-      payload: { name: inputName, value: inputError.valid },
+      payload: {
+        name: inputName,
+        value: inputError.valid,
+        message: inputError.message,
+      },
     });
 
-    return inputError;
+    return inputError.valid;
+  };
+
+  const checkValidity = () => {
+    const errors = [];
+
+    _.forIn(state, (entry, key) => {
+      errors.push(validate(entry.name, entry.value));
+    });
+
+    return errors;
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
 
-    console.log(state);
-
-    if (!isValidated) console.log('error');
+    if (checkValidity().includes(false)) console.log('error');
+    else console.log('Data sent');
   };
 
-  return { isValidated, onSubmit, validate };
+  return { onSubmit, getValue, state };
 };
 
 export default useValidation;

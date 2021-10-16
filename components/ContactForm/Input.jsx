@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { getColor } from '../../styles/utils';
+import ToolTip from '../Generic/ToolTip';
 
 const Label = styled.label`
   width: clamp(10rem, 15vw, 40rem);
@@ -9,6 +10,7 @@ const Label = styled.label`
   flex-direction: column;
   gap: 1rem;
   width: 100%;
+  position: relative;
 `;
 
 const StyledInput = styled.input`
@@ -17,6 +19,7 @@ const StyledInput = styled.input`
   box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 4px,
     rgba(0, 0, 0, 0.5) 0px 7px 13px -3px,
     rgba(0, 0, 0, 0.4) 0px -3px 0px inset;
+  background: ${getColor('clr-dark-300')};
 
   &::placeholder {
     transition: 0.3s;
@@ -28,25 +31,34 @@ const StyledInput = styled.input`
   }
 `;
 
-const Input = ({ id, placeholder, text, validate }) => {
+const Input = ({
+  id,
+  placeholder,
+  text,
+  getValue,
+  type,
+  validation,
+}) => {
   const [inputValue, setInputValue] = useState('');
 
   const onChangeValue = (event) => {
     setInputValue(event.target.value);
 
-    validate(event);
+    getValue(event);
   };
 
   return (
     <Label htmlFor={id}>
       <p>{text}</p>
+      <ToolTip message={validation.message} />
       <StyledInput
-        type="text"
+        type={type}
         name={id}
         id={id}
         placeholder={placeholder}
         value={inputValue}
         onChange={onChangeValue}
+        autoComplete="off"
       />
     </Label>
   );
@@ -54,14 +66,17 @@ const Input = ({ id, placeholder, text, validate }) => {
 
 Input.defaultProps = {
   placeholder: '',
-  validate: () => {},
+  getValue: () => {},
+  type: 'text',
 };
 
 Input.propTypes = {
   id: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   text: PropTypes.string.isRequired,
-  validate: PropTypes.func,
+  getValue: PropTypes.func,
+  type: PropTypes.string,
+  validation: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Input;
