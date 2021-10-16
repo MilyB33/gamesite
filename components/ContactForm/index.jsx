@@ -17,7 +17,7 @@ const Form = styled.form`
     rgba(0, 0, 0, 0.5) 0px 7px 13px -3px,
     rgba(0, 0, 0, 0.4) 0px -3px 0px inset;
   font-size: 2rem;
-  background: ${getColor('clr-dark-300')};
+  background: ${getColor('clr-dark-200')};
   border-radius: 15px;
 
   @media (max-width: ${getMedias('laptop')}) {
@@ -52,10 +52,6 @@ const IconWrapper = styled.div`
     filter: drop-shadow(var(--shadow));
   }
 
-  & > h2 {
-    margin: 0 auto;
-  }
-
   @media (max-width: ${getMedias('tablet')}) {
     grid-column: initial;
   }
@@ -72,7 +68,6 @@ const ContactForm = () => {
     <Form onSubmit={onSubmit}>
       <IconWrapper>
         <FontAwesomeIcon icon={faEnvelope} />
-        <h2>Send us a message !</h2>
       </IconWrapper>
 
       <Input

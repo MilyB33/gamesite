@@ -10,7 +10,12 @@ const PlatformCard = styled.div`
 
   & * {
     text-align: center;
-    color: ${getColor('clr-additional-100')};
+    color: ${getColor('clr-additional-300')};
+    transition: 0.3s;
+  }
+
+  &:hover * {
+    color: ${getColor('clr-additional-200')};
   }
 
   & a {

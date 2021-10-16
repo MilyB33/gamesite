@@ -14,7 +14,7 @@ const StyledButton = styled(Button)`
 
   &:hover {
     color: ${getColor('clr-light-100')};
-    background: ${getColor('clr-dark-300')};
+    background: ${getColor('clr-additional-200')};
   }
 `;
 

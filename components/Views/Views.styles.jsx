@@ -32,8 +32,15 @@ const GameGrid = styled.section`
 `;
 
 const ContactWrapper = styled.main`
+  display: grid;
+  gap: 5rem;
   padding: 5rem 0;
   background: ${getColor('clr-dark-200')};
+
+  & > h2 {
+    margin: 0 auto;
+    text-shadow: -2px -2px 0 rgb(199 60 221);
+  }
 `;
 
 export { GamesPageWrapper, GameGrid, ContactWrapper };
