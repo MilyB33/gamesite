@@ -1,21 +1,16 @@
 import { useState } from 'react';
+import useValidation from './useValidation';
 
 const useField = () => {
   const [inputValue, setInputValue] = useState('');
-  const [toolTipText, setToolTipText] = useState('');
-  const [isValid, setIsValid] = useState(true);
 
   const onChangeValue = (event) => {
     setInputValue(event.target.value);
 
-    const info = validate(event);
-
-    setToolTipText(info.message);
-
-    setIsValid(info.valid);
+    getValue(event);
   };
 
-  return { inputValue, toolTipText, isValid, onChangeValue };
+  return { inputValue, onChangeValue };
 };
 
 export default useField;

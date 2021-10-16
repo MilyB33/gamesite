@@ -31,4 +31,9 @@ const GameGrid = styled.section`
   }
 `;
 
-export { GamesPageWrapper, GameGrid };
+const ContactWrapper = styled.main`
+  padding: 5rem 0;
+  background: ${getColor('clr-dark-200')};
+`;
+
+export { GamesPageWrapper, GameGrid, ContactWrapper };

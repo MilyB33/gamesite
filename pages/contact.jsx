@@ -1,8 +1,8 @@
 import LayoutSub from '../components/Layouts/LayoutSub';
-import ContactForm from '../components/ContactForm';
+import ContactView from '../components/Views/ContactView';
 const ContactPage = () => (
   <>
-    <ContactForm />
+    <ContactView />
   </>
 );
 

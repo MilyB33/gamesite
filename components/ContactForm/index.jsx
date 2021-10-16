@@ -11,16 +11,17 @@ const Form = styled.form`
   display: grid;
   grid-template-columns: 0.5fr 1fr;
   gap: 2rem;
-  margin: 5rem 20vw;
+  margin: 0 20vw;
   padding: 2rem 4rem;
   box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 4px,
     rgba(0, 0, 0, 0.5) 0px 7px 13px -3px,
     rgba(0, 0, 0, 0.4) 0px -3px 0px inset;
   font-size: 2rem;
-  background: ${getColor('clr-dark-200')};
+  background: ${getColor('clr-dark-300')};
+  border-radius: 15px;
 
   @media (max-width: ${getMedias('laptop')}) {
-    margin: 5rem 5vw;
+    margin: 0 5vw;
   }
 
   @media (max-width: ${getMedias('tablet')}) {
@@ -38,6 +39,9 @@ const IconWrapper = styled.div`
 
   display: flex;
   align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
   grid-column: span 2;
   font-size: clamp(6rem, 12vw, 20rem);
 
@@ -54,8 +58,6 @@ const IconWrapper = styled.div`
 
   @media (max-width: ${getMedias('tablet')}) {
     grid-column: initial;
-    flex-direction: column;
-    text-align: center;
   }
 `;
 

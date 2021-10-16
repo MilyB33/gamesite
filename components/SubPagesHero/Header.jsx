@@ -10,11 +10,7 @@ const HeaderWrapper = styled.header`
   width: 100%;
 
   @media (max-width: ${getMedias('laptop')}) {
-    padding-top: 7rem;
-  }
-
-  @media (max-width: ${getMedias('mobile')}) {
-    padding-top: 10em;
+    margin-top: 8.5rem;
   }
 `;
 
@@ -40,9 +36,8 @@ const ImageWrapper = styled.div`
 const HeaderText = styled.div`
   position: absolute;
   left: 50%;
-  bottom: 0;
-  height: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,7 +47,7 @@ const HeaderText = styled.div`
 
   & > h2 {
     text-shadow: 3px 3px 16px ${getColor('clr-glitch-200')};
-    margin-bottom: auto;
+    margin-bottom: 2rem;
   }
 
   & *:is(h5, a) {

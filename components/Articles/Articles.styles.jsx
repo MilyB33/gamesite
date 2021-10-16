@@ -8,7 +8,7 @@ const ArticlesWrapper = styled.main`
   gap: 5rem;
   min-height: 100vh;
   padding: 5em 18em;
-  background: ${getColor('clr-light-100')};
+  background: ${getColor('clr-dark-200')};
 
   @media (max-width: ${getMedias('1400')}) {
     padding: 5em 10em;
