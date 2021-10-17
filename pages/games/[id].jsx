@@ -9,7 +9,7 @@ import GameLayout from '../../components/Layouts/GameLayout';
 const gamePage = ({ game }) => <GameView gameData={game} />;
 
 export async function getStaticPaths() {
-  const res = await IGDBClient.getAllGames(30);
+  const res = await IGDBClient.getAllGames(20);
 
   const flattened = flattenGamesData(res);
 
