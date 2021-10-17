@@ -12,7 +12,7 @@ const Games = ({ games, platforms }) => {
   const [isList, setIsList] = useState(false);
 
   const {
-    state: { filteredData: filteredGames },
+    state: { filteredData: filteredGames, platformID },
     sortGames,
     filterByPlatform,
     filterByName,

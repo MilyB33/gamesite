@@ -60,6 +60,7 @@ const reducer = (state, action) => {
     case 'PLATFORM':
       return {
         ...state,
+        platformID: action.payload,
         filteredData: state.data.filter((game) =>
           game.platforms.find(
             (platform) => platform.id === action.payload
@@ -69,18 +70,23 @@ const reducer = (state, action) => {
     case 'SEARCH':
       return {
         ...state,
-        filteredData: state.data.filter((game) =>
-          game.name.includes(action.payload)
-        ),
+        filteredData: state.data
+          .filter((game) => game.name.includes(action.payload))
+          .filter((game) =>
+            game.platforms.find(
+              (platform) => platform.id === state.platformID
+            )
+          ),
       };
     default:
       return state;
   }
 };
 
-const useFilter = (data, platforms) => {
+const useFilter = (data) => {
   const router = useRouter();
   const [state, dispatch] = useReducer(reducer, {
+    platformID: 6,
     data,
     filteredData: data,
   });
@@ -102,7 +108,6 @@ const useFilter = (data, platforms) => {
       ? parseInt(router.query.platform)
       : 6;
 
-    console.log(platformID);
     dispatch({ type: 'POPULARITY_ASC' });
 
     dispatch({
@@ -112,6 +117,7 @@ const useFilter = (data, platforms) => {
   }, [router]);
 
   const filterByName = (event) => {
+    console.log(state);
     dispatch({ type: 'SEARCH', payload: event.target.value });
   };
 
