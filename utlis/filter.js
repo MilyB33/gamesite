@@ -143,6 +143,7 @@ export const flattenGameData = (data) => {
     publisher: filteredCompanies.find((company) => company.publisher),
     videos: game.videos[0],
     websites: filterWebsites(game.websites),
+    collection: game.collection ?? null,
   };
 };
 

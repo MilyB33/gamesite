@@ -16,8 +16,9 @@ const Game = ({ gameData }) => {
     screenshots,
     summary,
     similar_games,
-    collection: { games: collection_games },
+    collection,
   } = gameData;
+
   return (
     <GameGrid>
       <Header
@@ -31,11 +32,13 @@ const Game = ({ gameData }) => {
       <GameInfo game={gameData} />
       <Video video={screenshots[0]} />
       <GamesCollections games={similar_games} type="Similar games" />
-      <GamesCollections
-        games={collection_games}
-        type="Games from collection"
-        isWide
-      />
+      {collection && (
+        <GamesCollections
+          games={collection.games}
+          type="Games from collection"
+          isWide
+        />
+      )}
     </GameGrid>
   );
 };
