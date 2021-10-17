@@ -5,7 +5,8 @@ import Filters from './Filters';
 import useFilter from '../../hooks/useFilter';
 import { useState } from 'react';
 import { GamesWrapper } from './Games.styles';
-import { useEffect } from 'react';
+import Button from '../Button/Button';
+import IGDBClient from '../../api/IGDBClient';
 
 const Games = ({ games, platforms }) => {
   const [isList, setIsList] = useState(false);
@@ -32,6 +33,11 @@ const Games = ({ games, platforms }) => {
       <ListCard key={game.id} game={game} />
     ));
 
+  const onClick = async () => {
+    const res = await IGDBClient.getPlatforms();
+    console.log(res);
+  };
+
   return (
     <>
       <h2>Most Popular</h2>
@@ -48,6 +54,7 @@ const Games = ({ games, platforms }) => {
 
       <GamesWrapper isList={isList}>
         {isList ? renderListGames() : renderGridGames()}
+        <Button onClick={onClick}>More</Button>
       </GamesWrapper>
     </>
   );
