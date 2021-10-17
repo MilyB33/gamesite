@@ -84,7 +84,9 @@ const flattenPlatforms = (platforms) =>
 
 const filterAgeRating = (ageRating) =>
   ageRating
-    .filter((rating) => rating.category === 2)
+    .filter(
+      (rating) => rating.category === 2 || rating.category === 1
+    )
     .map((rating) => ({
       ...rating,
       name: ageRatings.find(
