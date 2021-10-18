@@ -4,13 +4,17 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearchPlus } from '@fortawesome/free-solid-svg-icons';
 import ImageWrapper from '../Generic/ImageWrapper';
-import { getMixins, getColor } from '../../styles/utils';
+import { getMixins, getColor, getMedias } from '../../styles/utils';
 
 const StyledImageWrapper = styled(ImageWrapper)`
   cursor: pointer;
 
   &:hover > div {
     opacity: 1;
+  }
+
+  @media (max-width: ${getMedias('mobile')}) {
+    padding-top: 60%;
   }
 `;
 
@@ -23,6 +27,7 @@ const HoverPlaceholder = styled.div`
 
   width: 100%;
   height: 100%;
+
   background: rgba(30, 32, 31, 0.493);
   font-size: clamp(1rem, 5vw, 4rem);
 

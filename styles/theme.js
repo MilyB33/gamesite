@@ -1,4 +1,4 @@
-import { keyframes } from 'styled-components';
+import { keyframes, css } from 'styled-components';
 
 export const fontFamily = {
   primary: 'Chakra Petch',
@@ -79,18 +79,18 @@ export const animations = {
 };
 
 export const mixins = {
-  absolute: `
+  absolute: css`
     position: absolute;
     left: 0;
     top: 0;
   `,
-  absoluteCenter: `
+  absoluteCenter: css`
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
   `,
-  flexbox: `
+  flexbox: css`
     display: flex;
     align-items: center;
     justify-content: center;

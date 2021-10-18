@@ -39,11 +39,11 @@ const Button = styled.a`
   aspect-ratio: 1;
   background: ${getColor('clr-additional-100')};
   box-shadow: -8px 8px 0px 4px ${getColor('clr-light-100')};
-  border: 4px solid ${getColor('clr-purple-100')};
   transition: 0.3s;
 
   &:hover {
-    box-shadow: -4px 4px 0px 2px ${getColor('clr-light-100')};
+    transform: translate(-4px, 4px);
+    box-shadow: 0px 0px 0px 0px ${getColor('clr-light-100')};
   }
 
   & > h2 {

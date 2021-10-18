@@ -40,6 +40,7 @@ const ContactWrapper = styled.main`
   & > h2 {
     margin: 0 auto;
     text-shadow: -2px -2px 0 rgb(199 60 221);
+    text-align: center;
   }
 `;
 

@@ -27,7 +27,7 @@ const PlatformCard = styled.div`
     }
 
     @media (max-width: ${getMedias('mobile')}) {
-      margin: 0 4em;
+      margin: 0;
     }
   }
 
@@ -56,6 +56,10 @@ const PlatformsSection = styled.section`
   align-items: center;
   justify-content: center;
   min-height: 60vh;
+
+  & h2 {
+    text-shadow: -2px -2px 0 rgb(199 60 221);
+  }
 `;
 
 const PlatformsWrapper = styled.div`

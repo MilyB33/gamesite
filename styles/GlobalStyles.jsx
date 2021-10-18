@@ -72,21 +72,20 @@ a {
 }
 
 p,a {
-  font-size: clamp(0.5rem,3vw + 0.3rem, 2rem);
+  font-size: clamp(1rem,3vw + 1rem, 2rem);
   line-height: 35px;
 }
 
 h1 {
   font-size: 10rem;
-  @media(max-width: ${getMedias('tablet')}) {font-size: 6rem;}  
-  @media(max-width: ${getMedias('mobile')}) {font-size: 4rem;}  
-
+  @media(max-width: ${getMedias('tablet')}) {font-size: 9rem;}  
+  @media(max-width: ${getMedias('mobile')}) {font-size: 6rem;}  
 }
 
 h2 {
   font-size: 6rem;
-  @media(max-width: ${getMedias('tablet')}) {font-size: 4.5rem;}  
-  @media(max-width: ${getMedias('mobile')}) {font-size: 3.5rem;}  
+  @media(max-width: ${getMedias('tablet')}) {font-size: 5rem;}  
+  @media(max-width: ${getMedias('mobile')}) {font-size: 4.5rem;}  
 
 }
 
@@ -106,7 +105,7 @@ h4 {
 h5 {
   font-size: 2.3rem;
   @media(max-width: ${getMedias('tablet')}) {font-size: 1.5rem;}  
-  @media(max-width: ${getMedias('mobile')}) {font-size: 1rem;}  
+  @media(max-width: ${getMedias('mobile')}) {font-size: 1.3rem;}  
 
 }
 

@@ -15,7 +15,6 @@ const Wrapper = styled.main`
   padding: 15vh 15vw;
   min-height: 100vh;
   background: ${getColor('clr-dark-300')};
-  text-align: center;
 
   @media (max-width: ${getMedias('desktop')}) {
     padding: 16rem 2vw;
@@ -33,6 +32,11 @@ const Wrapper = styled.main`
     font-family: ${getFontFamily('secondary')};
     color: ${getColor('clr-light-200')};
     font-family: sans-serif;
+  }
+
+  & > h3 {
+    padding-bottom: 2rem;
+    border-bottom: 3px solid ${getColor('clr-additional-100')};
   }
 
   & > h5 {

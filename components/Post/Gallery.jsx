@@ -6,6 +6,7 @@ import Carousel from './Carousel';
 
 const Wrapper = styled.section`
   display: grid;
+  align-items: center;
   grid-template-columns: 80% 15%;
   gap: 5rem;
   max-width: 100%;
@@ -14,6 +15,9 @@ const Wrapper = styled.section`
     grid-template-columns: 100%;
     grid-template-rows: max-content max-content;
     gap: 1rem;
+  }
+
+  @media (max-width: ${getMedias('mobile')}) {
   }
 `;
 

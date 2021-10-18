@@ -1,13 +1,11 @@
 import Image from 'next/dist/client/image';
 import Link from 'next/dist/client/link';
+import ArticleButton from '../Button/ArticleButton';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   LatestArticleCard,
   Date,
   StyledImage,
-  StyledLink,
 } from './Articles.styles';
 
 const LatestArticle = ({ article }) => {
@@ -22,12 +20,8 @@ const LatestArticle = ({ article }) => {
       </StyledImage>
       <Date>{article.createDate}</Date>
       {documentToReactComponents(article.aboutShort)}
-      <Link href={`/posts/${article.slug}`}>
-        <StyledLink>
-          Read More
-          <FontAwesomeIcon icon={faArrowRight} />
-        </StyledLink>
-      </Link>
+
+      <ArticleButton slug={article.slug}>Read More</ArticleButton>
     </LatestArticleCard>
   );
 };
