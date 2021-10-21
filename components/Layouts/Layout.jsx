@@ -3,6 +3,13 @@ import React from 'react';
 import Navigation from '../Navigation';
 import Footer from '../Footer';
 import Head from 'next/head';
+import styled from 'styled-components';
+
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
 
 const Layout = ({ children, title }) => {
   return (
@@ -10,11 +17,11 @@ const Layout = ({ children, title }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <main>
+      <Main>
         <Navigation />
         {children}
         <Footer />
-      </main>
+      </Main>
     </>
   );
 };

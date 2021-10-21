@@ -20,6 +20,7 @@ const Header = styled.header`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  max-height: 1000px;
   max-width: 100vw;
   background: linear-gradient(
       180deg,
