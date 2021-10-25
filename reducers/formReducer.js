@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 const formReducer = (state, action) => {
   switch (action.type) {
     case 'CHANGE_VALUE':
@@ -16,6 +18,15 @@ const formReducer = (state, action) => {
           valid: action.payload.value,
           message: action.payload.message,
         },
+      };
+    case 'CLEAR_FIELDS':
+      return {
+        ..._.mapValues(state, (field) => ({
+          ...field,
+          value: '',
+          valid: false,
+          message: '',
+        })),
       };
     default:
       state;

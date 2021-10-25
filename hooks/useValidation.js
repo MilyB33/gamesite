@@ -105,11 +105,16 @@ const useValidation = () => {
     return errors;
   };
 
+  const clearFields = () => dispatch({ type: 'CLEAR_FIELDS' });
+
   const onSubmit = (event) => {
     event.preventDefault();
 
     if (checkValidity().includes(false)) console.log('error');
-    else console.log('Data sent');
+    else {
+      console.log('Data sent');
+      // clearFields();
+    }
   };
 
   return { onSubmit, getValue, state };
