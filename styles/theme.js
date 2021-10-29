@@ -29,6 +29,10 @@ export const color = {
   ['clr-glitch-200']: '#f0f',
 
   ['clr-error-100']: '#f25c54',
+
+  ['clr-skeleton-100']: '#2A2D43',
+  ['clr-skeleton-200']: '#414361',
+  ['clr-skeleton-300']: '#8e9aaf',
 };
 
 export const medias = {
@@ -76,6 +80,15 @@ export const animations = {
 		transform: translate(0)
 	}
 `,
+  skeletonEffect: keyframes`
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.7;
+  }
+  `,
 };
 
 export const mixins = {

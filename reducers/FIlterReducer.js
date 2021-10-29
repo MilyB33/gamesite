@@ -65,7 +65,11 @@ const filterReducer = (state, action) => {
       return {
         ...state,
         filteredData: state.data
-          .filter((game) => game.name.includes(action.payload))
+          .filter((game) =>
+            game.name
+              .toLowerCase()
+              .includes(action.payload.toLowerCase())
+          )
           .filter((game) =>
             game.platforms.find(
               (platform) => platform.id === state.platformID

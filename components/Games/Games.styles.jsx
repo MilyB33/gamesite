@@ -7,6 +7,7 @@ const GamesWrapper = styled.section`
   flex-direction: ${({ isList }) => (isList ? 'column' : 'initial')};
   flex-wrap: wrap;
   justify-content: center;
+  min-height: 570px;
 
   padding: 5rem 4rem;
   gap: 5rem;

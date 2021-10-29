@@ -5,17 +5,35 @@ import Filters from './Filters';
 import useFilter from '../../hooks/useFilter';
 import { useState } from 'react';
 import { GamesWrapper, MoreButton } from './Games.styles';
+import SkeletonGridCard from './GridCard/SkeletonGridCard';
+import SkeletonListCard from './ListCard/SkeletonListCard';
 
 const Games = ({ games, platforms }) => {
   const [isList, setIsList] = useState(false);
 
   const {
-    state: { filteredData: filteredGames, platformID },
+    state: {
+      filteredData: filteredGames,
+      infiniteLoad: { loading },
+    },
     sortGames,
     filterByPlatform,
     filterByName,
     loadMore,
   } = useFilter(games, platforms);
+
+  const renderSkeleton = () => {
+    const skeletonElements = [];
+
+    for (let i = 0; i < 10; i++)
+      skeletonElements[i] = isList ? (
+        <SkeletonListCard key={i} />
+      ) : (
+        <SkeletonGridCard key={i} />
+      );
+
+    return skeletonElements;
+  };
 
   const renderMostPopular = () =>
     games
@@ -48,9 +66,12 @@ const Games = ({ games, platforms }) => {
 
       <GamesWrapper isList={isList}>
         {isList ? renderListGames() : renderGridGames()}
+        {loading && renderSkeleton()}
       </GamesWrapper>
 
-      <MoreButton onClick={loadMore}>More</MoreButton>
+      <MoreButton onClick={loadMore}>
+        {loading ? 'Loading' : 'More'}
+      </MoreButton>
     </>
   );
 };

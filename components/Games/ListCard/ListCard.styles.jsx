@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { getColor, getMedias } from '../../../styles/utils';
+import {
+  getColor,
+  getMedias,
+  getAnimation,
+} from '../../../styles/utils';
 import LinkBorder from '../../Generic/Link';
 
 const Card = styled.article`
@@ -60,4 +64,40 @@ const StyledLink = styled(LinkBorder)`
   }
 `;
 
-export { Card, ImageWrapper, StyledLink };
+const SkeletonImage = styled.div`
+  background: ${getColor('clr-skeleton-100')};
+  width: 80%;
+  height: 0;
+  padding-top: 100%;
+  border-radius: 15px;
+`;
+
+const SkeletonText = styled.div`
+  width: 100%;
+  height: 40%;
+  margin: 0 auto;
+  background: ${getColor('clr-skeleton-200')};
+  animation: ${getAnimation('skeletonEffect')} 0.7s linear infinite
+    alternate;
+  border-radius: 15px;
+`;
+
+const SkeletonLink = styled.div`
+  height: 40%;
+  min-width: 100px;
+  width: 28%;
+  margin-left: auto;
+  background: ${getColor('clr-skeleton-300')};
+  animation: ${getAnimation('skeletonEffect')} 0.7s linear infinite
+    alternate;
+  border-radius: 5px;
+`;
+
+export {
+  Card,
+  ImageWrapper,
+  StyledLink,
+  SkeletonImage,
+  SkeletonText,
+  SkeletonLink,
+};

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getColor } from '../../../styles/utils';
+import { getAnimation, getColor } from '../../../styles/utils';
 import ImageWrapper from '../../Generic/ImageWrapper';
 import LinkBorder from '../../Generic/Link';
 
@@ -69,4 +69,42 @@ const Card = styled.article`
   }
 `;
 
-export { StyledImageWrapper, StyledLink, Card };
+const SkeletonImage = styled.div`
+  background: ${getColor('clr-skeleton-100')};
+  width: 100%;
+  height: 0;
+  padding-top: 110%;
+`;
+
+const SkeletonText = styled.div`
+  background: ${getColor('clr-skeleton-200')};
+  width: ${({ isSecond }) => (isSecond ? '50%' : '70%')};
+  animation: ${getAnimation('skeletonEffect')} 0.7s linear infinite
+    alternate;
+  margin: 0 auto;
+  border-radius: 15px;
+`;
+
+const SkeletonLink = styled.div`
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background: ${getColor('clr-skeleton-300')};
+  width: 40%;
+  animation: ${getAnimation('skeletonEffect')} 0.7s linear infinite
+    alternate;
+  margin: 0 auto;
+  height: 50px;
+  border-radius: 5px;
+`;
+
+export {
+  StyledImageWrapper,
+  StyledLink,
+  Card,
+  SkeletonImage,
+  SkeletonText,
+  SkeletonLink,
+};
