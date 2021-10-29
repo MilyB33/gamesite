@@ -1,10 +1,14 @@
 import axios from 'axios';
 
+// This header must be deleted to parse body on proxy server
+delete axios.defaults.headers.post['Content-Type'];
+
 class IGDBClient {
   client = axios.create({
-    baseURL: 'https://api.igdb.com/v4',
+    baseURL: process.env.NEXT_PUBLIC_TEST_URL_PROXY_IGDB,
     headers: {
       post: {
+        'Content-type': 'text/plain',
         Accept: 'application/json',
         ['Client-ID']: process.env.NEXT_PUBLIC_IGDB_CLIENT_ID,
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_IGDB_API_TOKEN}`,
@@ -22,21 +26,22 @@ class IGDBClient {
       .catch((err) => console.error(err));
   };
 
-  getAllGames = async (limit = 10) => {
+  getAllGames = async (limit = 10, offset = 0) => {
     return this.client
       .post(
         'games',
-        `fields follows,name,rating,rating_count,slug,first_release_date,cover.*,platforms.*,genres.name; sort rating desc; where rating_count >= 1000 & themes != (42);  limit ${limit};`
+        `fields follows,name,rating,rating_count,slug,first_release_date,cover.*,platforms.*,genres.name; sort rating desc; where rating_count >= 1000 & themes != (42);  limit ${limit};offset ${offset};`
       )
       .then((res) => res.data)
       .catch((err) => console.error(err));
   };
 
-  getFilteredGames = async (platformID) => {
+  getFilteredGames = async (limit = 10, offset = 0, platformID) => {
+    console.log(platformID);
     return this.client
       .post(
         'games',
-        `fields follows,name,rating,rating_count,slug,first_release_date,cover.*,platforms.*,genres.name; sort rating desc; where rating_count >= 1000 & themes != (42) & release_dates.platform = 6;`
+        `fields follows,name,rating,rating_count,slug,first_release_date,cover.*,platforms.*,genres.name; sort rating desc; where rating_count >= 1000 & themes != (42) & platforms.id = ${platformID};  limit ${limit};offset ${offset};`
       )
       .then((res) => res.data)
       .catch((err) => console.error(err));

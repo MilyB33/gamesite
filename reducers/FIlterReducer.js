@@ -72,6 +72,31 @@ const filterReducer = (state, action) => {
             )
           ),
       };
+    case 'SET_LOADING':
+      return {
+        ...state,
+        infiniteLoad: {
+          ...state.infiniteLoad,
+          loading: true,
+        },
+      };
+    case 'ADD_GAMES':
+      return {
+        ...state,
+        data: state.data.concat(action.payload),
+        filteredData: state.filteredData
+          .concat(action.payload)
+          .filter((game) =>
+            game.platforms.find(
+              (platform) => platform.id === state.platformID
+            )
+          ),
+        infiniteLoad: {
+          ...state.infiniteLoad,
+          offset: state.infiniteLoad.offset + 10,
+          loading: false,
+        },
+      };
     default:
       return state;
   }

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { getMedias } from '../../styles/utils';
+import { getColor, getMedias } from '../../styles/utils';
+import Button from '../Button/Button';
 
 const GamesWrapper = styled.section`
   display: flex;
@@ -24,4 +25,32 @@ const FilterWrapper = styled.section`
   gap: 5rem;
 `;
 
-export { GamesWrapper, FilterWrapper };
+const MoreButton = styled(Button)`
+  position: relative;
+  margin: 0 auto 4rem;
+  font-size: 1.5rem;
+  padding: 1.5rem 3rem;
+  border: 2px solid ${getColor('clr-glitch-100')};
+  cursor: pointer;
+  transition: 0.3s;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 150%;
+    transform: translateX(-50%) skew(30deg, 0deg);
+    background: ${getColor('clr-glitch-200')};
+    height: 100%;
+    width: 40%;
+    transition: 0.5s;
+    z-index: -1;
+  }
+
+  &:hover::after {
+    left: 50%;
+  }
+`;
+
+export { GamesWrapper, FilterWrapper, MoreButton };

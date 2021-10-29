@@ -6,6 +6,8 @@ import {
 } from '../../styles/utils';
 
 const GamesPageWrapper = styled.main`
+  display: flex;
+  flex-direction: column;
   background: ${getColor('clr-dark-200')};
   padding-top: 5rem;
 

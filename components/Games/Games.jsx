@@ -4,7 +4,7 @@ import ListCard from './ListCard/ListCard';
 import Filters from './Filters';
 import useFilter from '../../hooks/useFilter';
 import { useState } from 'react';
-import { GamesWrapper } from './Games.styles';
+import { GamesWrapper, MoreButton } from './Games.styles';
 
 const Games = ({ games, platforms }) => {
   const [isList, setIsList] = useState(false);
@@ -14,6 +14,7 @@ const Games = ({ games, platforms }) => {
     sortGames,
     filterByPlatform,
     filterByName,
+    loadMore,
   } = useFilter(games, platforms);
 
   const renderMostPopular = () =>
@@ -48,6 +49,8 @@ const Games = ({ games, platforms }) => {
       <GamesWrapper isList={isList}>
         {isList ? renderListGames() : renderGridGames()}
       </GamesWrapper>
+
+      <MoreButton onClick={loadMore}>More</MoreButton>
     </>
   );
 };

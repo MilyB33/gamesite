@@ -1,6 +1,8 @@
 import { useEffect, useReducer, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import filterReducer from '../reducers/FIlterReducer';
+import IGDBClient from '../api/IGDBClient';
+import { flattenGamesData } from '../utlis/filter';
 
 const useFilter = (data) => {
   const router = useRouter();
@@ -8,6 +10,11 @@ const useFilter = (data) => {
     platformID: 6,
     data,
     filteredData: data,
+    infiniteLoad: {
+      offset: 20,
+      limit: 10,
+      loading: false,
+    },
   });
 
   const sortGames = (event) => {
@@ -35,15 +42,39 @@ const useFilter = (data) => {
   }, [router]);
 
   const filterByName = (event) => {
-    console.log(state);
     dispatch({ type: 'SEARCH', payload: event.target.value });
+  };
+
+  const loadMore = async () => {
+    const {
+      platformID,
+      infiniteLoad: { offset, limit },
+    } = state;
+
+    dispatch({ type: 'SET_LOADING' });
+
+    const data = await IGDBClient.getFilteredGames(
+      limit,
+      offset,
+      platformID
+    );
+
+    const games = flattenGamesData(data);
+
+    dispatch({ type: 'ADD_GAMES', payload: games });
   };
 
   useEffect(() => {
     setDefaultFilter();
   }, [setDefaultFilter]);
 
-  return { state, sortGames, filterByPlatform, filterByName };
+  return {
+    state,
+    sortGames,
+    filterByPlatform,
+    filterByName,
+    loadMore,
+  };
 };
 
 export default useFilter;
