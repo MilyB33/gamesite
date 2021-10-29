@@ -5,7 +5,7 @@ delete axios.defaults.headers.post['Content-Type'];
 
 class IGDBClient {
   client = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_TEST_URL_PROXY_IGDB,
+    baseURL: process.env.NEXT_PUBLIC_URL_PROXY_IGDB,
     headers: {
       post: {
         'Content-type': 'text/plain',
