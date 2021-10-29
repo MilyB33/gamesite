@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { GamesWrapper, MoreButton } from './Games.styles';
 import SkeletonGridCard from './GridCard/SkeletonGridCard';
 import SkeletonListCard from './ListCard/SkeletonListCard';
+import ScrollButton from './ScrollButton';
 
 const Games = ({ games, platforms }) => {
   const [isList, setIsList] = useState(false);
@@ -72,6 +73,8 @@ const Games = ({ games, platforms }) => {
       <MoreButton onClick={loadMore}>
         {loading ? 'Loading' : 'More'}
       </MoreButton>
+
+      <ScrollButton />
     </>
   );
 };
