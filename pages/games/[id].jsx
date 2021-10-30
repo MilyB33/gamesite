@@ -5,8 +5,22 @@ import {
 } from '../../utlis/filter';
 import GameView from '../../components/Views/GameView';
 import GameLayout from '../../components/Layouts/GameLayout';
+import GameSkeleton from '../../components/Game/Skeleton/GameSkeleton';
+import { useRouter } from 'next/router';
 
-const gamePage = ({ game }) => <GameView gameData={game} />;
+const GamePage = ({ game }) => {
+  const router = useRouter();
+
+  return (
+    <>
+      {router.isFallback ? (
+        <GameSkeleton />
+      ) : (
+        <GameView gameData={game} />
+      )}
+    </>
+  );
+};
 
 export async function getStaticPaths() {
   const res = await IGDBClient.getAllGames(19);
@@ -17,7 +31,7 @@ export async function getStaticPaths() {
     params: { id: game.slug },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }) {
@@ -28,10 +42,9 @@ export async function getStaticProps({ params }) {
   return { props: { game } };
 }
 
-gamePage.getLayout = function displayLayout(page, pageProps) {
-  const {
-    game: { background, name },
-  } = pageProps;
+GamePage.getLayout = function displayLayout(page, pageProps) {
+  const name = pageProps?.game?.name ?? 'Loading';
+  const background = pageProps?.game?.background ?? null;
 
   return (
     <GameLayout title={name} background={background}>
@@ -40,4 +53,4 @@ gamePage.getLayout = function displayLayout(page, pageProps) {
   );
 };
 
-export default gamePage;
+export default GamePage;

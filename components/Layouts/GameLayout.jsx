@@ -9,16 +9,22 @@ const GameLayout = ({ children, title, background }) => {
       <Head>
         <title>{title}</title>
       </Head>
+
       <Background alt={title} background={background} />
+
       <Navigation />
       <main>{children}</main>
     </>
   );
 };
 
+GameLayout.defaultProps = {
+  background: null,
+};
+
 GameLayout.propTypes = {
   title: PropTypes.string.isRequired,
-  background: PropTypes.string.isRequired,
+  background: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,

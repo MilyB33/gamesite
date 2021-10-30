@@ -89,6 +89,15 @@ export const animations = {
     opacity: 0.7;
   }
   `,
+  rotateSpinner: keyframes`
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  `,
 };
 
 export const mixins = {

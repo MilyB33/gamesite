@@ -6,14 +6,20 @@ const Background = ({ background, alt }) => {
   return (
     <Grid>
       <Wrapper>
-        <Image src={background} layout="fill" alt={alt} />
+        {background && (
+          <Image src={background} layout="fill" alt={alt} />
+        )}
       </Wrapper>
     </Grid>
   );
 };
 
+Background.defaultProps = {
+  background: null,
+};
+
 Background.propTypes = {
-  background: PropTypes.string.isRequired,
+  background: PropTypes.string,
   alt: PropTypes.string.isRequired,
 };
 

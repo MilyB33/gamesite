@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { getColor } from '../../styles/utils';
 import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowCircleUp } from '@fortawesome/free-solid-svg-icons';
 
 const Button = styled.button`
   position: sticky;
@@ -9,9 +11,9 @@ const Button = styled.button`
   z-index: 4;
   cursor: pointer;
   padding: 1.5rem;
-  background: ${getColor('clr-dark-100')};
+  font-size: 5rem;
 
-  &:hover > h5 {
+  &:hover * {
     color: ${getColor('clr-glitch-100')};
   }
 `;
@@ -44,7 +46,7 @@ const ScrollButton = () => {
     <>
       {isVisible && (
         <Button onClick={handleScroll}>
-          <h5>Scroll to top</h5>
+          <FontAwesomeIcon icon={faArrowCircleUp} />
         </Button>
       )}
     </>
