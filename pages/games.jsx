@@ -3,13 +3,11 @@ import LayoutSub from '../components/Layouts/LayoutSub';
 import IGDBClient from '../api/IGDBClient';
 import GamesView from '../components/Views/GamesView';
 import { flattenGamesData } from '../utlis/filter';
+import { GamesProvider } from '../contextProviders/GamesContext';
 
 const GamesPage = ({ games, platforms }) => (
-  <>
-    <GamesView games={games} platforms={platforms} />
-  </>
+  <GamesView games={games} platforms={platforms} />
 );
-
 GamesPage.getLayout = function displayLayout(page) {
   return <LayoutSub title="Games">{page}</LayoutSub>;
 };

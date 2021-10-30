@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { Hydrate } from 'react-query/hydration';
 import GlobalStyles from '../styles/GlobalStyles';
 import theme from '../styles/theme';
+import { GamesProvider } from '../contextProviders/GamesContext';
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = useState(() => new QueryClient());
@@ -18,7 +19,9 @@ function MyApp({ Component, pageProps }) {
         <ReactQueryDevtools initialIsOpen={false} />
         <ThemeProvider theme={theme}>
           <GlobalStyles />
-          {getLayout(<Component {...pageProps} />, pageProps)}
+          <GamesProvider>
+            {getLayout(<Component {...pageProps} />, pageProps)}
+          </GamesProvider>
         </ThemeProvider>
       </Hydrate>
     </QueryClientProvider>

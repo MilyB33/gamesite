@@ -1,5 +1,17 @@
 const filterReducer = (state, action) => {
   switch (action.type) {
+    case 'SET_DATA':
+      return {
+        ...state,
+        data: action.payload,
+        filteredData: action.payload
+          .filter((game) =>
+            game.platforms.find(
+              (platform) => platform.id === state.platformID
+            )
+          )
+          .sort((a, b) => a.follows - b.follows),
+      };
     case 'POPULARITY_ASC':
       return {
         ...state,
