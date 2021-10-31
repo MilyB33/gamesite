@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { getColor } from '../../styles/utils';
-import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleUp } from '@fortawesome/free-solid-svg-icons';
+import useScroll from '../../hooks/useScroll';
 
 const Button = styled.button`
   position: sticky;
@@ -19,28 +19,7 @@ const Button = styled.button`
 `;
 
 const ScrollButton = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    window.addEventListener('scroll', changeVisibility);
-
-    return () => {
-      window.removeEventListener('scroll', changeVisibility);
-    };
-  }, []);
-
-  const changeVisibility = () => {
-    if (window.scrollY >= 1000) {
-      setIsVisible(true);
-      return;
-    }
-
-    setIsVisible(false);
-  };
-
-  const handleScroll = () => {
-    window.scrollTo(0, 0);
-  };
+  const { isVisible, handleScroll } = useScroll();
 
   return (
     <>

@@ -17,8 +17,6 @@ export async function getStaticProps() {
     8, 167, 48, 9, 46, 12, 49, 169, 6, 34, 41, 534,
   ]);
 
-  console.log(platforms);
-
   const res = await ContentfulClient.getAllArticlesCards();
 
   const articleCards = homeArticles(res);
