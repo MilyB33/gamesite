@@ -12,7 +12,7 @@ const Video = ({ video }) => {
       <h2>Watch Video</h2>
       <ScreenshotWrapper>
         <VideoFrame
-          src={`http://www.youtube.com/embed/${video.video_id}`}
+          src={`https://www.youtube.com/embed/${video.video_id}`}
         />
       </ScreenshotWrapper>
     </VideoGrid>
