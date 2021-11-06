@@ -17,6 +17,7 @@ const Game = ({ gameData }) => {
     summary,
     similar_games,
     collection,
+    videos,
   } = gameData;
 
   return (
@@ -30,7 +31,7 @@ const Game = ({ gameData }) => {
       <Screenshots screenshots={screenshots} />
       <About summary={summary} />
       <GameInfo game={gameData} />
-      <Video video={screenshots[0]} />
+      <Video video={videos} />
       <GamesCollections games={similar_games} type="Similar games" />
       {collection && (
         <GamesCollections
