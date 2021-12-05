@@ -1,4 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Gamesite
+
+Site about games.
+
+## `About`
+
+Click here to go to [live demo](https://gamesite.vercel.app/)
+
+## `Used Apis`
+
+IGDB: [IGDB API](https://api-docs.igdb.com/#about)
+
+## `Used Technologies`
+
+- Javascript
+- ReactJS
+- NextJS
+- Styled Components
+- Contentful
 
 ## Getting Started
 
