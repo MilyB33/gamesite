@@ -1,8 +1,10 @@
 # Gamesite
 
+## `About`
+
 Site about games.
 
-## `About`
+## `Live Demo`
 
 Click here to go to [live demo](https://gamesite.vercel.app/)
 
